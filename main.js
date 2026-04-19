@@ -170,14 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!bar) {
             bar = document.createElement('div');
             bar.id = 'top-loading-bar';
-            bar.className = 'fixed top-0 left-0 h-1 bg-gradient-to-r from-accent to-blue-accent';
-            bar.style.zIndex = '99999';
-            document.body.appendChild(bar);
+            document.body.prepend(bar);
         }
         bar.style.transition = 'none';
         bar.style.width = '0%';
         bar.style.opacity = '1';
-        void bar.offsetWidth;
+        void bar.offsetWidth; // Force reflow
         bar.style.transition = 'width 0.3s ease-out, opacity 0.5s ease';
         return bar;
     };

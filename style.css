@@ -520,11 +520,12 @@ input:focus, textarea:focus {
     top: 0;
     left: 0;
     height: 3px;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    z-index: 10000;
+    background: linear-gradient(to right, var(--accent), var(--blue-accent));
+    box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(16, 185, 129, 0.3);
+    z-index: 99999;
     width: 0;
     transition: width 0.3s ease-out, opacity 0.5s ease;
+    pointer-events: none;
 }
 
 /* Theme Toggle Button Styling */
