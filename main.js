@@ -243,8 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.addEventListener('mousemove', (e) => {
         cursorGlow.style.opacity = '1';
-        // Center the 400x400 element by subtracting half its width/height
-        cursorGlow.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
+        // Center the 150x150 element by subtracting half its width/height (75px)
+        cursorGlow.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
     });
 
     document.addEventListener('mouseleave', () => {
