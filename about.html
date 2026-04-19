@@ -35,7 +35,7 @@
     <nav class="navbar glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="logo flex items-center hover-glow" aria-label="Zeyad Portfolio Home">
-                <img src="zeyadlogo.webp" alt="Zeyad Walid Logo" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
+                <img src="zeyadlogo.webp" alt="Zeyad Walid Logo" width="96" height="96" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
             </a>
             <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
                 <li><a href="index.html" class="hover-text-accent transition-colors">Home</a></li>
@@ -54,15 +54,15 @@
                     <svg class="w-6 h-6 sun-icon block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg class="w-6 h-6 moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-                <div class="mobile-menu-btn cursor-pointer" aria-label="Open Menu">
+                <button type="button" class="mobile-menu-btn cursor-pointer" aria-label="Open Menu">
                     <svg class="w-8 h-8 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- About Section -->
-    <section id="about" class="py-32 flex-1 relative z-10 w-full bg-dark-secondary bg-opacity-90">
+    <main id="about" class="py-32 flex-1 relative z-10 w-full bg-dark-secondary bg-opacity-90">
         <div class="container mx-auto px-6">
             <div class="section-title text-center mb-16 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
@@ -73,7 +73,7 @@
                     <div class="absolute -inset-2 bg-gradient-to-r from-accent to-blue-accent rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                     <div class="relative rounded-lg w-full bg-gray-800 shadow-2xl overflow-hidden aspect-[3/4] md:aspect-auto">
                         <div class="skeleton absolute inset-0 z-10 transition-opacity duration-500 pointer-events-none"></div>
-                        <img src="https://imgur.com/1KOGCag.png" alt="Zeyad Walid Portfolio Image" loading="lazy" onload="this.previousElementSibling.classList.add('opacity-0')" class="relative z-0 w-full h-full object-cover transition-opacity duration-500">
+                        <img src="https://imgur.com/1KOGCag.png" alt="Zeyad Walid Portfolio Image" width="400" height="533" loading="lazy" onload="this.previousElementSibling.classList.add('opacity-0')" class="relative z-0 w-full h-full object-cover transition-opacity duration-500">
                     </div>
                 </div>
                 <div class="about-text space-y-6 text-gray-300 scroll-reveal reveal-right glass-panel p-8 rounded-3xl">
@@ -222,7 +222,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark py-8 text-center border-t border-gray-800 relative z-10 w-full mt-auto">

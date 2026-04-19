@@ -499,7 +499,8 @@ input:focus, textarea:focus {
 [data-theme="light"] .nav-links.flex.flex-col a {
     color: white !important;
 }
-[data-theme="light"] .text-gray-300 { color: var(--gray-500); }
+[data-theme="light"] .text-gray-300 { color: #334155; }
+[data-theme="light"] .text-gray-400 { color: #475569; }
 [data-theme="light"] .bg-dark-secondary { background-color: var(--dark-secondary); }
 [data-theme="light"] #about.bg-dark-secondary,
 [data-theme="light"] #contact.bg-dark-secondary,
