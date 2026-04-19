@@ -115,6 +115,7 @@ html {
 .w-4 { width: 1rem; } .h-4 { height: 1rem; }
 .w-5 { width: 1.25rem; } .h-5 { height: 1.25rem; }
 .w-6 { width: 1.5rem; } .h-6 { height: 1.5rem; }
+.w-7 { width: 2.75rem; } .h-7 { height: 2.75rem; }
 .w-8 { width: 2rem; } .h-8 { height: 2rem; }
 .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
 .w-12 { width: 3rem; } .h-12 { height: 3rem; }
@@ -507,6 +508,8 @@ input:focus, textarea:focus {
 [data-theme="light"] .hover-border-accent:hover { border-color: var(--accent) !important; }
 [data-theme="light"] .social-icon { background: rgba(255, 255, 255, 0.4); color: #0f172a; border-color: rgba(0, 0, 0, 0.1); }
 [data-theme="light"] .social-icon:hover { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); }
+[data-theme="light"] .social-icon img { filter: brightness(0); }
+[data-theme="light"] .social-icon:hover img { filter: brightness(0) invert(1); }
 [data-theme="light"] .btn-secondary { background: rgba(255, 255, 255, 0.4); color: #0f172a; border-color: rgba(0, 0, 0, 0.1); }
 [data-theme="light"] .btn-secondary:hover { background: rgba(0, 0, 0, 0.05); color: var(--accent); border-color: var(--accent); box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.05); }
 [data-theme="light"] footer { background: transparent !important; color: #0f172a; border: none !important; backdrop-filter: none !important; box-shadow: none !important; }
