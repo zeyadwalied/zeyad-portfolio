@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeyad Walid - Projects</title>
+    <meta name="description" content="Projects by Zeyad Walid, Full Stack Web & WordPress Developer.">
+    <meta name="keywords" content="Zeyad Walid, Projects, Full Stack Developer, WordPress Developer, Plugin Developer, Portfolio">
+    <meta name="author" content="Zeyad Walid">
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:; frame-src https:;">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Zeyad Walid - Projects">
+    <meta property="og:description" content="Projects by Zeyad Walid, a Full Stack Web, Full Stack WordPress & Plugin Developer.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="navbar glass-nav fixed top-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="logo flex items-center hover-glow">
+                <img src="zeyadlogo.png" alt="Zeyad Walid Logo" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
+            </a>
+            <ul class="nav-links hidden md:flex space-x-8 gap-8">
+                <li><a href="index.html" class="hover-text-accent transition-colors">Home</a></li>
+                <li><a href="about.html" class="hover-text-accent transition-colors">About</a></li>
+                <li><a href="projects.html" class="text-accent font-bold transition-colors">Projects</a></li>
+                <li><a href="contact.html" class="hover-text-accent transition-colors">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn md:hidden cursor-pointer">
+                <svg class="w-8 h-8 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 flex-1 relative z-10 w-full bg-dark bg-opacity-70">
+        <div class="container mx-auto px-6">
+            <div class="section-title text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Personal Projects</h2>
+                <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('BgCeRvVLTSU')">
+                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">WAVES ALL IN ONE BADGES AND DISCOUNT PERCENTAGE</h3>
+                        <p class="text-gray-400 text-sm flex-1">A powerful WordPress plugin that allows you to create and manage custom discounts directly from the dashboard. With its user-friendly interface, it's perfect for store owners who want to boost sales through organized and easy-to-apply promotional offers.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('lheaJ-dqDm8')">
+                        <img src="https://img.youtube.com/vi/lheaJ-dqDm8/maxresdefault.jpg" alt="Music Update Home Page" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">Music Update Home Page</h3>
+                        <p class="text-gray-400 text-sm flex-1">Discover creativity and a fresh new design in the updated music homepage. This demo clearly showcases the transformation with an easy comparison between the "before" and "after" versions.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('5A3K3tXCWpw')">
+                        <img src="https://img.youtube.com/vi/5A3K3tXCWpw/maxresdefault.jpg" alt="My Portfolio" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">My Portfolio</h3>
+                        <p class="text-gray-400 text-sm flex-1">Showcasing my front-end development skills, local data management, API interaction, graphic design, and problem-solving, while offering easy content management through the admin mode.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('mcsH--Bz26M')">
+                        <img src="https://img.youtube.com/vi/mcsH--Bz26M/maxresdefault.jpg" alt="Blogger" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">Blogger</h3>
+                        <p class="text-gray-400 text-sm flex-1">A script for a smooth and light blog, with posts, with the ability to add and edit posts, a script that is attractive to the eye and dynamic. Add CSS to the rest of the posts and pages and an attractive follow button.</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('W00Ex0_vn-8')">
+                        <img src="https://img.youtube.com/vi/W00Ex0_vn-8/maxresdefault.jpg" alt="Cruds" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Cruds with Modern Background</h3>
+                        <p class="text-gray-400 text-sm flex-1">In summary, this system is an effective tool for product management, blending programming logic with contemporary design techniques to deliver a seamless user experience. It empowers users to efficiently add, modify, delete, and search for products.</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('r8Yfm2S6eD4')">
+                        <img src="https://img.youtube.com/vi/r8Yfm2S6eD4/maxresdefault.jpg" alt="New Idea" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">A New Idea: Moving Boat</h3>
+                        <p class="text-gray-400 text-sm flex-1">Moving Elements: When the user scrolls up or down, the positions of the elements are adjusted based on the scroll distance. Text Size Control, Background Change based on the scroll position, creating an attractive effect.</p>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('Zp0sfB7cl2I')">
+                        <img src="https://img.youtube.com/vi/Zp0sfB7cl2I/hqdefault.jpg" alt="iPhone Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">iPhone Web</h3>
+                        <p class="text-gray-400 text-sm flex-1">iPhone web with a simple design using HTML, CSS, and JavaScript.</p>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('v6vl-iHRyJs')">
+                        <img src="https://img.youtube.com/vi/v6vl-iHRyJs/maxresdefault.jpg" alt="Shop with HTML and CSS" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">Shop with HTML and CSS only</h3>
+                        <p class="text-gray-400 text-sm flex-1">Shop in an elegant and beautiful way with HTML and CSS, a modern and attractive look, including a Nav Bar and Login functionality.</p>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('YYo_SaHFNSs')">
+                        <img src="https://img.youtube.com/vi/YYo_SaHFNSs/maxresdefault.jpg" alt="Adidas Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Adidas Web</h3>
+                        <p class="text-gray-400 text-sm flex-1">A simple HTML CSS website designed by Adidas in a modern way.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-8 text-center border-t border-gray-800 relative z-10 w-full mt-auto">
+        <p class="text-gray-500 text-sm mb-4">
+             2026 Zeyad Walid. All rights reserved. Built with passion.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="https://github.com/STORM-Front-End" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
+                <svg class="w-5 h-5 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-100 bg-black bg-opacity-95 hidden items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-5xl mx-auto">
+            <!-- Close Button -->
+            <button onclick="closeVideoModal()" class="absolute -top-12 lg:-top-16 right-0 text-gray-400 hover:text-accent transition-colors z-50">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="relative modal-video-container w-full bg-black rounded-2xl overflow-hidden shadow-glow border border-gray-800">
+                <iframe id="modalIframe" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js?v=2"></script>
+</body>
+</html>
