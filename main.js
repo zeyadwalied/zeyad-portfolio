@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
             // Allow default behavior for external links or in-page anchors
-            if(href && href.endsWith('.html') && !href.startsWith('http') && anchor.target !== '_blank') {
+            if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && anchor.target !== '_blank') {
                 e.preventDefault();
                 const bar = createLoadingBar();
                 
