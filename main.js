@@ -170,11 +170,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!bar) {
             bar = document.createElement('div');
             bar.id = 'top-loading-bar';
-            bar.className = 'fixed top-0 left-0 h-1 bg-gradient-to-r from-accent to-blue-accent transition-all duration-300 ease-out';
-            bar.style.zIndex = '9999';
-            bar.style.width = '0%';
+            bar.className = 'fixed top-0 left-0 h-1 bg-gradient-to-r from-accent to-blue-accent';
+            bar.style.zIndex = '99999';
             document.body.appendChild(bar);
         }
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        bar.style.opacity = '1';
+        void bar.offsetWidth;
+        bar.style.transition = 'width 0.3s ease-out, opacity 0.5s ease';
         return bar;
     };
 
@@ -187,14 +191,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bar = createLoadingBar();
                 
                 // Animate progress
-                setTimeout(() => { bar.style.width = '40%'; }, 50);
-                setTimeout(() => { bar.style.width = '80%'; }, 200);
+                setTimeout(() => { bar.style.width = '40%'; }, 10);
+                setTimeout(() => { bar.style.width = '80%'; }, 150);
                 setTimeout(() => { 
                     bar.style.width = '100%'; 
                     setTimeout(() => {
                         window.location.href = href;
-                    }, 200);
-                }, 400);
+                    }, 150);
+                }, 300);
             }
         });
     });
@@ -215,7 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.sun-icon').forEach(icon => icon.classList.remove('hidden'));
     };
 
-    if (savedTheme === 'light') applyLightMode();
+    if (savedTheme === 'light') {
+        applyLightMode();
+    } else {
+        applyDarkMode();
+    }
 
     themeToggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
