@@ -1,0 +1,12 @@
+{
+  "name": "zeyad-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Zeyad Walid",
+  "main": "index.html",
+  "scripts": {
+    "build": "node convert-to-webp.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.2"
+  }
+}

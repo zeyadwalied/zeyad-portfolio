@@ -139,6 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.classList.add('opacity-100');
             }, 10);
             document.body.style.overflow = 'hidden';
+            
+            // Add skeleton listener
+            const skeleton = modal.querySelector('.skeleton');
+            if(skeleton) skeleton.classList.remove('hidden');
+            iframe.onload = () => {
+                if(skeleton) skeleton.classList.add('hidden');
+            };
         }
     };
 
@@ -156,4 +163,70 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         }
     };
+
+    // Top Loading Bar functionality
+    const createLoadingBar = () => {
+        let bar = document.getElementById('top-loading-bar');
+        if(!bar) {
+            bar = document.createElement('div');
+            bar.id = 'top-loading-bar';
+            bar.className = 'fixed top-0 left-0 h-1 bg-gradient-to-r from-accent to-blue-accent transition-all duration-300 ease-out';
+            bar.style.zIndex = '9999';
+            bar.style.width = '0%';
+            document.body.appendChild(bar);
+        }
+        return bar;
+    };
+
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+            // Allow default behavior for external links or in-page anchors
+            if(href && href.endsWith('.html') && !href.startsWith('http') && anchor.target !== '_blank') {
+                e.preventDefault();
+                const bar = createLoadingBar();
+                
+                // Animate progress
+                setTimeout(() => { bar.style.width = '40%'; }, 50);
+                setTimeout(() => { bar.style.width = '80%'; }, 200);
+                setTimeout(() => { 
+                    bar.style.width = '100%'; 
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 200);
+                }, 400);
+            }
+        });
+    });
+
+    // Theme Toggle Functionality
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+
+    const applyLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.querySelectorAll('.sun-icon').forEach(icon => icon.classList.add('hidden'));
+        document.querySelectorAll('.moon-icon').forEach(icon => icon.classList.remove('hidden'));
+    };
+
+    const applyDarkMode = () => {
+        document.documentElement.removeAttribute('data-theme');
+        document.querySelectorAll('.moon-icon').forEach(icon => icon.classList.add('hidden'));
+        document.querySelectorAll('.sun-icon').forEach(icon => icon.classList.remove('hidden'));
+    };
+
+    if (savedTheme === 'light') applyLightMode();
+
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            if(isLight) {
+                applyDarkMode();
+                localStorage.setItem('theme', 'dark');
+            } else {
+                applyLightMode();
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    });
 });

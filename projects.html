@@ -28,17 +28,29 @@
     <!-- Navbar -->
     <nav class="navbar glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="logo flex items-center hover-glow">
-                <img src="zeyadlogo.png" alt="Zeyad Walid Logo" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
+            <a href="index.html" class="logo flex items-center hover-glow" aria-label="Zeyad Portfolio Home">
+                <img src="zeyadlogo.webp" alt="Zeyad Walid Logo" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
             </a>
-            <ul class="nav-links hidden md:flex space-x-8 gap-8">
+            <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
                 <li><a href="index.html" class="hover-text-accent transition-colors">Home</a></li>
                 <li><a href="about.html" class="hover-text-accent transition-colors">About</a></li>
                 <li><a href="projects.html" class="text-accent font-bold transition-colors">Projects</a></li>
                 <li><a href="contact.html" class="hover-text-accent transition-colors">Contact</a></li>
+                <li>
+                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
+                        <svg class="w-6 h-6 sun-icon block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-6 h-6 moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                </li>
             </ul>
-            <div class="mobile-menu-btn md:hidden cursor-pointer">
-                <svg class="w-8 h-8 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <div class="flex items-center md:hidden gap-4">
+                <button class="theme-toggle p-1 rounded-full transition-colors" aria-label="Toggle Light/Dark Mode">
+                    <svg class="w-6 h-6 sun-icon block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg class="w-6 h-6 moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <div class="mobile-menu-btn cursor-pointer" aria-label="Open Menu">
+                    <svg class="w-8 h-8 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </div>
             </div>
         </div>
     </nav>
@@ -55,8 +67,9 @@
                 
                 <!-- Project 1 -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('BgCeRvVLTSU')">
-                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-container" onclick="openVideoModal('BgCeRvVLTSU')">
+                        <div class="skeleton absolute inset-0 z-10 transition-opacity duration-500"></div>
+                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" loading="lazy" onload="this.previousElementSibling.classList.add('opacity-0')" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -230,7 +243,8 @@
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <div class="relative modal-video-container w-full bg-black rounded-2xl overflow-hidden shadow-glow border border-gray-800">
-                <iframe id="modalIframe" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="skeleton absolute inset-0 z-10 transition-opacity duration-500 pointer-events-none"></div>
+                <iframe id="modalIframe" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Project Showcase Video"></iframe>
             </div>
         </div>
     </div>
