@@ -592,6 +592,12 @@ input:focus, textarea:focus {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 [data-theme="light"] footer p { color: #1e293b; }
+[data-theme="light"] .text-glow {
+    background: none;
+    -webkit-text-fill-color: var(--light);
+    text-shadow: none;
+}
+
 [data-theme="light"] .to-dark { --tw-gradient-to: transparent !important; }
 
 /* About Image Fix in Light Mode */
