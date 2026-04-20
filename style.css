@@ -51,6 +51,19 @@ html {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.03); 
 }
+.glass-nav {
+    background-color: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.cyber-shape-pos {
+    left: 70%; top: -2%;
+}
+@media (min-width: 768px) {
+    .cyber-shape-pos { left: 90%; }
+}
 
 .text-light { color: var(--light); }
 .text-accent { color: var(--accent); }

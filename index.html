@@ -33,7 +33,7 @@
     <link rel="preload" as="image" href="background.webp">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
-<body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen">
+<body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
     <!-- Cyber Grid Background -->
     <div class="cyber-grid"></div>
 
@@ -194,10 +194,6 @@
 
     <!-- Featured Projects Section -->
     <section id="featured-projects" class="py-48 relative z-10 w-full scroll-reveal">
-        <!-- Background Text Decoration -->
-        <div class="bg-text-decoration">
-            <span class="text-accent" style="opacity: 0.4;">Z</span><span style="opacity: 0.05;">EYAD</span>
-        </div>
         <div class="container mx-auto px-6">
             <div class="text-center mb-14 scroll-reveal">
                 <p class="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Portfolio Highlights</p>
@@ -209,7 +205,7 @@
                 <!-- Featured 1: WAVES Plugin -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80 hover:shadow-lg hover:shadow-accent/10">
                     <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('BgCeRvVLTSU')">
-                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
+                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/hqdefault.jpg" alt="WAVES ALL IN ONE BADGES" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-14 h-14 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-7 h-7 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -227,7 +223,7 @@
                 <!-- Featured 2: Music Update -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80 hover:shadow-lg hover:shadow-blue-500/10" style="transition-delay:100ms">
                     <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('lheaJ-dqDm8')">
-                        <img src="https://img.youtube.com/vi/lheaJ-dqDm8/maxresdefault.jpg" alt="Music Update Home Page" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
+                        <img src="https://img.youtube.com/vi/lheaJ-dqDm8/hqdefault.jpg" alt="Music Update Home Page" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-14 h-14 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-7 h-7 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -245,7 +241,7 @@
                 <!-- Featured 3: Portfolio -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80 hover:shadow-lg hover:shadow-accent/10" style="transition-delay:200ms">
                     <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('5A3K3tXCWpw')">
-                        <img src="https://img.youtube.com/vi/5A3K3tXCWpw/maxresdefault.jpg" alt="My Portfolio" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
+                        <img src="https://img.youtube.com/vi/5A3K3tXCWpw/hqdefault.jpg" alt="My Portfolio" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-14 h-14 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-7 h-7 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -284,7 +280,7 @@
         <div class="container mx-auto px-6">
             <div class="glass-panel relative overflow-hidden p-8 md:p-12 rounded-3xl max-w-4xl mx-auto scroll-reveal z-10">
                 <!-- Small Dual-Color Cyber Shape Decoration (Right Side) -->
-                <div class="absolute w-24 h-24 md:w-32 md:h-32 animate-spin-slow pointer-events-none opacity-40 z-0" style="left: 90%; top: -2%;">
+                <div class="absolute w-24 h-24 md:w-32 md:h-32 animate-spin-slow pointer-events-none opacity-40 z-0 cyber-shape-pos">
                     <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
                         <!-- Glow Filters -->
                         <filter id="glow-green-small">
@@ -323,9 +319,9 @@
                     </svg>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 w-full">
                     <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-accent shrink-0 shadow-lg shadow-accent/20">
-                        <img src="https://imgur.com/1KOGCag.png" alt="Zeyad Walid" loading="lazy" class="w-full h-full object-cover">
+                        <img src="https://i.imgur.com/1KOGCagm.jpg" alt="Zeyad Walid" loading="lazy" class="w-full h-full object-cover">
                     </div>
                     <div class="text-center md:text-left">
                         <h2 class="text-2xl md:text-3xl font-bold mb-3 text-light">A bit about <span class="text-accent">me</span></h2>
