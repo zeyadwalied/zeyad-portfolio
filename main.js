@@ -235,4 +235,72 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ===== Custom Cursor =====
+    if (!('ontouchstart' in window) && window.innerWidth >= 1024) {
+        const dot = document.createElement('div');
+        const outline = document.createElement('div');
+        dot.className = 'cursor-dot';
+        outline.className = 'cursor-outline';
+        document.body.appendChild(dot);
+        document.body.appendChild(outline);
+        document.documentElement.classList.add('has-custom-cursor');
+
+        let outX = 0, outY = 0, mouseX = 0, mouseY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Hide if near scrollbar (right side) or top/bottom/left edges
+            if (mouseX > window.innerWidth - 25 || mouseY < 5 || mouseX < 5 || mouseY > window.innerHeight - 5) {
+                dot.classList.add('cursor-hide');
+                outline.classList.add('cursor-hide');
+            } else {
+                dot.style.opacity = '1';
+                outline.style.opacity = '1';
+                dot.style.left = mouseX + 'px';
+                dot.style.top  = mouseY + 'px';
+                
+                dot.classList.remove('cursor-hide');
+                outline.classList.remove('cursor-hide');
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            dot.classList.add('cursor-hide');
+            outline.classList.add('cursor-hide');
+        });
+
+        document.addEventListener('mouseenter', () => {
+            dot.classList.remove('cursor-hide');
+            outline.classList.remove('cursor-hide');
+        });
+
+        // Smooth outline follow
+        const tick = () => {
+            outX += (mouseX - outX) * 0.15;
+            outY += (mouseY - outY) * 0.15;
+            outline.style.left = outX + 'px';
+            outline.style.top  = outY + 'px';
+            requestAnimationFrame(tick);
+        };
+        tick();
+
+        // Hover enlarge on interactive elements
+        document.querySelectorAll('a, button, .social-icon, .theme-toggle').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    }
+
+    // ===== Click Ripple =====
+    window.addEventListener('mousedown', (e) => {
+        const r = document.createElement('div');
+        r.className = 'click-ripple';
+        r.style.left = e.clientX + 'px';
+        r.style.top  = e.clientY + 'px';
+        document.body.appendChild(r);
+        r.addEventListener('animationend', () => r.remove());
+    });
 });

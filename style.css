@@ -686,3 +686,164 @@ a:visited:not(.social-icon):not(.btn-primary):not(.btn-secondary):not(.logo):not
     vertical-align: middle;
     opacity: 0.7;
 }
+
+/* ===== Hero Flowing Lines ===== */
+.hero-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    animation: lines-glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes lines-glow {
+    0%   { opacity: 0.7; filter: blur(0px); }
+    100% { opacity: 1;   filter: blur(0.5px); }
+}
+
+/* Hide lines on very small screens */
+@media (max-width: 767px) {
+    .hero-lines { opacity: 0.4; }
+}
+
+/* ===== Full Page Background Waves ===== */
+.sections-bg-waves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+    .sections-bg-waves { opacity: 0.3; }
+}
+
+#featured-projects {
+    margin-bottom: 45px;
+}
+
+/* ===== Cyber Grid Background ===== */
+.cyber-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    opacity: 0.5;
+}
+
+/* ===== Custom Cursor ===== */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-dot.cursor-hide,
+.cursor-outline.cursor-hide {
+    opacity: 0 !important;
+}
+
+/* ===== Decorations ===== */
+.bg-text-decoration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(10rem, 36vw, 30rem);  
+      font-weight: 900;
+    color: var(--light-color);
+    opacity: 1; /* Handle opacity per character in HTML */
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+}
+
+.decor-dot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(4px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    transition: all 1s ease;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--accent);
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes spin-reverse-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 30s linear infinite;
+    transform-origin: center;
+}
+
+.animate-spin-reverse-slow {
+    animation: spin-reverse-slow 40s linear infinite;
+    transform-origin: center;
+}
+
+.cursor-hover .cursor-outline {
+    transform: translate(-50%, -50%) scale(1.6);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* ===== Click Ripple ===== */
+.click-ripple {
+    position: fixed;
+    pointer-events: none;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    animation: ripple-anim 0.6s ease-out forwards;
+}
+
+@keyframes ripple-anim {
+    0%   { width: 0;    height: 0;    opacity: 0.5; }
+    100% { width: 80px; height: 80px; opacity: 0;   }
+}
+
+/* Hide native cursor on desktop */
+@media (min-width: 1024px) {
+    html.has-custom-cursor,
+    html.has-custom-cursor *  {
+        cursor: none !important;
+    }
+}

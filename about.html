@@ -31,6 +31,42 @@
     <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen">
+    <!-- Cyber Grid Background -->
+    <div class="cyber-grid"></div>
+
+    <!-- Full Page Background Flowing Waves -->
+    <svg class="sections-bg-waves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs>
+            <linearGradient id="bg-wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.25">
+                    <animate attributeName="stop-color" values="#10b981;#3b82f6;#8b5cf6;#06b6d4;#10b981" dur="10s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05">
+                    <animate attributeName="stop-color" values="#3b82f6;#10b981;#06b6d4;#8b5cf6;#3b82f6" dur="10s" repeatCount="indefinite"/>
+                </stop>
+            </linearGradient>
+            <linearGradient id="bg-wave-2" x1="100%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2">
+                    <animate attributeName="stop-color" values="#3b82f6;#8b5cf6;#10b981;#ec4899;#3b82f6" dur="12s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03">
+                    <animate attributeName="stop-color" values="#8b5cf6;#06b6d4;#fbbf24;#10b981;#8b5cf6" dur="12s" repeatCount="indefinite"/>
+                </stop>
+            </linearGradient>
+            <linearGradient id="bg-wave-3" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15">
+                    <animate attributeName="stop-color" values="#06b6d4;#10b981;#fbbf24;#3b82f6;#06b6d4" dur="14s" repeatCount="indefinite"/>
+                </stop>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03">
+                    <animate attributeName="stop-color" values="#fbbf24;#ec4899;#3b82f6;#10b981;#fbbf24" dur="14s" repeatCount="indefinite"/>
+                </stop>
+            </linearGradient>
+        </defs>
+        <path d="M-100 900 Q100 750 80 550 Q60 350 200 200 Q340 50 500 -30 L540 -30 Q380 50 240 210 Q100 370 120 570 Q140 770 -60 900 Z" fill="url(#bg-wave-1)"/>
+        <path d="M-50 920 Q150 770 140 580 Q130 390 270 240 Q410 90 580 0 L620 0 Q450 90 310 250 Q170 410 180 600 Q190 790 -10 920 Z" fill="url(#bg-wave-2)"/>
+        <path d="M1540 -20 Q1350 130 1360 320 Q1370 510 1230 660 Q1090 810 920 920 L890 920 Q1060 810 1200 650 Q1340 490 1330 300 Q1320 110 1510 -20 Z" fill="url(#bg-wave-1)" opacity="0.5"/>
+        <path d="M1500 0 Q1320 150 1330 340 Q1340 530 1200 680 Q1060 830 900 940 L870 940 Q1030 830 1170 670 Q1310 510 1300 320 Q1290 130 1470 0 Z" fill="url(#bg-wave-3)" opacity="0.4"/>
+    </svg>
     <!-- Navbar -->
     <nav class="navbar glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -103,7 +139,7 @@
             </div>
             
             <!-- Skills Section -->
-            <div class="mt-32">
+            <div id="skills" class="mt-32">
                 <div class="section-title text-center mb-16 scroll-reveal">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
                     <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
