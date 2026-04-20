@@ -235,19 +235,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Mouse Glow Effect
-    const cursorGlow = document.createElement('div');
-    cursorGlow.classList.add('cursor-glow');
-    document.body.appendChild(cursorGlow);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.opacity = '1';
-        // Center the 150x150 element by subtracting half its width/height (75px)
-        cursorGlow.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
-    });
-
-    document.addEventListener('mouseleave', () => {
-        cursorGlow.style.opacity = '0';
-    });
 });
