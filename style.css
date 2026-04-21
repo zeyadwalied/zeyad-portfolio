@@ -953,6 +953,11 @@ a:visited:not(.social-icon):not(.btn-primary):not(.btn-secondary):not(.logo):not
     opacity: 0 !important;
 }
 
+html.video-modal-open .cursor-dot,
+html.video-modal-open .cursor-outline {
+    opacity: 0 !important;
+}
+
 /* ===== Decorations ===== */
 .bg-text-decoration {
     position: absolute;
@@ -1071,6 +1076,11 @@ a:visited:not(.social-icon):not(.btn-primary):not(.btn-secondary):not(.logo):not
     html.has-custom-cursor,
     html.has-custom-cursor *  {
         cursor: none !important;
+    }
+
+    html.has-custom-cursor.video-modal-open #videoModal,
+    html.has-custom-cursor.video-modal-open #videoModal * {
+        cursor: auto !important;
     }
 }
 

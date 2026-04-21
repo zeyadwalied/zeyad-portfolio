@@ -146,10 +146,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Video Modal functionality
+    const syncVideoModalCursorState = (isOpen) => {
+        document.documentElement.classList.toggle('video-modal-open', isOpen);
+        document.body.classList.toggle('video-modal-open', isOpen);
+    };
+
     window.openVideoModal = function(videoId) {
         const modal = document.getElementById('videoModal');
         const iframe = document.getElementById('modalIframe');
         if(modal && iframe) {
+            syncVideoModalCursorState(true);
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -173,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('videoModal');
         const iframe = document.getElementById('modalIframe');
         if(modal && iframe) {
+            syncVideoModalCursorState(false);
             modal.classList.remove('opacity-100');
             modal.classList.add('opacity-0');
             document.body.style.overflow = 'auto';
@@ -276,6 +283,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+
+            if (document.documentElement.classList.contains('video-modal-open')) {
+                dot.classList.add('cursor-hide');
+                outline.classList.add('cursor-hide');
+                return;
+            }
             
             // Hide if near scrollbar (right side) or top/bottom/left edges
             if (mouseX > window.innerWidth - 25 || mouseY < 5 || mouseX < 5 || mouseY > window.innerHeight - 5) {
@@ -298,6 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('mouseenter', () => {
+            if (document.documentElement.classList.contains('video-modal-open')) {
+                return;
+            }
             dot.classList.remove('cursor-hide');
             outline.classList.remove('cursor-hide');
         });
@@ -329,6 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Click Ripple (desktop only) =====
     if (isDesktopPointer) {
         window.addEventListener('mousedown', (e) => {
+            if (document.documentElement.classList.contains('video-modal-open')) {
+                return;
+            }
             const r = document.createElement('div');
             r.className = 'click-ripple';
             r.style.left = e.clientX + 'px';
