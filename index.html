@@ -39,8 +39,8 @@
     <link rel="apple-touch-icon" href="zeyadlogo.webp">
     <link rel="preload" as="image" href="zeyadlogo.webp">
     <link rel="preload" as="image" href="background.webp">
-    <link rel="preload" as="style" href="style.min.css?v=3">
-    <link rel="stylesheet" href="style.min.css?v=3">
+    <link rel="preload" as="style" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
     <!-- Wave Background -->
@@ -210,6 +210,48 @@
     <!-- Featured Projects Section -->
     <section id="featured-projects" class="py-48 relative z-10 w-full scroll-reveal">
         <div class="container mx-auto px-6">
+            <div class="featured-tech-wave-shell" aria-hidden="true">
+                <svg class="featured-tech-wave" viewBox="0 0 1200 220" fill="none" preserveAspectRatio="none">
+                    <path d="M0 165C127 117 223 81 353 81C483 81 564 171 688 171C820 171 889 72 1014 72C1091 72 1149 103 1200 129" stroke="url(#featured-tech-gradient)" stroke-width="4" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="featured-tech-gradient" x1="0" y1="110" x2="1200" y2="110" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#10b981" stop-opacity="0"/>
+                            <stop offset="0.18" stop-color="#10b981"/>
+                            <stop offset="0.52" stop-color="#3b82f6"/>
+                            <stop offset="0.82" stop-color="#8b5cf6"/>
+                            <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="featured-tech-chip tech-chip-react">
+                    <svg viewBox="0 0 256 256" fill="none" aria-hidden="true">
+                        <circle cx="128" cy="128" r="14" fill="currentColor"/>
+                        <ellipse cx="128" cy="128" rx="88" ry="34" stroke="currentColor" stroke-width="12"/>
+                        <ellipse cx="128" cy="128" rx="88" ry="34" transform="rotate(60 128 128)" stroke="currentColor" stroke-width="12"/>
+                        <ellipse cx="128" cy="128" rx="88" ry="34" transform="rotate(120 128 128)" stroke="currentColor" stroke-width="12"/>
+                    </svg>
+                    <span>React</span>
+                </div>
+                <div class="featured-tech-chip tech-chip-tailwind">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8ZM6.001 12c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12Z"/>
+                    </svg>
+                    <span>Tailwind</span>
+                </div>
+                <div class="featured-tech-chip tech-chip-node">
+                    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                        <path d="M16 2 4.5 8.5v15L16 30l11.5-6.5v-15L16 2Zm0 3.22 8.72 4.94V21.8L16 26.74 7.28 21.8V10.16L16 5.22Z" fill="currentColor"/>
+                        <path d="M16.06 10.02c-3.31 0-5.97 1.99-5.97 4.46 0 1.78 1.34 3.31 3.28 4.03v3.28h2.39v-2.89c.1.01.2.01.3.01 3.31 0 5.98-1.99 5.98-4.43 0-2.47-2.67-4.46-5.98-4.46Z" fill="currentColor"/>
+                    </svg>
+                    <span>Node.js</span>
+                </div>
+                <div class="featured-tech-chip tech-chip-next">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/>
+                    </svg>
+                    <span>Next.js</span>
+                </div>
+            </div>
             <div class="text-center mb-14 scroll-reveal">
                 <p class="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Portfolio Highlights</p>
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>

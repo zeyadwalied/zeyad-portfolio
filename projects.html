@@ -35,10 +35,25 @@
         .social-icon { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; border-radius: 9999px; }
     </style>
     <link rel="icon" type="image/webp" href="favicon.webp">
-    <link rel="preload" as="style" href="style.min.css?v=3">
-    <link rel="stylesheet" href="style.min.css?v=3">
+    <link rel="preload" as="style" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Wave Background -->
+    <canvas id="wave-canvas"></canvas>
+
+    <!-- Global Floating Decorative Dots -->
+    <div class="decor-dot w-5 h-5 animate-float-dot" style="background-color: #3b82f6; top: 8%; left: 6%; opacity: 0.4; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-8 h-8 animate-float-dot delay-1000" style="background-color: #10b981; top: 25%; right: 8%; opacity: 0.35; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-6 h-6 animate-float-dot delay-500" style="background-color: #8b5cf6; top: 45%; left: 4%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-10 h-10 animate-float-dot delay-2000" style="background-color: #3b82f6; top: 60%; right: 5%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-4 h-4 animate-float-dot delay-3000" style="background-color: #ec4899; top: 75%; left: 15%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-7 h-7 animate-float-dot delay-1500" style="background-color: #10b981; bottom: 10%; right: 12%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-9 h-9 animate-float-dot delay-700" style="background-color: #8b5cf6; top: 15%; right: 25%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-6 h-6 animate-float-dot delay-2500" style="background-color: #ec4899; bottom: 20%; left: 40%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-12 h-12 animate-float-dot delay-800" style="background-color: #3b82f6; top: 90%; left: 70%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-5 h-5 animate-float-dot delay-1200" style="background-color: #10b981; top: 35%; left: 50%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+
     <!-- Cyber Grid Background -->
     <div class="cyber-grid"></div>
 
@@ -73,6 +88,7 @@
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="about.html#skills" class="nav-link">Skills</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li>
                     <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
@@ -302,6 +318,7 @@
         </div>
     </div>
 
+    <script src="waves.js" defer></script>
     <script src="main.js?v=2" defer></script>
 </body>
 </html>
