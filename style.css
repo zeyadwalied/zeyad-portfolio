@@ -27,20 +27,26 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     color: var(--light);
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
     letter-spacing: -0.02em;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+@media (min-width: 1024px) {
+    body {
+        background-attachment: fixed;
+    }
 }
 
 ::selection {
@@ -87,8 +93,8 @@ html {
 .opacity-75 { opacity: 0.75; }
 .opacity-100 { opacity: 1; }
 
-.font-inter { font-family: 'Inter', sans-serif; }
-.font-poppins { font-family: 'Poppins', sans-serif; }
+.font-inter { font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.font-poppins { font-family: "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif; }
 .font-light { font-weight: 300; }
 .font-normal { font-weight: 400; }
 .font-semibold { font-weight: 600; }
@@ -448,14 +454,14 @@ button { cursor: pointer; border: none; outline: none; background: transparent; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    transition: all 0.3s; 
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease; 
     color: var(--gray-400);
+    will-change: transform;
 }
 .social-icon:hover { 
     background: var(--accent); 
     border-color: var(--accent);
-    transform: translateY(-3px); 
-    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+    transform: translate3d(0, -3px, 0);
 }
 
 .social-icon img {
@@ -501,7 +507,8 @@ button { cursor: pointer; border: none; outline: none; background: transparent; 
 .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    will-change: opacity, transform;
 }
 
 .scroll-reveal.reveal-left {
@@ -761,7 +768,7 @@ input:focus, textarea:focus {
 [data-theme="light"] .border-gray-800 { border-color: var(--gray-800); }
 [data-theme="light"] .hover-border-accent:hover { border-color: var(--accent) !important; }
 [data-theme="light"] .social-icon { background: rgba(255, 255, 255, 0.4); color: #0f172a; border-color: rgba(0, 0, 0, 0.1); }
-[data-theme="light"] .social-icon:hover { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); }
+[data-theme="light"] .social-icon:hover { background: var(--accent); color: white; border-color: var(--accent); }
 [data-theme="light"] .social-icon img { filter: brightness(0); }
 [data-theme="light"] .social-icon:hover img { filter: brightness(0) invert(1); }
 [data-theme="light"] .btn-secondary { background: rgba(255, 255, 255, 0.4); color: #0f172a; border-color: rgba(0, 0, 0, 0.1); }
@@ -799,12 +806,14 @@ input:focus, textarea:focus {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
     height: 3px;
     background: linear-gradient(to right, var(--accent), var(--blue-accent));
     box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(16, 185, 129, 0.3);
     z-index: 99999;
-    width: 0;
-    transition: width 0.3s ease-out, opacity 0.5s ease;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease-out, opacity 0.5s ease;
     pointer-events: none;
 }
 
@@ -1284,6 +1293,7 @@ a:visited:not(.social-icon):not(.btn-primary):not(.btn-secondary):not(.logo):not
     box-shadow: 0 28px 70px rgba(2, 6, 23, 0.45);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
+    contain: layout paint;
 }
 
 .hero-detail-card::before {
@@ -1351,11 +1361,10 @@ a:visited:not(.social-icon):not(.btn-primary):not(.btn-secondary):not(.logo):not
     height: 3.35rem;
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(148, 163, 184, 0.16);
-    box-shadow: 0 14px 35px rgba(2, 6, 23, 0.22);
 }
 
 .hero-socials .social-icon:hover {
-    transform: translateY(-4px);
+    transform: translate3d(0, -4px, 0);
 }
 
 .hero-socials .social-icon img {
@@ -1395,6 +1404,16 @@ a:visited:not(.social-icon):not(.btn-primary):not(.btn-secondary):not(.logo):not
     width: 380px;
     height: 380px;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0.02) 58%, transparent 75%);
+}
+
+.hero-section .animate-fade-in-up,
+.hero-section .animate-slide-up {
+    animation-name: fadeInOnly;
+}
+
+@keyframes fadeInOnly {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @media (min-width: 900px) {

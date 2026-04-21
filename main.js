@@ -1,11 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const syncMobilePerformanceMode = () => {
-        const isMobileViewport = window.innerWidth <= 767;
+    const mobileViewportQuery = window.matchMedia('(max-width: 767px)');
+    const syncMobilePerformanceMode = (isMobileViewport = mobileViewportQuery.matches) => {
         document.documentElement.classList.toggle('mobile-performance-mode', isMobileViewport);
     };
 
     syncMobilePerformanceMode();
-    window.addEventListener('resize', syncMobilePerformanceMode);
+    if (mobileViewportQuery.addEventListener) {
+        mobileViewportQuery.addEventListener('change', (event) => syncMobilePerformanceMode(event.matches));
+    } else {
+        mobileViewportQuery.addListener((event) => syncMobilePerformanceMode(event.matches));
+    }
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -27,14 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Close mobile menu when a link is clicked
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            if(window.innerWidth < 768) {
-                navLinks.classList.add('hidden');
-                navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-dark-secondary', 'p-6', 'gap-4');
-            }
-        });
+    const closeMobileMenu = () => {
+        if (!navLinks) return;
+        navLinks.classList.add('hidden');
+        navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-dark-secondary', 'p-6', 'gap-4');
+    };
+
+    document.addEventListener('click', (event) => {
+        const navLink = event.target.closest('.nav-links a');
+        if (navLink && window.innerWidth < 768) {
+            closeMobileMenu();
+        }
     });
 
 
@@ -186,32 +193,36 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.prepend(bar);
         }
         bar.style.transition = 'none';
-        bar.style.width = '0%';
+        bar.style.transform = 'scaleX(0)';
         bar.style.opacity = '1';
-        void bar.offsetWidth; // Force reflow
-        bar.style.transition = 'width 0.3s ease-out, opacity 0.5s ease';
+        requestAnimationFrame(() => {
+            bar.style.transition = 'transform 0.3s ease-out, opacity 0.5s ease';
+        });
         return bar;
     };
 
-    document.querySelectorAll('a').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-            const href = anchor.getAttribute('href');
-            // Allow default behavior for external links or in-page anchors
-            if(href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && anchor.target !== '_blank') {
-                e.preventDefault();
-                const bar = createLoadingBar();
-                
-                // Animate progress
-                setTimeout(() => { bar.style.width = '40%'; }, 10);
-                setTimeout(() => { bar.style.width = '80%'; }, 150);
-                setTimeout(() => { 
-                    bar.style.width = '100%'; 
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 150);
-                }, 300);
-            }
+    document.addEventListener('click', (event) => {
+        const anchor = event.target.closest('a');
+        if (!anchor) return;
+
+        const href = anchor.getAttribute('href');
+        const isInternalPage = href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && anchor.target !== '_blank';
+
+        if (!isInternalPage) return;
+
+        event.preventDefault();
+        const bar = createLoadingBar();
+
+        requestAnimationFrame(() => {
+            bar.style.transform = 'scaleX(0.4)';
         });
+        setTimeout(() => { bar.style.transform = 'scaleX(0.8)'; }, 150);
+        setTimeout(() => {
+            bar.style.transform = 'scaleX(1)';
+            setTimeout(() => {
+                window.location.href = href;
+            }, 150);
+        }, 300);
     });
 
     // Theme Toggle Functionality
@@ -302,9 +313,16 @@ document.addEventListener('DOMContentLoaded', () => {
         tick();
 
         // Hover enlarge on interactive elements
-        document.querySelectorAll('a, button, .social-icon, .theme-toggle').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        document.addEventListener('pointerover', (event) => {
+            if (event.target.closest('a, button, .social-icon, .theme-toggle')) {
+                document.body.classList.add('cursor-hover');
+            }
+        });
+
+        document.addEventListener('pointerout', (event) => {
+            if (event.target.closest('a, button, .social-icon, .theme-toggle')) {
+                document.body.classList.remove('cursor-hover');
+            }
         });
     }
 
