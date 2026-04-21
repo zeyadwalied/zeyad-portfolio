@@ -27,6 +27,8 @@ ClassicalNoise.prototype.noise = function(x, y, z) {
     var canvas = document.getElementById('wave-canvas');
     if (!canvas) return;
 
+    var disableMotionQuery = window.matchMedia('(max-width: 767px)');
+
     var ctx = canvas.getContext('2d'),
         perlin = new ClassicalNoise(),
         variation = 0.001,
@@ -38,6 +40,20 @@ ClassicalNoise.prototype.noise = function(x, y, z) {
 
     for (var i = 0, u = 0; i < maxLines; i++, u += 0.016) {
         variators[i] = u;
+    }
+
+    function isWaveAnimationEnabled() {
+        return !disableMotionQuery.matches;
+    }
+
+    function syncCanvasState() {
+        if (isWaveAnimationEnabled()) {
+            canvas.style.display = 'block';
+            resizeCanvas();
+        } else {
+            canvas.style.display = 'none';
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
     }
 
     // Pause when tab hidden for performance
@@ -66,7 +82,7 @@ ClassicalNoise.prototype.noise = function(x, y, z) {
     }
 
     function animate() {
-        if (isActive) {
+        if (isActive && isWaveAnimationEnabled()) {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             draw();
         }
@@ -81,7 +97,12 @@ ClassicalNoise.prototype.noise = function(x, y, z) {
         startY = canvasHeight / 2;
     }
 
-    resizeCanvas();
+    syncCanvasState();
     animate();
     window.addEventListener('resize', resizeCanvas);
+    if (disableMotionQuery.addEventListener) {
+        disableMotionQuery.addEventListener('change', syncCanvasState);
+    } else if (disableMotionQuery.addListener) {
+        disableMotionQuery.addListener(syncCanvasState);
+    }
 })();

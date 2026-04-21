@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const syncMobilePerformanceMode = () => {
+        const isMobileViewport = window.innerWidth <= 767;
+        document.documentElement.classList.toggle('mobile-performance-mode', isMobileViewport);
+    };
+
+    syncMobilePerformanceMode();
+    window.addEventListener('resize', syncMobilePerformanceMode);
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -57,18 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Skill Bars animation
     const skillBars = document.querySelectorAll('.skill-bar');
     if(skillBars.length > 0) {
-        const skillObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.getAttribute('data-width');
-                    observer.unobserve(entry.target);
-                }
+        if (document.documentElement.classList.contains('mobile-performance-mode')) {
+            skillBars.forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width');
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        } else {
+            const skillObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.width = entry.target.getAttribute('data-width');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-        skillBars.forEach(bar => {
-            skillObserver.observe(bar);
-        });
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+        }
     }
 
     // Form submission interception setup for Formspree
