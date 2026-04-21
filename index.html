@@ -26,14 +26,29 @@
     <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/zeyadlogo.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="favicon.webp">
     <link rel="apple-touch-icon" href="zeyadlogo.webp">
     <link rel="preload" as="image" href="zeyadlogo.webp">
     <link rel="preload" as="image" href="background.webp">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
-<body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+<body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Wave Background -->
+    <canvas id="wave-canvas"></canvas>
+
+    <!-- Global Floating Decorative Dots -->
+    <div class="decor-dot w-5 h-5 animate-float-dot" style="background-color: #3b82f6; top: 8%; left: 6%; opacity: 0.4; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-8 h-8 animate-float-dot delay-1000" style="background-color: #10b981; top: 25%; right: 8%; opacity: 0.35; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-6 h-6 animate-float-dot delay-500" style="background-color: #8b5cf6; top: 45%; left: 4%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-10 h-10 animate-float-dot delay-2000" style="background-color: #3b82f6; top: 60%; right: 5%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-4 h-4 animate-float-dot delay-3000" style="background-color: #ec4899; top: 75%; left: 15%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-7 h-7 animate-float-dot delay-1500" style="background-color: #10b981; bottom: 10%; right: 12%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-9 h-9 animate-float-dot delay-700" style="background-color: #8b5cf6; top: 15%; right: 25%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-6 h-6 animate-float-dot delay-2500" style="background-color: #ec4899; bottom: 20%; left: 40%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-12 h-12 animate-float-dot delay-800" style="background-color: #3b82f6; top: 90%; left: 70%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-5 h-5 animate-float-dot delay-1200" style="background-color: #10b981; top: 35%; left: 50%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+
     <!-- Cyber Grid Background -->
     <div class="cyber-grid"></div>
 
@@ -41,28 +56,16 @@
     <svg class="sections-bg-waves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
             <linearGradient id="bg-wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#10b981" stop-opacity="0.25">
-                    <animate attributeName="stop-color" values="#10b981;#3b82f6;#8b5cf6;#06b6d4;#10b981" dur="10s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05">
-                    <animate attributeName="stop-color" values="#3b82f6;#10b981;#06b6d4;#8b5cf6;#3b82f6" dur="10s" repeatCount="indefinite"/>
-                </stop>
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
             </linearGradient>
             <linearGradient id="bg-wave-2" x1="100%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2">
-                    <animate attributeName="stop-color" values="#3b82f6;#8b5cf6;#10b981;#ec4899;#3b82f6" dur="12s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03">
-                    <animate attributeName="stop-color" values="#8b5cf6;#06b6d4;#fbbf24;#10b981;#8b5cf6" dur="12s" repeatCount="indefinite"/>
-                </stop>
+                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03"/>
             </linearGradient>
             <linearGradient id="bg-wave-3" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15">
-                    <animate attributeName="stop-color" values="#06b6d4;#10b981;#fbbf24;#3b82f6;#06b6d4" dur="14s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03">
-                    <animate attributeName="stop-color" values="#fbbf24;#ec4899;#3b82f6;#10b981;#fbbf24" dur="14s" repeatCount="indefinite"/>
-                </stop>
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03"/>
             </linearGradient>
         </defs>
         <path d="M-100 900 Q100 750 80 550 Q60 350 200 200 Q340 50 500 -30 L540 -30 Q380 50 240 210 Q100 370 120 570 Q140 770 -60 900 Z" fill="url(#bg-wave-1)"/>
@@ -77,11 +80,11 @@
                 <img src="zeyadlogo.webp" alt="Zeyad Walid Logo" width="96" height="96" fetchpriority="high" decoding="async" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
             </a>
             <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
-                <li><a href="index.html" class="text-accent font-bold transition-colors">Home</a></li>
-                <li><a href="about.html" class="hover-text-accent transition-colors">About</a></li>
-                <li><a href="projects.html" class="hover-text-accent transition-colors">Projects</a></li>
-                <li><a href="about.html#skills" class="hover-text-accent transition-colors">Skills</a></li>
-                <li><a href="contact.html" class="hover-text-accent transition-colors">Contact</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="about.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li>
                     <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
                         <svg class="w-6 h-6 sun-icon block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -102,91 +105,94 @@
     </nav>
 
     <!-- Hero Section -->
-    <main id="home" class="flex-1 relative flex items-center justify-center pt-20 overflow-hidden min-h-screen">
+    <main id="home" class="hero-section flex-1 relative overflow-hidden min-h-screen">
 
-        <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center animate-fade-in-up">
-            <div class="glass-panel p-6 md:p-10 rounded-3xl text-center max-w-4xl shadow-2xl hero-content-wrapper relative overflow-hidden">
-                <!-- Decorative Flowing Waves -->
-                <svg class="hero-lines" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <div class="container hero-shell relative z-10 animate-fade-in-up">
+            <div class="glass-panel hero-content-wrapper">
+                <svg class="hero-lines" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
                     <defs>
                         <linearGradient id="wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.7">
-                                <animate attributeName="stop-color" values="#10b981;#3b82f6;#8b5cf6;#06b6d4;#10b981" dur="8s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.4">
-                                <animate attributeName="stop-color" values="#06b6d4;#8b5cf6;#10b981;#fbbf24;#06b6d4" dur="8s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1">
-                                <animate attributeName="stop-color" values="#3b82f6;#10b981;#06b6d4;#8b5cf6;#3b82f6" dur="8s" repeatCount="indefinite"/>
-                            </stop>
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.7"/>
+                            <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1"/>
                         </linearGradient>
                         <linearGradient id="wave-2" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6">
-                                <animate attributeName="stop-color" values="#3b82f6;#ec4899;#10b981;#8b5cf6;#3b82f6" dur="10s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.35">
-                                <animate attributeName="stop-color" values="#8b5cf6;#10b981;#06b6d4;#ec4899;#8b5cf6" dur="10s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.05">
-                                <animate attributeName="stop-color" values="#06b6d4;#fbbf24;#8b5cf6;#10b981;#06b6d4" dur="10s" repeatCount="indefinite"/>
-                            </stop>
+                            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6"/>
+                            <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+                            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.05"/>
                         </linearGradient>
                         <linearGradient id="wave-3" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.5">
-                                <animate attributeName="stop-color" values="#06b6d4;#10b981;#fbbf24;#3b82f6;#06b6d4" dur="12s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="50%" stop-color="#10b981" stop-opacity="0.3">
-                                <animate attributeName="stop-color" values="#10b981;#fbbf24;#ec4899;#06b6d4;#10b981" dur="12s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.15">
-                                <animate attributeName="stop-color" values="#fbbf24;#ec4899;#3b82f6;#10b981;#fbbf24" dur="12s" repeatCount="indefinite"/>
-                            </stop>
+                            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.5"/>
+                            <stop offset="50%" stop-color="#10b981" stop-opacity="0.3"/>
+                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.15"/>
                         </linearGradient>
                         <linearGradient id="wave-4" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4">
-                                <animate attributeName="stop-color" values="#8b5cf6;#06b6d4;#10b981;#ec4899;#8b5cf6" dur="9s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="50%" stop-color="#ec4899" stop-opacity="0.25">
-                                <animate attributeName="stop-color" values="#ec4899;#fbbf24;#3b82f6;#10b981;#ec4899" dur="9s" repeatCount="indefinite"/>
-                            </stop>
-                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.1">
-                                <animate attributeName="stop-color" values="#fbbf24;#10b981;#8b5cf6;#06b6d4;#fbbf24" dur="9s" repeatCount="indefinite"/>
-                            </stop>
+                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4"/>
+                            <stop offset="50%" stop-color="#ec4899" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.1"/>
                         </linearGradient>
                     </defs>
-                    <!-- Thick filled wave ribbons flowing from bottom-left -->
                     <path d="M-80 620 Q60 520 40 380 Q20 240 120 140 Q220 40 350 -20 L380 -20 Q250 40 150 150 Q50 260 70 400 Q90 540 -50 620 Z" fill="url(#wave-1)"/>
                     <path d="M-40 640 Q100 530 90 400 Q80 270 180 170 Q280 70 420 0 L450 0 Q310 70 210 180 Q110 290 120 420 Q130 550 -10 640 Z" fill="url(#wave-2)"/>
                     <path d="M0 650 Q140 540 130 420 Q120 300 220 200 Q320 100 480 20 L510 20 Q350 100 250 210 Q150 320 160 440 Q170 560 30 650 Z" fill="url(#wave-3)"/>
                     <path d="M30 660 Q170 550 160 440 Q150 330 250 230 Q350 130 520 40 L545 40 Q380 130 280 240 Q180 350 190 460 Q200 570 60 660 Z" fill="url(#wave-4)"/>
-                    <!-- Secondary accent waves on right side -->
                     <path d="M850 -20 Q750 80 760 200 Q770 320 700 420 Q630 520 600 640 L580 640 Q610 520 680 410 Q750 300 740 180 Q730 60 830 -20 Z" fill="url(#wave-1)" opacity="0.4"/>
                     <path d="M880 -20 Q780 70 790 190 Q800 310 730 410 Q660 510 630 640 L610 640 Q640 510 710 400 Q780 290 770 170 Q760 50 860 -20 Z" fill="url(#wave-2)" opacity="0.25"/>
                 </svg>
 
-                <p class="text-accent font-semibold tracking-widest uppercase mb-4 animate-fade-in-up ready-to-scale relative z-10">Ready to scale?</p>
-                <h1 class="text-4xl md:text-8xl font-extrabold mb-6 text-glow animate-fade-in-up delay-100 leading-tight relative z-10">Zeyad Walid</h1>
-                <h2 class="text-2xl md:text-3xl text-light mb-6 font-bold tracking-tight animate-fade-in-up delay-200 relative z-10">
-                    I build fast websites that <span class="text-accent underline decoration-accent/30 underline-offset-8">deliver real results</span>
-                </h2>
-                <p class="text-lg md:text-xl text-gray-400 mb-10 font-light leading-relaxed max-w-2xl mx-auto animate-fade-in-up delay-300">
-                    I help businesses build fast, scalable websites and create <span class="text-blue-accent font-semibold">custom WordPress plugins</span> to automate workflows, boost conversions, and solve real business problems.
-                </p>
-                <div class="flex justify-center gap-6 flex-wrap mb-10 animate-slide-up delay-400">
-                    <a href="contact.html" class="btn-primary">Hire Me</a>
-                    <a href="projects.html" class="btn-secondary">View My Work</a>
-                </div>
-                
-                <div class="flex justify-center gap-4 md:gap-6 flex-wrap animate-fade-in-up delay-500">
-                    <a href="https://github.com/zeyadwalied" target="_blank" rel="noopener noreferrer" class="social-icon group">
-                        <svg class="w-6 h-6 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/zeyad-walid-691752277/" target="_blank" rel="noopener noreferrer" class="social-icon group">
-                        <svg class="w-6 h-6 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.475-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://flowcv.com/resume/vsnfe0csf5" target="_blank" rel="noopener noreferrer" class="social-icon group" aria-label="View CV">
-                        <img src="cv.webp" alt="CV" width="44" height="44" class="w-7 h-7 object-contain rounded">
-                    </a>
+                <div class="hero-glow-blob hero-glow-blob-primary" aria-hidden="true"></div>
+                <div class="hero-glow-blob hero-glow-blob-secondary" aria-hidden="true"></div>
+
+                <div class="hero-layout">
+                    <div class="hero-intro">
+                        <p class="hero-kicker text-accent font-semibold tracking-widest uppercase animate-fade-in-up">WordPress plugins Developer </p>
+
+                        <h1 class="hero-name animate-fade-in-up delay-100">
+                            <span class="text-gradient-premium text-glow">Zeyad Walid</span>
+                        </h1>
+
+                        <p class="hero-role animate-fade-in-up delay-150">
+                            <span>Full Stack Web &amp;</span>
+                            <span class="hero-role-pill">WordPress Expert</span>
+                        </p>
+
+                        <div class="hero-actions animate-slide-up delay-400">
+                            <a href="contact.html" class="btn-primary">Hire Me</a>
+                            <a href="projects.html" class="btn-secondary">View My Work</a>
+                        </div>
+                    </div>
+
+                    <aside class="hero-side animate-fade-in-up delay-200">
+                        <div class="hero-detail-card">
+                            <h2 class="hero-title text-light font-bold tracking-tight">
+                                I build fast websites that <br class="hero-title-break">
+                                <span class="hero-title-accent">
+                                    <span class="text-accent italic">deliver real results</span>
+                                    <svg class="hero-title-wave" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true">
+                                        <path d="M0,10 Q100,20 200,10 T400,10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                            </h2>
+
+                            <p class="hero-description text-gray-400">
+                                Transforming complex ideas into high-performance digital experiences. Specializing in <span class="text-accent font-semibold">bespoke WordPress plugins</span> and scalable full-stack applications that drive growth.
+                            </p>
+
+                            <div class="hero-divider" aria-hidden="true"></div>
+
+                            <div class="hero-socials animate-fade-in-up delay-500">
+                                <a href="https://github.com/zeyadwalied" target="_blank" rel="noopener noreferrer" class="social-icon group">
+                                    <svg class="w-6 h-6 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                </a>
+                                <a href="https://www.linkedin.com/in/zeyad-walid-691752277/" target="_blank" rel="noopener noreferrer" class="social-icon group">
+                                    <svg class="w-6 h-6 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.475-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                </a>
+                                <a href="https://flowcv.com/resume/vsnfe0csf5" target="_blank" rel="noopener noreferrer" class="social-icon group" aria-label="View CV">
+                                    <img src="cv.webp" alt="CV" width="44" height="44" class="w-7 h-7 object-contain rounded">
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </div>
@@ -204,8 +210,9 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Featured 1: WAVES Plugin -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80 hover:shadow-lg hover:shadow-accent/10">
-                    <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('BgCeRvVLTSU')">
-                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/hqdefault.jpg" alt="WAVES ALL IN ONE BADGES" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
+                    <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('BgCeRvVLTSU')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/BgCeRvVLTSU/hqdefault.jpg" alt="WAVES ALL IN ONE BADGES" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-14 h-14 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-7 h-7 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -222,8 +229,9 @@
 
                 <!-- Featured 2: Music Update -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80 hover:shadow-lg hover:shadow-blue-500/10" style="transition-delay:100ms">
-                    <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('lheaJ-dqDm8')">
-                        <img src="https://img.youtube.com/vi/lheaJ-dqDm8/hqdefault.jpg" alt="Music Update Home Page" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
+                    <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('lheaJ-dqDm8')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/lheaJ-dqDm8/hqdefault.jpg" alt="Music Update Home Page" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-14 h-14 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-7 h-7 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -240,8 +248,9 @@
 
                 <!-- Featured 3: Portfolio -->
                 <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80 hover:shadow-lg hover:shadow-accent/10" style="transition-delay:200ms">
-                    <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('5A3K3tXCWpw')">
-                        <img src="https://img.youtube.com/vi/5A3K3tXCWpw/hqdefault.jpg" alt="My Portfolio" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
+                    <div class="h-56 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('5A3K3tXCWpw')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/5A3K3tXCWpw/hqdefault.jpg" alt="My Portfolio" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-14 h-14 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-7 h-7 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -269,14 +278,7 @@
     <!-- Quick About Section -->
     <section id="quick-about" class="py-48 relative z-10 w-full">
         <!-- Background 'Z' Decoration -->
-        <div class="bg-text-decoration text-accent" style="font-size: clamp(10rem, 53vw, 19rem); opacity: 0.08;">
-            Z
-        </div>
-        <!-- Decorative Background Dots -->
-        <div class="decor-dot w-6 h-6 animate-pulse" style="background-color: #10b981; top: 10%; left: 5%; opacity: 0.6;"></div>
-        <div class="decor-dot w-10 h-10 animate-pulse delay-700" style="background-color: #3b82f6; bottom: 15%; right: 10%; opacity: 0.5;"></div>
-        <div class="decor-dot w-5 h-5 animate-pulse delay-300" style="background-color: #8b5cf6; top: 40%; right: 5%; opacity: 0.4;"></div>
-        <div class="decor-dot w-8 h-8 animate-pulse delay-500" style="background-color: #ec4899; bottom: 10%; left: 20%; opacity: 0.4;"></div>
+        <!-- dots removed, now global -->
         <div class="container mx-auto px-6">
             <div class="glass-panel relative overflow-hidden p-8 md:p-12 rounded-3xl max-w-4xl mx-auto scroll-reveal z-10">
                 <!-- Small Dual-Color Cyber Shape Decoration (Right Side) -->
@@ -320,8 +322,9 @@
                 </div>
 
                 <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 w-full">
-                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-accent shrink-0 shadow-lg shadow-accent/20">
-                        <img src="https://i.imgur.com/1KOGCagm.jpg" alt="Zeyad Walid" loading="lazy" class="w-full h-full object-cover">
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-accent shrink-0 shadow-lg shadow-accent/20 skeleton-img-wrapper">
+                        <div class="skeleton" style="border-radius:9999px"></div>
+                        <img data-src="https://i.imgur.com/1KOGCagm.jpg" alt="Zeyad Walid" class="w-full h-full object-cover">
                     </div>
                     <div class="text-center md:text-left">
                         <h2 class="text-2xl md:text-3xl font-bold mb-3 text-light">A bit about <span class="text-accent">me</span></h2>
@@ -333,6 +336,85 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Overview Section (Standalone) -->
+    <section id="skills-overview" class="py-24 relative z-10 w-full">
+        <div class="container mx-auto px-6">
+            <div class="section-title text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technologies I <span class="text-accent">Work With</span></h2>
+                <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
+            </div>
+            <div class="skills-icon-grid max-w-6xl mx-auto scroll-reveal delay-200">
+                <!-- React -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="128" cy="128" r="14" fill="currentColor"/>
+                        <ellipse cx="128" cy="128" rx="88" ry="34" stroke="currentColor" stroke-width="12"/>
+                        <ellipse cx="128" cy="128" rx="88" ry="34" transform="rotate(60 128 128)" stroke="currentColor" stroke-width="12"/>
+                        <ellipse cx="128" cy="128" rx="88" ry="34" transform="rotate(120 128 128)" stroke="currentColor" stroke-width="12"/>
+                    </svg>
+                    <h3>React.js</h3>
+                </div>
+                <!-- Next.js -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"></path></svg>
+                    <h3>Next.js</h3>
+                </div>
+                <!-- Tailwind -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"></path></svg>
+                    <h3>Tailwind</h3>
+                </div>
+                <!-- HTML -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"></path></svg>
+                    <h3>HTML</h3>
+                </div>
+                <!-- CSS -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm313.1 80l-4.8 47.3L193 208.6l-.3.1h111.5l-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9h48.9l3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-166.3-.5v-.1l-.2.1-3.6-46.3L193.1 162l6.5-2.7H76.7L70.9 112h242.2z"></path></svg>
+                    <h3>CSS</h3>
+                </div>
+                <!-- JavaScript -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"></path></svg>
+                    <h3>JavaScript</h3>
+                </div>
+                <!-- TypeScript -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"></path></svg>
+                    <h3>TypeScript</h3>
+                </div>
+                <!-- Sass -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zM9.615 15.998c.175.645.156 1.248-.024 1.792l-.065.18c-.024.061-.052.12-.078.176-.14.29-.326.56-.555.81-.698.759-1.672 1.047-2.09.805-.45-.262-.226-1.335.584-2.19.871-.918 2.12-1.509 2.12-1.509v-.003l.108-.061zm9.911-10.861c-.542-2.133-4.077-2.834-7.422-1.645-1.989.707-4.144 1.818-5.693 3.267C4.568 8.48 4.275 9.98 4.396 10.607c.427 2.211 3.457 3.657 4.703 4.73v.006c-.367.18-3.056 1.529-3.686 2.925-.675 1.47.105 2.521.615 2.655 1.575.436 3.195-.36 4.065-1.649.84-1.261.766-2.881.404-3.676.496-.135 1.08-.195 1.83-.104 2.101.24 2.521 1.56 2.43 2.1-.09.539-.523.854-.674.944-.15.091-.195.12-.181.181.015.09.091.09.21.075.165-.03 1.096-.45 1.141-1.471.045-1.29-1.186-2.729-3.375-2.7-.9.016-1.471.091-1.875.256-.03-.045-.061-.075-.105-.105-1.35-1.455-3.855-2.475-3.75-4.41.03-.705.285-2.564 4.8-4.814 3.705-1.846 6.661-1.335 7.171-.21.733 1.604-1.576 4.59-5.431 5.024-1.47.165-2.235-.404-2.431-.615-.209-.225-.239-.24-.314-.194-.12.06-.045.255 0 .375.12.3.585.825 1.396 1.095.704.225 2.43.359 4.5-.45 2.324-.899 4.139-3.405 3.614-5.505l.073.067z"></path></svg>
+                    <h3>Sass</h3>
+                </div>
+                <!-- Back-End -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                    <h3>Back-End</h3>
+                </div>
+                <!-- WordPress (Official W) -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/>
+                    </svg>
+                    <h3>WordPress</h3>
+                </div>
+                <!-- Custom Themes (Paintbrush) -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <h3>Themes</h3>
+                </div>
+                <!-- Plugin Dev (Code Brackets) -->
+                <div class="icon-skill-card">
+                    <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3>Plugin Dev</h3>
                 </div>
             </div>
         </div>
@@ -382,6 +464,7 @@
         </div>
     </footer>
 
+    <script src="waves.js" defer></script>
     <script src="main.js" defer></script>
 </body>
 </html>

@@ -26,11 +26,11 @@
     <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/favicon.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="favicon.webp">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
-<body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+<body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
     <!-- Cyber Grid Background -->
     <div class="cyber-grid"></div>
 
@@ -38,28 +38,16 @@
     <svg class="sections-bg-waves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
             <linearGradient id="bg-wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#10b981" stop-opacity="0.25">
-                    <animate attributeName="stop-color" values="#10b981;#3b82f6;#8b5cf6;#06b6d4;#10b981" dur="10s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05">
-                    <animate attributeName="stop-color" values="#3b82f6;#10b981;#06b6d4;#8b5cf6;#3b82f6" dur="10s" repeatCount="indefinite"/>
-                </stop>
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
             </linearGradient>
             <linearGradient id="bg-wave-2" x1="100%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2">
-                    <animate attributeName="stop-color" values="#3b82f6;#8b5cf6;#10b981;#ec4899;#3b82f6" dur="12s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03">
-                    <animate attributeName="stop-color" values="#8b5cf6;#06b6d4;#fbbf24;#10b981;#8b5cf6" dur="12s" repeatCount="indefinite"/>
-                </stop>
+                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03"/>
             </linearGradient>
             <linearGradient id="bg-wave-3" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15">
-                    <animate attributeName="stop-color" values="#06b6d4;#10b981;#fbbf24;#3b82f6;#06b6d4" dur="14s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03">
-                    <animate attributeName="stop-color" values="#fbbf24;#ec4899;#3b82f6;#10b981;#fbbf24" dur="14s" repeatCount="indefinite"/>
-                </stop>
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03"/>
             </linearGradient>
         </defs>
         <path d="M-100 900 Q100 750 80 550 Q60 350 200 200 Q340 50 500 -30 L540 -30 Q380 50 240 210 Q100 370 120 570 Q140 770 -60 900 Z" fill="url(#bg-wave-1)"/>
@@ -74,10 +62,10 @@
                 <img src="zeyadlogo.webp" alt="Zeyad Walid Logo" width="96" height="96" fetchpriority="high" decoding="async" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
             </a>
             <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
-                <li><a href="index.html" class="hover-text-accent transition-colors">Home</a></li>
-                <li><a href="about.html" class="hover-text-accent transition-colors">About</a></li>
-                <li><a href="projects.html" class="text-accent font-bold transition-colors">Projects</a></li>
-                <li><a href="contact.html" class="hover-text-accent transition-colors">Contact</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li>
                     <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
                         <svg class="w-6 h-6 sun-icon block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -98,20 +86,23 @@
     </nav>
 
     <!-- Projects Section -->
-    <main id="projects" class="py-32 flex-1 relative z-10 w-full bg-dark bg-opacity-70">
-        <div class="container mx-auto px-6">
-            <div class="section-title text-center mb-16 scroll-reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Personal Projects</h2>
-                <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
-            </div>
+    <main id="projects" class="projects-page-main flex-1 relative z-10 w-full">
+        <div class="container projects-page-shell">
+            <section class="projects-gallery-section">
+                <div class="projects-gallery-header section-title scroll-reveal">
+                    <div>
+                        <p class="projects-page-kicker text-accent font-semibold tracking-widest uppercase">Personal Projects</p>
+                        <h1 class="projects-gallery-title">Projects that blend modern design, clarity, and real functionality.</h1>
+                    </div>
+                </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="projects-gallery-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Project 1 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-container" onclick="openVideoModal('BgCeRvVLTSU')">
-                        <div class="skeleton absolute inset-0 z-10 transition-opacity duration-500"></div>
-                        <img src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" loading="lazy" onload="this.previousElementSibling.classList.add('opacity-0')" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('BgCeRvVLTSU')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -126,9 +117,10 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('lheaJ-dqDm8')">
-                        <img src="https://img.youtube.com/vi/lheaJ-dqDm8/maxresdefault.jpg" alt="Music Update Home Page" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('lheaJ-dqDm8')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/lheaJ-dqDm8/maxresdefault.jpg" alt="Music Update Home Page" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -143,9 +135,10 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('5A3K3tXCWpw')">
-                        <img src="https://img.youtube.com/vi/5A3K3tXCWpw/maxresdefault.jpg" alt="My Portfolio" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('5A3K3tXCWpw')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/5A3K3tXCWpw/maxresdefault.jpg" alt="My Portfolio" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -160,9 +153,10 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('mcsH--Bz26M')">
-                        <img src="https://img.youtube.com/vi/mcsH--Bz26M/maxresdefault.jpg" alt="Blogger" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('mcsH--Bz26M')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/mcsH--Bz26M/maxresdefault.jpg" alt="Blogger" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -177,9 +171,10 @@
                 </div>
 
                 <!-- Project 5 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('W00Ex0_vn-8')">
-                        <img src="https://img.youtube.com/vi/W00Ex0_vn-8/maxresdefault.jpg" alt="Cruds" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('W00Ex0_vn-8')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/W00Ex0_vn-8/maxresdefault.jpg" alt="Cruds" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -194,9 +189,10 @@
                 </div>
 
                 <!-- Project 6 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('r8Yfm2S6eD4')">
-                        <img src="https://img.youtube.com/vi/r8Yfm2S6eD4/maxresdefault.jpg" alt="New Idea" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('r8Yfm2S6eD4')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/r8Yfm2S6eD4/maxresdefault.jpg" alt="New Idea" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -211,9 +207,10 @@
                 </div>
 
                 <!-- Project 7 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('Zp0sfB7cl2I')">
-                        <img src="https://img.youtube.com/vi/Zp0sfB7cl2I/hqdefault.jpg" alt="iPhone Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('Zp0sfB7cl2I')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/Zp0sfB7cl2I/hqdefault.jpg" alt="iPhone Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -228,9 +225,10 @@
                 </div>
 
                 <!-- Project 8 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('v6vl-iHRyJs')">
-                        <img src="https://img.youtube.com/vi/v6vl-iHRyJs/maxresdefault.jpg" alt="Shop with HTML and CSS" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('v6vl-iHRyJs')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/v6vl-iHRyJs/maxresdefault.jpg" alt="Shop with HTML and CSS" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -245,9 +243,10 @@
                 </div>
 
                 <!-- Project 9 -->
-                <div class="project-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
-                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer" onclick="openVideoModal('YYo_SaHFNSs')">
-                        <img src="https://img.youtube.com/vi/YYo_SaHFNSs/maxresdefault.jpg" alt="Adidas Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('YYo_SaHFNSs')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/YYo_SaHFNSs/maxresdefault.jpg" alt="Adidas Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
                                 <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -262,8 +261,9 @@
                 </div>
 
             </div>
+            </section>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark py-8 text-center border-t border-gray-800 relative z-10 w-full mt-auto">

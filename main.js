@@ -236,8 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== Custom Cursor =====
-    if (!('ontouchstart' in window) && window.innerWidth >= 1024) {
+    // ===== Custom Cursor (desktop pointer devices only) =====
+    const isDesktopPointer = window.matchMedia('(pointer: fine)').matches && navigator.maxTouchPoints === 0;
+    if (isDesktopPointer) {
         const dot = document.createElement('div');
         const outline = document.createElement('div');
         dot.className = 'cursor-dot';
@@ -294,13 +295,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== Click Ripple =====
-    window.addEventListener('mousedown', (e) => {
-        const r = document.createElement('div');
-        r.className = 'click-ripple';
-        r.style.left = e.clientX + 'px';
-        r.style.top  = e.clientY + 'px';
-        document.body.appendChild(r);
-        r.addEventListener('animationend', () => r.remove());
-    });
+    // ===== Click Ripple (desktop only) =====
+    if (isDesktopPointer) {
+        window.addEventListener('mousedown', (e) => {
+            const r = document.createElement('div');
+            r.className = 'click-ripple';
+            r.style.left = e.clientX + 'px';
+            r.style.top  = e.clientY + 'px';
+            document.body.appendChild(r);
+            r.addEventListener('animationend', () => r.remove());
+        });
+    }
+
+    // ===== Lazy Loading with Skeleton =====
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    if (lazyImages.length > 0) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    img.onload = () => {
+                        img.classList.add('loaded');
+                        const skeleton = img.previousElementSibling;
+                        if (skeleton && skeleton.classList.contains('skeleton')) {
+                            skeleton.classList.add('opacity-0');
+                        }
+                    };
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px 0px' });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
 });
