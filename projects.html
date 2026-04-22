@@ -19,11 +19,11 @@
     <meta property="og:description" content="Projects by Zeyad Walid, a Full Stack Web, Full Stack WordPress & Plugin Developer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zeyad-dev-portfolio.netlify.app/projects.html">
-    <meta property="og:image" content="https://zeyad-dev-portfolio.netlify.app/favicon.webp">
+    <meta property="og:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/favicon.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/favicon.webp">
+    <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/favicon.webp">
     <style>
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; }
@@ -34,7 +34,7 @@
         main { display: block; }
         .social-icon { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; border-radius: 9999px; }
     </style>
-    <link rel="icon" type="image/webp" href="favicon.webp">
+    <link rel="icon" type="image/webp" href="assets/images/favicon.webp">
     <link rel="preload" as="style" href="style.css?v=5">
     <link rel="stylesheet" href="style.css?v=5">
 </head>
@@ -82,7 +82,7 @@
     <nav class="navbar glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="logo flex items-center hover-glow" aria-label="Zeyad Portfolio Home">
-                <img src="zeyadlogo.webp" alt="Zeyad Walid Logo" width="96" height="96" fetchpriority="high" decoding="async" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
+                <img src="assets/images/zeyadlogo.webp" alt="Zeyad Walid Logo" width="96" height="96" fetchpriority="high" decoding="async" class="h-20 w-auto md:h-24 object-contain drop-shadow-xl transition-transform hover:scale-105">
             </a>
             <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
                 <li><a href="index.html" class="nav-link">Home</a></li>
@@ -160,6 +160,24 @@
 
                 <!-- Project 3 -->
                 <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('O20BWdN3Z2g')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/O20BWdN3Z2g/maxresdefault.jpg" alt="Modern Personal Portfolio Website" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Modern Personal Portfolio Website</h3>
+                        <p class="text-gray-400 text-sm flex-1">A polished portfolio website created to showcase my projects, technical skills, and services through modern visuals, smooth interactions, responsive design, and a clean user experience.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
                     <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('5A3K3tXCWpw')">
                         <div class="skeleton"></div>
                         <img data-src="https://img.youtube.com/vi/5A3K3tXCWpw/maxresdefault.jpg" alt="My Portfolio" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
@@ -176,7 +194,7 @@
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                <!-- Project 5 -->
                 <div class="project-card project-page-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
                     <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('mcsH--Bz26M')">
                         <div class="skeleton"></div>

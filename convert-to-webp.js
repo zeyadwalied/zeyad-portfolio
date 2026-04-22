@@ -1,75 +1,77 @@
 const fs = require('fs');
 const path = require('path');
 
-// Try requiring sharp
 let sharp;
 try {
     sharp = require('sharp');
-} catch (e) {
-    console.error("❌ 'sharp' package is not installed!");
-    console.error("Please run the following commands in your terminal:");
-    console.error("  npm install");
+} catch (error) {
+    console.error("'sharp' package is not installed.");
+    console.error('Run: npm install');
     process.exit(1);
 }
 
-const directoryPath = path.join(__dirname); 
+const projectRoot = __dirname;
+const imageDirectoryPath = path.join(projectRoot, 'assets', 'images');
 
-console.log(`Scanning directory: ${directoryPath} for images...`);
+console.log(`Scanning directory: ${imageDirectoryPath} for images...`);
 
-fs.readdir(directoryPath, (err, files) => {
+if (!fs.existsSync(imageDirectoryPath)) {
+    console.error(`Image directory does not exist: ${imageDirectoryPath}`);
+    process.exit(1);
+}
+
+fs.readdir(imageDirectoryPath, (err, files) => {
     if (err) {
-        return console.error('Unable to scan directory: ' + err);
+        console.error('Unable to scan image directory:', err);
+        process.exit(1);
     }
-    
-    // Find Images
-    const imageFiles = files.filter(file => {
+
+    const imageFiles = files.filter((file) => {
         const ext = path.extname(file).toLowerCase();
         return ['.png', '.jpg', '.jpeg'].includes(ext);
     });
 
-    // Find HTML files
-    const htmlFiles = files.filter(file => {
-        return path.extname(file).toLowerCase() === '.html';
+    const targetFiles = fs.readdirSync(projectRoot).filter((file) => {
+        const ext = path.extname(file).toLowerCase();
+        return ['.html', '.css', '.js'].includes(ext);
     });
-    
-    // Step 1: Replace image extensions in HTML
-    let replaceDictionary = [];
-    
-    htmlFiles.forEach(htmlFile => {
-        const htmlPath = path.join(directoryPath, htmlFile);
-        let content = fs.readFileSync(htmlPath, 'utf8');
-        let initialContent = content;
 
-        imageFiles.forEach(imgFile => {
+    targetFiles.forEach((targetFile) => {
+        const targetPath = path.join(projectRoot, targetFile);
+        let content = fs.readFileSync(targetPath, 'utf8');
+        const initialContent = content;
+
+        imageFiles.forEach((imgFile) => {
             const ext = path.extname(imgFile);
             const baseName = path.basename(imgFile, ext);
-            
-            // simple string replacement in HTML
-            const searchRegex = new RegExp(`\\b${imgFile}\\b`, 'g');
-            content = content.replace(searchRegex, `${baseName}.webp`);
+            const escapedFileName = imgFile.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const searchRegex = new RegExp(`assets/images/${escapedFileName}\\b`, 'g');
+            content = content.replace(searchRegex, `assets/images/${baseName}.webp`);
         });
 
         if (content !== initialContent) {
-            fs.writeFileSync(htmlPath, content, 'utf8');
-            console.log(`📝 Updated references in: ${htmlFile}`);
+            fs.writeFileSync(targetPath, content, 'utf8');
+            console.log(`Updated references in: ${targetFile}`);
         }
     });
 
-    // Step 2: Convert images
     if (imageFiles.length === 0) {
-        return console.log("No .png, .jpg, or .jpeg files found in the directory.");
+        console.log('No .png, .jpg, or .jpeg files found in assets/images.');
+        return;
     }
 
     let processedCount = 0;
     imageFiles.forEach((file) => {
-        const filePath = path.join(directoryPath, file);
+        const filePath = path.join(imageDirectoryPath, file);
         const fileName = path.basename(file, path.extname(file));
-        const newFilePath = path.join(directoryPath, `${fileName}.webp`);
-        
+        const newFilePath = path.join(imageDirectoryPath, `${fileName}.webp`);
+
         if (fs.existsSync(newFilePath)) {
-            console.log(`⏩ Skipped: ${fileName}.webp already exists.`);
+            console.log(`Skipped: ${fileName}.webp already exists.`);
             processedCount++;
-            if (processedCount === imageFiles.length) console.log("🎉 All image conversions and HTML tag replacements are complete!");
+            if (processedCount === imageFiles.length) {
+                console.log('All image conversions and reference replacements are complete.');
+            }
             return;
         }
 
@@ -77,14 +79,14 @@ fs.readdir(directoryPath, (err, files) => {
             .webp({ quality: 80 })
             .toFile(newFilePath)
             .then(() => {
-                console.log(`✅ Converted: ${file} -> ${fileName}.webp`);
+                console.log(`Converted: ${file} -> ${fileName}.webp`);
                 processedCount++;
                 if (processedCount === imageFiles.length) {
-                    console.log("🎉 All image conversions and HTML tag replacements are complete!");
+                    console.log('All image conversions and reference replacements are complete.');
                 }
             })
-            .catch(err => {
-                console.error(`❌ Error converting ${file}:`, err);
+            .catch((conversionError) => {
+                console.error(`Error converting ${file}:`, conversionError);
                 processedCount++;
             });
     });
