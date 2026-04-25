@@ -1917,6 +1917,13 @@ html.video-modal-open .cursor-outline {
     animation-delay: -4.5s;
 }
 
+.tech-chip-php {
+    top: 68%;
+    right: 36%;
+    color: #777bb4;
+    animation-delay: -5.5s;
+}
+
 @keyframes featuredTechFloat {
     0%, 100% {
         transform: translate3d(0, 0, 0);
