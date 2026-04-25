@@ -1924,6 +1924,131 @@ html.video-modal-open .cursor-outline {
     animation-delay: -5.5s;
 }
 
+/* ===== Demo Credentials Panel ===== */
+.demo-credentials {
+    margin-top: 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(15, 23, 42, 0.6) 100%);
+    padding: 0.85rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-credentials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.35), transparent);
+}
+
+.demo-credentials .demo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+}
+
+.demo-credentials .demo-header svg {
+    width: 15px;
+    height: 15px;
+    color: #60a5fa;
+    flex-shrink: 0;
+}
+
+.demo-credentials .demo-header span {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #60a5fa;
+}
+
+.demo-credentials .demo-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.demo-credentials .demo-field {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.demo-credentials .demo-field .demo-label {
+    font-size: 0.7rem;
+    color: #64748b;
+    width: 2.8rem;
+    flex-shrink: 0;
+    font-weight: 500;
+}
+
+.demo-credentials .demo-field code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.68rem;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.35rem;
+    letter-spacing: 0.02em;
+}
+
+.demo-credentials .demo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.55rem 1rem;
+    border-radius: 0.55rem;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.demo-credentials .demo-btn:hover {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(59, 130, 246, 0.35);
+}
+
+.demo-credentials .demo-btn svg {
+    width: 15px;
+    height: 15px;
+}
+
+[data-theme="light"] .demo-credentials {
+    border-color: rgba(59, 130, 246, 0.22);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(248, 250, 252, 0.9) 100%);
+}
+
+[data-theme="light"] .demo-credentials .demo-field code {
+    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] .demo-credentials .demo-header span {
+    color: #2563eb;
+}
+
+[data-theme="light"] .demo-credentials .demo-header svg {
+    color: #2563eb;
+}
+
 @keyframes featuredTechFloat {
     0%, 100% {
         transform: translate3d(0, 0, 0);
