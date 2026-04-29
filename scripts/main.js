@@ -1,4 +1,369 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ===== Initialize Lenis Smooth Scrolling =====
+    if (typeof Lenis !== 'undefined') {
+        window.lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1.2
+        });
+
+        if (typeof gsap !== 'undefined') {
+            window.lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => {
+                window.lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+        } else {
+            function raf(time) {
+                window.lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        }
+    }
+
+    // ===== Custom Cursor Logic =====
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorFollower = document.querySelector('.custom-cursor-follower');
+    
+    if (cursor && cursorFollower) {
+        // Show cursor initially on first mouse move
+        window.addEventListener('mousemove', () => {
+            gsap.to([cursor, cursorFollower], { opacity: 1, duration: 0.3 });
+        }, { once: true });
+
+        // Update cursor position
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
+            gsap.to(cursorFollower, { x: e.clientX, y: e.clientY, duration: 0.15, ease: "power2.out" });
+        });
+
+        // Add hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, canvas, [role="button"], [onclick], .project-card');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hovering');
+                cursorFollower.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hovering');
+                cursorFollower.classList.remove('hovering');
+            });
+        });
+    }
+
+    // ===== GSAP Sophisticated Modern Animations =====
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 0. Hero Content Wrapper Entrance (no wave floating)
+        const heroWrapper = document.querySelector('.hero-content-wrapper');
+        if (heroWrapper) {
+            gsap.fromTo(heroWrapper, 
+                { scale: 0.95, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 1.2, ease: "expo.out" }
+            );
+        }
+
+        // 1. Master Hero Timeline — all elements start hidden, appear in sequence
+        const heroTl = gsap.timeline({ delay: 0.2 });
+        
+        // Immediately hide elements to prevent CSS flash
+        gsap.set(".hero-kicker, .hero-role, .hero-actions, .hero-side, .hero-socials", { opacity: 0, y: 20 });
+        gsap.set(".hero-actions a", { opacity: 0, y: 10, scale: 0.9 });
+        gsap.set(".hero-socials a", { opacity: 0, y: 8 });
+
+        // Kicker text
+        heroTl.to(".hero-kicker", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" });
+
+        // Scanner reveal for the name
+        const heroName = document.querySelector('.hero-name-text');
+        const scannerLine = document.querySelector('.scanner-line');
+        if (heroName && scannerLine) {
+            heroTl.set(heroName, { opacity: 1, clipPath: "inset(0 100% 0 0)" })
+                  .fromTo(scannerLine, { opacity: 0, left: "0%" }, { opacity: 1, duration: 0.1 })
+                  .to(scannerLine, { left: "100%", duration: 0.9, ease: "power4.inOut" })
+                  .to(heroName, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power4.inOut" }, "<")
+                  .to(scannerLine, { opacity: 0, duration: 0.2 });
+        }
+
+        // Role text
+        heroTl.to(".hero-role", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
+
+        // Buttons — staggered with a bounce
+        heroTl.to(".hero-actions", { opacity: 1, y: 0, duration: 0.3 }, "-=0.2")
+              .to(".hero-actions a", { 
+                  opacity: 1, y: 0, scale: 1, 
+                  stagger: 0.08, duration: 0.5, ease: "back.out(1.7)" 
+              }, "-=0.2");
+
+        // Side panel (detail card)
+        heroTl.to(".hero-side", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, "-=0.5");
+
+        // Socials — staggered pop-in
+        heroTl.to(".hero-socials", { opacity: 1, y: 0, duration: 0.3 }, "-=0.3")
+              .to(".hero-socials a", {
+                  opacity: 1, y: 0, 
+                  stagger: 0.06, duration: 0.4, ease: "back.out(1.4)"
+              }, "-=0.15");
+
+        // GSAP Magnetic Button Hover
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+            });
+        });
+
+        // 2. About Me Section - Deep Reveal & Parallax
+        const aboutSection = document.querySelector('.about-me-gsap');
+        if (aboutSection) {
+            const imgWrapper = aboutSection.querySelector('.rounded-full');
+            const shape = aboutSection.querySelector('.cyber-shape-pos');
+            const aboutText = aboutSection.querySelector('p');
+            
+            // Continuous floating animation for the image
+            if (imgWrapper) {
+                gsap.to(imgWrapper, {
+                    y: -15,
+                    duration: 2.5,
+                    ease: "sine.inOut",
+                    yoyo: true,
+                    repeat: -1
+                });
+            }
+
+            // Staggered text replacement (manual word split)
+            if (aboutText) {
+                const text = aboutText.textContent;
+                const words = text.split(' ').filter(w => w.trim() !== '').map(word => `<span class="inline-block translate-y-4 opacity-0 filter blur-sm">${word}</span>`).join(' ');
+                aboutText.innerHTML = words;
+            }
+
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: aboutSection,
+                    start: "top 80%",
+                }
+            });
+
+            tl.fromTo(aboutSection, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out" })
+              .fromTo(shape, { rotation: -180, scale: 0, opacity: 0 }, { rotation: 0, scale: 1, opacity: 0.4, duration: 1.5, ease: "elastic.out(1, 0.5)" }, "-=0.8");
+              
+            if (aboutText) {
+                const spans = aboutText.querySelectorAll('span');
+                tl.fromTo(spans, 
+                    { y: 20, opacity: 0, filter: "blur(4px)" },
+                    { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.6, stagger: 0.015, ease: "power2.out" }, 
+                    "-=1"
+                );
+            }
+        }
+
+        // 3. Tech Chips - Floating Reveal
+        const techSection = document.querySelector('.tech-wave-gsap');
+        if (techSection) {
+            // Animate the SVG wave line drawing
+            const wavePath = techSection.querySelector('.featured-tech-wave path');
+            if (wavePath) {
+                const pathLength = wavePath.getTotalLength();
+                gsap.set(wavePath, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+                gsap.to(wavePath, {
+                    strokeDashoffset: 0,
+                    duration: 2,
+                    ease: "power2.inOut",
+                    scrollTrigger: { trigger: techSection, start: "top 80%" }
+                });
+            }
+
+            gsap.fromTo(".featured-tech-chip", 
+                { y: 30, opacity: 0, filter: "blur(5px)" },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    filter: "blur(0px)",
+                    duration: 0.8, 
+                    stagger: 0.08, 
+                    ease: "power2.out",
+                    scrollTrigger: { trigger: techSection, start: "top 85%" }
+                }
+            );
+        }
+
+        // Section Title Wipe Reveals
+        gsap.utils.toArray('.scroll-reveal h1, .scroll-reveal h2, #featured-projects h2').forEach(title => {
+            gsap.fromTo(title,
+                { clipPath: "inset(0 100% 0 0)", opacity: 0 },
+                { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: 0.8, ease: "power3.out",
+                    scrollTrigger: { trigger: title, start: "top 85%" }
+                }
+            );
+        });
+
+        // 6. Generic Scroll Reveals (Containers etc)
+        gsap.utils.toArray('.scroll-reveal:not(h1):not(h2)').forEach(el => {
+            gsap.fromTo(el, 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out",
+                    scrollTrigger: { trigger: el, start: "top 90%" }
+                }
+            );
+        });
+
+        // 4. Projects — Clip-path Curtain Reveal + Image Zoom
+        const projectCards = gsap.utils.toArray('.project-card');
+        projectCards.forEach((card) => {
+            const img = card.querySelector('img');
+            const content = card.querySelector('.p-6');
+            
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                }
+            });
+
+            tl.fromTo(card, 
+                { clipPath: "inset(100% 0 0 0)", opacity: 0 },
+                { clipPath: "inset(0% 0 0 0)", opacity: 1, duration: 1, ease: "power4.out" }
+            );
+
+            if (img) {
+                // Initial Entrance
+                tl.fromTo(img,
+                    { scale: 1.4, filter: "blur(5px)" },
+                    { scale: 1.05, filter: "blur(0px)", duration: 1.2, ease: "power3.out" }, "-=0.8"
+                );
+                
+                // Parallax Effect
+                gsap.to(img, {
+                    yPercent: 15,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
+
+            if (content) {
+                tl.fromTo(content.children, 
+                    { y: 20, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: "power2.out" }, "-=0.8"
+                );
+            }
+        });
+        
+        // 5. CTA Section Premium Reveal
+        const ctaSection = document.querySelector('#cta');
+        if (ctaSection) {
+            const ctaContent = ctaSection.querySelector('.text-center');
+            gsap.fromTo(ctaContent.children, 
+                { y: 60, opacity: 0, scale: 0.95, filter: "blur(8px)" },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1,
+                    filter: "blur(0px)",
+                    duration: 1, 
+                    stagger: 0.08, 
+                    ease: "expo.out",
+                    scrollTrigger: {
+                        trigger: ctaSection,
+                        start: "top 80%",
+                    }
+                }
+            );
+        }
+
+        // 6. Skill cards — Staggered Wave with Scale
+        const skillsSection = document.querySelector('#skills-overview');
+        if (skillsSection) {
+            gsap.fromTo(".icon-skill-card", 
+                { y: 40, opacity: 0, scale: 0.9, filter: "blur(10px)" },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1,
+                    filter: "blur(0px)",
+                    duration: 1.2, 
+                    stagger: {
+                        each: 0.04,
+                        grid: "auto",
+                        from: "start"
+                    }, 
+                    ease: "expo.out",
+                    scrollTrigger: {
+                        trigger: ".skills-icon-grid",
+                        start: "top 85%",
+                    }
+                }
+            );
+        }
+
+        // 7. Generic Inner Page Reveals (Left/Right/Cards)
+        gsap.utils.toArray('.reveal-left').forEach(el => {
+            gsap.fromTo(el, 
+                { x: -50, opacity: 0 }, 
+                { x: 0, opacity: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%" } }
+            );
+        });
+
+        gsap.utils.toArray('.reveal-right').forEach(el => {
+            gsap.fromTo(el, 
+                { x: 50, opacity: 0 }, 
+                { x: 0, opacity: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%" } }
+            );
+        });
+
+        // 8. Subpage Heroes / Headers (Above fold animations)
+        const subHeroes = gsap.utils.toArray('.about-page-hero, .contact-page-hero');
+        subHeroes.forEach(hero => {
+            gsap.fromTo(hero, 
+                { y: 40, opacity: 0 }, 
+                { y: 0, opacity: 1, duration: 1.2, ease: "expo.out" }
+            );
+            
+            // Stagger children inside the hero
+            const children = hero.querySelectorAll('.about-page-kicker, .about-page-title, .about-page-lead, .about-page-badge, .about-page-card img, .about-page-stat, .contact-page-kicker, .contact-page-title, .contact-page-lead, .contact-page-badge');
+            if (children.length) {
+                gsap.fromTo(children,
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out", delay: 0.3 }
+                );
+            }
+        });
+
+        // 9. About Story Details Items Stagger
+        const detailItems = document.querySelectorAll('.about-detail-item');
+        if (detailItems.length) {
+            gsap.fromTo(detailItems, 
+                { x: 30, opacity: 0 },
+                { 
+                    x: 0, 
+                    opacity: 1, 
+                    duration: 0.6, 
+                    stagger: 0.08, 
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: ".about-details-panel",
+                        start: "top 85%"
+                    }
+                }
+            );
+        }
+    }
+
     const mobileViewportQuery = window.matchMedia('(max-width: 767px)');
     const syncMobilePerformanceMode = (isMobileViewport = mobileViewportQuery.matches) => {
         document.documentElement.classList.toggle('mobile-performance-mode', isMobileViewport);
@@ -45,28 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // Scroll reveal animation using IntersectionObserver
-    const revealElements = document.querySelectorAll('.scroll-reveal');
 
-    const revealCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Reveal only once
-            }
-        });
-    };
-
-    const revealOptions = {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: "0px 0px -50px 0px" 
-    };
-
-    const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
 
     // Skill Bars animation
     const skillBars = document.querySelectorAll('.skill-bar');

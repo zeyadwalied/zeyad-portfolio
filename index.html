@@ -8,6 +8,11 @@
     <meta name="keywords" content="Zeyad Walid, Full Stack Developer, WordPress Developer, Plugin Developer, Front-end, Web Developer">
     <meta name="author" content="Zeyad Walid">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Security Meta Tags -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -26,8 +31,12 @@
     <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/zeyadlogo.webp">
     <style>
         :root { color-scheme: dark; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; min-height: 100vh; background: #020617; color: #f8fafc; font: 16px/1.6 Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; overflow-x: hidden; }
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-smooth iframe { pointer-events: none; }
+        body { margin: 0; min-height: 100vh; background: #020617; color: #f8fafc; font: 16px/1.6 'Outfit', Inter, sans-serif; overflow-x: hidden; }
         img { display: block; max-width: 100%; }
         .container { width: min(100%, 1200px); margin: 0 auto; }
         .navbar { position: fixed; inset: 0 0 auto 0; z-index: 50; }
@@ -42,7 +51,7 @@
     <link rel="preload" as="style" href="styles/style.css?v=5">
     <link rel="stylesheet" href="styles/style.css?v=5">
 </head>
-<body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+<body class="bg-dark text-light font-outfit antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
     <!-- Wave Background -->
     <canvas id="wave-canvas"></canvas>
 
@@ -115,65 +124,70 @@
 
     <!-- Hero Section -->
     <main id="home" class="hero-section flex-1 relative overflow-hidden min-h-screen">
-
         <div class="container hero-shell relative z-10 animate-fade-in-up">
-            <div class="glass-panel hero-content-wrapper">
-                <svg class="hero-lines" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <div class="glass-panel hero-content-wrapper relative z-10 overflow-hidden w-full">
+                <!-- Premium SVG Wave Backdrop (Animated) -->
+                <svg class="hero-lines absolute inset-0 w-full h-full opacity-60" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
                     <defs>
                         <linearGradient id="wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.7"/>
-                            <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.4"/>
-                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1"/>
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.8"></stop>
+                            <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.5"></stop>
+                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2"></stop>
                         </linearGradient>
                         <linearGradient id="wave-2" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6"/>
-                            <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.35"/>
-                            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.05"/>
+                            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.7"></stop>
+                            <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.4"></stop>
+                            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.1"></stop>
                         </linearGradient>
+                        <!-- Added more vibrant stops -->
                         <linearGradient id="wave-3" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.5"/>
-                            <stop offset="50%" stop-color="#10b981" stop-opacity="0.3"/>
-                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.15"/>
-                        </linearGradient>
-                        <linearGradient id="wave-4" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4"/>
-                            <stop offset="50%" stop-color="#ec4899" stop-opacity="0.25"/>
-                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.1"/>
+                            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.6"></stop>
+                            <stop offset="50%" stop-color="#10b981" stop-opacity="0.4"></stop>
+                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.2"></stop>
                         </linearGradient>
                     </defs>
-                    <path d="M-80 620 Q60 520 40 380 Q20 240 120 140 Q220 40 350 -20 L380 -20 Q250 40 150 150 Q50 260 70 400 Q90 540 -50 620 Z" fill="url(#wave-1)"/>
-                    <path d="M-40 640 Q100 530 90 400 Q80 270 180 170 Q280 70 420 0 L450 0 Q310 70 210 180 Q110 290 120 420 Q130 550 -10 640 Z" fill="url(#wave-2)"/>
-                    <path d="M0 650 Q140 540 130 420 Q120 300 220 200 Q320 100 480 20 L510 20 Q350 100 250 210 Q150 320 160 440 Q170 560 30 650 Z" fill="url(#wave-3)"/>
-                    <path d="M30 660 Q170 550 160 440 Q150 330 250 230 Q350 130 520 40 L545 40 Q380 130 280 240 Q180 350 190 460 Q200 570 60 660 Z" fill="url(#wave-4)"/>
-                    <path d="M850 -20 Q750 80 760 200 Q770 320 700 420 Q630 520 600 640 L580 640 Q610 520 680 410 Q750 300 740 180 Q730 60 830 -20 Z" fill="url(#wave-1)" opacity="0.4"/>
-                    <path d="M880 -20 Q780 70 790 190 Q800 310 730 410 Q660 510 630 640 L610 640 Q640 510 710 400 Q780 290 770 170 Q760 50 860 -20 Z" fill="url(#wave-2)" opacity="0.25"/>
+                    <path class="hero-wave-path" d="M-80 620 Q60 520 40 380 Q20 240 120 140 Q220 40 350 -20 L380 -20 Q250 40 150 150 Q50 260 70 400 Q90 540 -50 620 Z" fill="url(#wave-1)"></path>
+                    <path class="hero-wave-path" d="M-40 640 Q100 530 90 400 Q80 270 180 170 Q280 70 420 0 L450 0 Q310 70 210 180 Q110 290 120 420 Q130 550 -10 640 Z" fill="url(#wave-2)"></path>
+                    <path class="hero-wave-path" d="M0 650 Q140 540 130 420 Q120 300 220 200 Q320 100 480 20 L510 20 Q350 100 250 210 Q150 320 160 440 Q170 560 30 650 Z" fill="url(#wave-3)"></path>
                 </svg>
 
                 <div class="hero-glow-blob hero-glow-blob-primary" aria-hidden="true"></div>
                 <div class="hero-glow-blob hero-glow-blob-secondary" aria-hidden="true"></div>
 
-                <div class="hero-layout">
+                <div class="hero-layout relative overflow-hidden">
+                    <!-- Global Hero Canvas restrained to the layout bounds -->
+                    <div class="absolute inset-0 w-full h-full opacity-60 pointer-events-none z-[40] mix-blend-screen">
+                        <canvas id="hero-auto-morph-canvas" class="w-full h-full"></canvas>
+                    </div>
                     <div class="hero-intro">
-                        <p class="hero-kicker text-accent font-semibold tracking-widest uppercase animate-fade-in-up">WordPress plugins Developer </p>
+                        <p class="hero-kicker text-accent font-semibold tracking-widest uppercase">WordPress plugins Developer </p>
 
-                        <h1 class="hero-name animate-fade-in-up delay-100">
-                            <span class="text-gradient-premium text-glow">Zeyad Walid</span>
-                        </h1>
+                        <!-- The Text Particles Canvas & Visible Name -->
+                        <div class="relative w-full h-[150px] md:h-[250px] mb-4 mt-2 flex items-center justify-start">
+                            <canvas id="name-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
+                            <h1 class="hero-name hero-name-wrap relative z-20">
+                                <span class="hero-name-text scanner-reveal text-gradient-premium text-glow inline-block">
+                                    <span class="char">Z</span><span class="char">e</span><span class="char">y</span><span class="char">a</span><span class="char">d</span><span class="char">&nbsp;</span><span class="char">W</span><span class="char">a</span><span class="char">l</span><span class="char">i</span><span class="char">d</span>
+                                </span>
+                                <div class="scanner-line"></div>
+                            </h1>
+                        </div>
 
-                        <p class="hero-role animate-fade-in-up delay-150">
+                        <p class="hero-role">
                             <span>Full Stack Web &amp;</span>
                             <span class="hero-role-pill">WordPress Expert</span>
                         </p>
 
-                        <div class="hero-actions animate-slide-up delay-400">
+                        <div class="hero-actions">
                             <a href="contact.html" class="btn-primary">Hire Me</a>
                             <a href="projects.html" class="btn-secondary">View My Work</a>
                         </div>
                     </div>
 
-                    <aside class="hero-side animate-fade-in-up delay-200">
-                        <div class="hero-detail-card">
-                            <h2 class="hero-title text-light font-bold tracking-tight">
+                    <aside class="hero-side">
+                        <div class="hero-detail-card relative overflow-hidden z-50">
+                            
+                            <h2 class="hero-title text-light font-bold tracking-tight relative z-10">
                                 I build fast websites that <br class="hero-title-break">
                                 <span class="hero-title-accent">
                                     <span class="text-accent italic">deliver real results</span>
@@ -183,13 +197,13 @@
                                 </span>
                             </h2>
 
-                            <p class="hero-description text-gray-400">
+                            <p class="hero-description text-gray-400 relative z-10">
                                 Transforming complex ideas into high-performance digital experiences. Specializing in <span class="text-accent font-semibold">bespoke WordPress plugins</span> and scalable full-stack applications that drive growth.
                             </p>
 
-                            <div class="hero-divider" aria-hidden="true"></div>
+                            <div class="hero-divider relative z-10" aria-hidden="true"></div>
 
-                            <div class="hero-socials animate-fade-in-up delay-500">
+                            <div class="hero-socials relative z-10">
                                 <a href="https://github.com/zeyadwalied" target="_blank" rel="noopener noreferrer" class="social-icon group">
                                     <svg class="w-6 h-6 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                                 </a>
@@ -208,8 +222,8 @@
     </main>
 
     <!-- Featured Projects Section -->
-    <section id="featured-projects" class="py-48 relative z-10 w-full scroll-reveal">
-        <div class="container mx-auto px-6">
+    <section id="featured-projects" class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6 tech-wave-gsap">
             <div class="featured-tech-wave-shell" aria-hidden="true">
                 <svg class="featured-tech-wave" viewBox="0 0 1200 220" fill="none" preserveAspectRatio="none">
                     <path d="M0 165C127 117 223 81 353 81C483 81 564 171 688 171C820 171 889 72 1014 72C1091 72 1149 103 1200 129" stroke="url(#featured-tech-gradient)" stroke-width="4" stroke-linecap="round"/>
@@ -256,6 +270,12 @@
                         <path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z"/>
                     </svg>
                     <span>PHP</span>
+                </div>
+                <div class="featured-tech-chip tech-chip-gsap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span>GSAP</span>
                 </div>
             </div>
             <div class="text-center mb-14 scroll-reveal">
@@ -357,7 +377,7 @@
         <!-- Background 'Z' Decoration -->
         <!-- dots removed, now global -->
         <div class="container mx-auto px-6">
-            <div class="glass-panel relative overflow-hidden p-8 md:p-12 rounded-3xl max-w-4xl mx-auto scroll-reveal z-10">
+            <div class="glass-panel relative overflow-hidden p-8 md:p-12 rounded-3xl max-w-4xl mx-auto z-10 about-me-gsap about-me-card">
                 <!-- Small Dual-Color Cyber Shape Decoration (Right Side) -->
                 <div class="absolute w-24 h-24 md:w-32 md:h-32 animate-spin-slow pointer-events-none opacity-40 z-0 cyber-shape-pos">
                     <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
@@ -419,13 +439,18 @@
     </section>
 
     <!-- Skills Overview Section (Standalone) -->
-    <section id="skills-overview" class="py-24 relative z-10 w-full">
-        <div class="container mx-auto px-6">
+    <section id="skills-overview" class="py-24 relative z-10 w-full overflow-hidden">
+        <!-- Optimized Morphing Particles Foreground -->
+        <div class="absolute inset-0 w-full h-full opacity-60 pointer-events-none z-30">
+            <canvas id="bg-particles-canvas" class="w-full h-full"></canvas>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
             <div class="section-title text-center mb-16 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Technologies I <span class="text-accent">Work With</span></h2>
                 <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
             </div>
-            <div class="skills-icon-grid max-w-6xl mx-auto scroll-reveal delay-200">
+            <div class="skills-icon-grid max-w-6xl mx-auto">
                 <!-- React -->
                 <div class="icon-skill-card">
                     <svg width="40" height="40" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -493,6 +518,7 @@
                     <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     <h3>Plugin Dev</h3>
                 </div>
+         
             </div>
         </div>
     </section>
@@ -541,7 +567,15 @@
         </div>
     </footer>
 
+    <!-- Add GSAP & Lenis -->
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script src="scripts/waves.js" defer></script>
+    <script src="scripts/name-particles.js" defer></script>
+    <script src="scripts/hero-auto-morph.js" defer></script>
+    <script src="scripts/morphing-sphere.js" defer></script>
     <script src="scripts/main.js" defer></script>
 </body>
 </html>
