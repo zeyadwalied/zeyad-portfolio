@@ -335,12 +335,116 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             
             // Stagger children inside the hero
-            const children = hero.querySelectorAll('.about-page-kicker, .about-page-title, .about-page-lead, .about-page-badge, .about-page-card img, .about-page-stat, .contact-page-kicker, .contact-page-title, .contact-page-lead, .contact-page-badge');
+            const children = hero.querySelectorAll('.about-page-kicker, .about-page-lead, .about-page-badge, .about-page-card img, .about-page-stat, .contact-page-kicker, .contact-page-title, .contact-page-lead, .contact-page-badge');
             if (children.length) {
                 gsap.fromTo(children,
                     { y: 30, opacity: 0 },
                     { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out", delay: 0.3 }
                 );
+            }
+        });
+
+        // 8.1 Modern Character Reveal for About & Contact Titles
+        const titlesToReveal = document.querySelectorAll('.about-page-title, .contact-page-title');
+        titlesToReveal.forEach(title => {
+            const text = title.textContent;
+            title.innerHTML = text.split(' ').map(word => 
+                `<span style="display:inline-block; overflow:hidden; vertical-align:bottom;">
+                    <span style="display:inline-block;">${word}&nbsp;</span>
+                </span>`
+            ).join('');
+            
+            gsap.from(title.querySelectorAll('span > span'), {
+                y: "100%",
+                duration: 1.2,
+                stagger: 0.05,
+                ease: "expo.out",
+                delay: 0.5,
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 90%"
+                }
+            });
+        });
+
+        // 8.3 Contact Page Specifics (Magnetic Button & Form Reveal)
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            const inputs = contactForm.querySelectorAll('.contact-input, button');
+            gsap.from(inputs, {
+                y: 30,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 0.8,
+                ease: "power2.out",
+                delay: 0.8
+            });
+            
+            // Magnetic Submit Button
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = submitBtn.getBoundingClientRect();
+                    const x = (e.clientX - left) / width - 0.5;
+                    const y = (e.clientY - top) / height - 0.5;
+                    
+                    gsap.to(submitBtn, {
+                        x: x * 30,
+                        y: y * 20,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                });
+                
+                submitBtn.addEventListener('mouseleave', () => {
+                    gsap.to(submitBtn, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.6,
+                        ease: "elastic.out(1, 0.3)"
+                    });
+                });
+            }
+        }
+
+        // 8.4 Magnetic Contact Methods
+        const contactMethods = document.querySelectorAll('.contact-method');
+        contactMethods.forEach(method => {
+            const icon = method.querySelector('.contact-method-icon');
+            if (icon) {
+                method.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = method.getBoundingClientRect();
+                    const x = (e.clientX - left) / width - 0.5;
+                    const y = (e.clientY - top) / height - 0.5;
+                    
+                    gsap.to(icon, {
+                        x: x * 40,
+                        y: y * 40,
+                        scale: 1.1,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                    
+                    gsap.to(method, {
+                        backgroundColor: "rgba(255, 255, 255, 0.05)",
+                        duration: 0.3
+                    });
+                });
+                
+                method.addEventListener('mouseleave', () => {
+                    gsap.to(icon, {
+                        x: 0,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.6,
+                        ease: "elastic.out(1, 0.3)"
+                    });
+                    
+                    gsap.to(method, {
+                        backgroundColor: "rgba(255, 255, 255, 0)",
+                        duration: 0.3
+                    });
+                });
             }
         });
 
@@ -412,27 +516,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Skill Bars animation
-    const skillBars = document.querySelectorAll('.skill-bar');
-    if(skillBars.length > 0) {
-        if (document.documentElement.classList.contains('mobile-performance-mode')) {
-            skillBars.forEach(bar => {
-                bar.style.width = bar.getAttribute('data-width');
-            });
-        } else {
-            const skillObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.width = entry.target.getAttribute('data-width');
-                        observer.unobserve(entry.target);
+    // Skill Bars BOLD GSAP animation
+    const skillPanels = document.querySelectorAll('.about-skill-panel');
+    if (skillPanels.length > 0) {
+        skillPanels.forEach(panel => {
+            const items = panel.querySelectorAll('.skill-item');
+            
+            // 1. Panel Entrance
+            gsap.fromTo(panel, 
+                { y: 60, opacity: 0, scale: 0.95 },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 1.2, 
+                    ease: "expo.out",
+                    scrollTrigger: {
+                        trigger: panel,
+                        start: "top 90%",
+                        once: true
+                    }
+                }
+            );
+
+            // 2. Staggered Items & Bars
+            items.forEach((item, index) => {
+                const bar = item.querySelector('.skill-bar');
+                const percentText = item.querySelector('.text-accent.text-sm');
+                const targetWidth = bar ? bar.getAttribute('data-width') : "0%";
+                const targetVal = parseInt(targetWidth);
+
+                // Initial states to prevent flash
+                if (bar) bar.style.width = "0%";
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 95%",
+                        once: true
                     }
                 });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-            skillBars.forEach(bar => {
-                skillObserver.observe(bar);
+                tl.fromTo(item, 
+                    { x: -30, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+                );
+
+                if (bar) {
+                    tl.to(bar, {
+                        width: targetWidth,
+                        duration: 1.8,
+                        ease: "expo.out"
+                    }, "-=0.4");
+                }
+
+                if (percentText) {
+                    const counter = { val: 0 };
+                    tl.to(counter, {
+                        val: targetVal,
+                        duration: 1.8,
+                        ease: "expo.out",
+                        onUpdate: () => {
+                            percentText.textContent = Math.ceil(counter.val) + "%";
+                        }
+                    }, "<");
+                }
             });
-        }
+        });
     }
 
     // Form submission interception setup for Formspree

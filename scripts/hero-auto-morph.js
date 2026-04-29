@@ -54,7 +54,7 @@ class HeroAutoMorph {
         this.animate();
         
         // Form the first shape instantly upon load!
-        setTimeout(() => this.cycleShape(), 100);
+        setTimeout(() => this.cycleShape(), 200);
         
         // Start cyclic morphing loop
         setInterval(() => {
