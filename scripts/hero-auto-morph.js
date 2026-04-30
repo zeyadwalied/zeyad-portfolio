@@ -17,16 +17,17 @@ class HeroAutoMorph {
         this.interval = options.interval || 15000;
         
         this.svgList = options.svgs || [
-            // The word "GRAVITY"
-            `<svg viewBox="0 0 200 80"><text font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="34" fill="currentColor" x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" letter-spacing="4">GRAVITY</text></svg>`,
-            // Code Brackets
+                     // Code Brackets
             `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
             // Server / Database
             `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
             // Terminal / Command
             `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>`,
             // The Letter Z (stylized custom path)
-            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5 h18 l-18 14 h18"></path></svg>`
+            `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5 h18 l-18 14 h18"></path></svg>`,
+             // The word "GRAVITY"
+            `<svg viewBox="0 0 200 80"><text font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="34" fill="currentColor" x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" letter-spacing="4">GRAVITY</text></svg>`,
+   
         ];
         
         this.currentShapeIndex = 0;
