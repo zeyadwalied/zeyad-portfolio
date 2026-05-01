@@ -77,6 +77,68 @@ h1, h2, h3, h4, h5, h6, .hero-title, .section-title {
     transform: translateY(8px);
 }
 
+.js-enabled .about-me-gsap {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.js-enabled .about-me-gsap .cyber-shape-pos {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+.js-enabled .featured-tech-chip {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
+}
+
+.js-enabled .scroll-reveal:not(h1):not(h2),
+.js-enabled .contact-info-panel,
+.js-enabled .contact-form-panel,
+.js-enabled .about-skill-panel {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.js-enabled .scroll-reveal h1,
+.js-enabled .scroll-reveal h2,
+.js-enabled #featured-projects h2 {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+}
+
+.js-enabled .project-card {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+}
+
+.js-enabled .project-card img {
+    transform: scale(1.4);
+    filter: blur(5px);
+}
+
+.js-enabled .about-page-hero,
+.js-enabled .contact-page-hero {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.js-enabled .reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.js-enabled .reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.js-enabled .about-detail-item {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
 .char {
     display: inline-block;
     transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1), transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1700,21 +1762,46 @@ html.video-modal-open .cursor-outline {
     }
 
     .mobile-performance-mode .scroll-reveal {
-        opacity: 1 !important;
-        transform: none !important;
+        opacity: 1;
+        transform: none;
         transition: none !important;
     }
 
     .mobile-performance-mode #skills-overview .scroll-reveal,
     .mobile-performance-mode #skills-overview.scroll-reveal {
-        opacity: 1 !important; /* Force visible on mobile to allow GSAP or default viewing */
-        transform: none !important;
+        opacity: 1;
+        transform: none;
     }
 
     .mobile-performance-mode #skills-overview .scroll-reveal.active,
     .mobile-performance-mode #skills-overview.scroll-reveal.active {
-        opacity: 1 !important;
-        transform: none !important;
+        opacity: 1;
+        transform: none;
+    }
+
+    .js-enabled.mobile-performance-mode .about-me-gsap,
+    .js-enabled.mobile-performance-mode .scroll-reveal:not(h1):not(h2),
+    .js-enabled.mobile-performance-mode .contact-info-panel,
+    .js-enabled.mobile-performance-mode .contact-form-panel,
+    .js-enabled.mobile-performance-mode .about-skill-panel {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .js-enabled.mobile-performance-mode .about-me-gsap {
+        transform: translateY(60px);
+    }
+
+    .js-enabled.mobile-performance-mode .scroll-reveal h1,
+    .js-enabled.mobile-performance-mode .scroll-reveal h2,
+    .js-enabled.mobile-performance-mode #featured-projects h2 {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    .js-enabled.mobile-performance-mode .project-card {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0);
     }
 
     .mobile-performance-mode #wave-canvas,

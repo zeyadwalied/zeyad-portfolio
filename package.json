@@ -4,9 +4,13 @@
   "description": "Portfolio of Zeyad Walid",
   "main": "index.html",
   "scripts": {
-    "build": "node scripts/build/convert-to-webp.js && node scripts/build/minify-css.js"
+    "build": "node scripts/build/convert-to-webp.js && node scripts/build/minify-css.js",
+    "summary:practical": "node scripts/create-practical-summary.js"
   },
   "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.7.284",
+    "pdfkit": "^0.18.0",
     "sharp": "^0.33.2"
   }
 }
