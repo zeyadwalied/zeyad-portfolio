@@ -2,33 +2,28 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <script>
-        document.documentElement.classList.add('js-enabled');
-        if (window.matchMedia('(max-width: 767px)').matches) {
-            document.documentElement.classList.add('mobile-performance-mode');
-        }
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | WordPress Developer Egypt & WooCommerce Specialist | Zeyad Walid</title>
-    <meta name="description" content="Learn more about Zeyad Walid, a WordPress Developer in Egypt specializing in plugin development, WooCommerce customization, store performance, and scalable custom solutions.">
-    <meta name="keywords" content="WordPress Developer Egypt, WooCommerce Specialist, Plugin Developer Egypt, Custom WooCommerce Solutions">
+    <title>Zeyad Walid - About</title>
+    <meta name="description" content="About Zeyad Walid, a Full Stack Web, Full Stack WordPress & Plugin Developer based in Cairo, Egypt.">
+    <meta name="keywords" content="Zeyad Walid, Full Stack Developer, WordPress Developer, Plugin Developer, Front-end, Web Developer, About">
     <meta name="author" content="Zeyad Walid">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="https://zeyad-dev-portfolio.netlify.app/about.html">
-
+    
+    <!-- Security Meta Tags -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:; frame-src https:;">
-
-    <meta property="og:title" content="About | WordPress Developer Egypt & WooCommerce Specialist">
-    <meta property="og:description" content="WordPress plugin development, WooCommerce engineering, and performance-focused implementation for modern ecommerce teams.">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Zeyad Walid - About">
+    <meta property="og:description" content="About Zeyad Walid, a Full Stack Web, Full Stack WordPress & Plugin Developer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zeyad-dev-portfolio.netlify.app/about.html">
-    <meta property="og:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/zeyadlogo.webp">
+    <meta property="og:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/favicon.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/zeyadlogo.webp">
-
+    <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/favicon.webp">
     <style>
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; }
@@ -40,20 +35,29 @@
         .social-icon { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; border-radius: 9999px; }
     </style>
     <link rel="icon" type="image/webp" href="assets/images/favicon.webp">
-    <link rel="preload" as="style" href="styles/style.css?v=6">
-    <link rel="stylesheet" href="styles/style.css?v=6">
+    <link rel="preload" as="style" href="styles/style.css?v=5">
+    <link rel="stylesheet" href="styles/style.css?v=5">
 </head>
 <body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Wave Background -->
     <canvas id="wave-canvas"></canvas>
 
+    <!-- Global Floating Decorative Dots -->
     <div class="decor-dot w-5 h-5 animate-float-dot" style="background-color: #3b82f6; top: 8%; left: 6%; opacity: 0.4; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-8 h-8 animate-float-dot delay-1000" style="background-color: #10b981; top: 25%; right: 8%; opacity: 0.35; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-6 h-6 animate-float-dot delay-500" style="background-color: #8b5cf6; top: 45%; left: 4%; opacity: 0.3; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-10 h-10 animate-float-dot delay-2000" style="background-color: #3b82f6; top: 60%; right: 5%; opacity: 0.25; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-4 h-4 animate-float-dot delay-3000" style="background-color: #ec4899; top: 75%; left: 15%; opacity: 0.3; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-7 h-7 animate-float-dot delay-1500" style="background-color: #10b981; bottom: 10%; right: 12%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-9 h-9 animate-float-dot delay-700" style="background-color: #8b5cf6; top: 15%; right: 25%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-6 h-6 animate-float-dot delay-2500" style="background-color: #ec4899; bottom: 20%; left: 40%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-12 h-12 animate-float-dot delay-800" style="background-color: #3b82f6; top: 90%; left: 70%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-5 h-5 animate-float-dot delay-1200" style="background-color: #10b981; top: 35%; left: 50%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+
+    <!-- Cyber Grid Background -->
     <div class="cyber-grid"></div>
 
+    <!-- Full Page Background Flowing Waves -->
     <svg class="sections-bg-waves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
             <linearGradient id="bg-wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
@@ -64,11 +68,17 @@
                 <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
                 <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03"/>
             </linearGradient>
+            <linearGradient id="bg-wave-3" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03"/>
+            </linearGradient>
         </defs>
         <path d="M-100 900 Q100 750 80 550 Q60 350 200 200 Q340 50 500 -30 L540 -30 Q380 50 240 210 Q100 370 120 570 Q140 770 -60 900 Z" fill="url(#bg-wave-1)"/>
         <path d="M-50 920 Q150 770 140 580 Q130 390 270 240 Q410 90 580 0 L620 0 Q450 90 310 250 Q170 410 180 600 Q190 790 -10 920 Z" fill="url(#bg-wave-2)"/>
+        <path d="M1540 -20 Q1350 130 1360 320 Q1370 510 1230 660 Q1090 810 920 920 L890 920 Q1060 810 1200 650 Q1340 490 1330 300 Q1320 110 1510 -20 Z" fill="url(#bg-wave-1)" opacity="0.5"/>
+        <path d="M1500 0 Q1320 150 1330 340 Q1340 530 1200 680 Q1060 830 900 940 L870 940 Q1030 830 1170 670 Q1310 510 1300 320 Q1290 130 1470 0 Z" fill="url(#bg-wave-3)" opacity="0.4"/>
     </svg>
-
+    <!-- Navbar -->
     <nav class="navbar glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="logo flex items-center hover-glow" aria-label="Zeyad Portfolio Home">
@@ -77,8 +87,8 @@
             <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="about.html#skills" class="nav-link">Skills</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li>
                     <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
@@ -99,32 +109,37 @@
         </div>
     </nav>
 
+    <!-- About Section -->
     <main id="about" class="about-page-main flex-1 relative z-10 w-full">
         <div class="container about-page-shell">
             <section class="about-page-hero glass-panel scroll-reveal">
                 <div class="about-page-hero-copy">
-                    <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">About</p>
-                    <h1 class="about-page-title">WordPress Developer in Egypt focused on custom plugins, WooCommerce growth, and clean implementation.</h1>
-                    <p class="about-page-lead text-gray-400">I build technical systems that help ecommerce brands move faster: custom WordPress plugin development, WooCommerce optimization, scalable store features, and ongoing engineering support that keeps revenue paths stable.</p>
+                    <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">About Me</p>
+                    <h1 class="about-page-title">Building modern websites with performance, clarity, and real business value.</h1>
+                    <p class="about-page-lead text-gray-400">I'm Zeyad Walid, a Full Stack Web, WordPress, and Plugin Developer based in Cairo, Egypt. I focus on turning ideas into polished, production-ready products with clean code and modern design.</p>
                     <div class="about-page-badges">
-                        <span class="about-page-badge">WordPress Plugin Developer</span>
-                        <span class="about-page-badge about-page-badge-blue">WooCommerce Specialist</span>
+                        <span class="about-page-badge">Full Stack Developer</span>
+                        <span class="about-page-badge about-page-badge-blue">WordPress Expert</span>
                         <span class="about-page-badge">Cairo, Egypt</span>
                     </div>
                 </div>
                 <div class="about-page-hero-card">
+                    <div class="about-page-portrait skeleton-img-wrapper">
+                        <div class="skeleton"></div>
+                        <img data-src="https://imgur.com/1KOGCag.png" alt="Zeyad Walid Portfolio Image" width="400" height="533" class="relative z-0 w-full h-full object-cover transition-opacity duration-500">
+                    </div>
                     <div class="about-page-stats">
                         <div class="about-page-stat">
-                            <strong>Custom</strong>
-                            <span>built around business needs</span>
+                            <strong>3+</strong>
+                            <span>Core areas</span>
                         </div>
                         <div class="about-page-stat">
-                            <strong>Fast</strong>
-                            <span>performance-first decisions</span>
+                            <strong>95%</strong>
+                            <span>Plugin dev</span>
                         </div>
                         <div class="about-page-stat">
-                            <strong>Focused</strong>
-                            <span>on WooCommerce revenue paths</span>
+                            <strong>Available</strong>
+                            <span>Freelance</span>
                         </div>
                     </div>
                 </div>
@@ -132,101 +147,173 @@
 
             <section class="about-story-grid">
                 <article class="about-story-panel glass-panel scroll-reveal reveal-left">
-                    <p class="about-story-label text-accent font-semibold tracking-widest uppercase">Positioning</p>
-                    <h2 class="about-story-title text-light">I help stores solve technical problems that directly affect sales and operations.</h2>
-                    <p class="about-story-text text-gray-400">My work sits between engineering and commerce. That means I do not just ship features. I look at the checkout friction, the plugin conflicts, the admin pain, the performance drag, and the opportunities to turn technical cleanup into measurable business improvement.</p>
-                    <p class="about-story-text text-gray-400">For brands searching for a <span lang="ar" dir="rtl">مطور ووردبريس</span> or WooCommerce developer who can build custom logic instead of stacking random plugins, this is the lane I work in best.</p>
+                    <p class="about-story-label text-accent font-semibold tracking-widest uppercase">My Story</p>
+                    <h2 class="about-story-title text-light">Full Stack &amp; WordPress Plugin Developer</h2>
+                    <p class="about-story-text text-gray-400">I learned individually and progressed to good progress and created projects with professional skills. I study information technology and systems.</p>
+                    <p class="about-story-text text-gray-400">I'm a self-taught full stack and wordpress developer, because I love the field and I love every detail of it. I want to join a team that helps me learn and a work environment that helps me develop because I aspire to become stronger in this field. I am looking for a team that shares the same sense of enthusiasm towards learning and continuous improvement, because I am convinced that any field has no end, and no matter how far I reach, I will try to develop towards the best.</p>
                 </article>
 
                 <aside class="about-details-panel glass-panel scroll-reveal reveal-right">
-                    <p class="about-story-label text-accent font-semibold tracking-widest uppercase">What Clients Usually Need</p>
+                    <p class="about-story-label text-accent font-semibold tracking-widest uppercase">Details</p>
                     <div class="about-details-list">
                         <div class="about-detail-item">
-                            <span class="about-detail-label">Plugins</span>
-                            <strong>Custom admin tools and frontend logic</strong>
+                            <span class="about-detail-label">Birthday</span>
+                            <strong>30/07/2002</strong>
                         </div>
                         <div class="about-detail-item">
-                            <span class="about-detail-label">WooCommerce</span>
-                            <strong>Custom product flows, checkout, and automation</strong>
+                            <span class="about-detail-label">Phone</span>
+                            <strong>+20 1065631338</strong>
                         </div>
                         <div class="about-detail-item">
-                            <span class="about-detail-label">Performance</span>
-                            <strong>Speed, stability, and conflict cleanup</strong>
+                            <span class="about-detail-label">City</span>
+                            <strong>Cairo</strong>
                         </div>
                         <div class="about-detail-item">
-                            <span class="about-detail-label">Scaling</span>
-                            <strong>Better architecture for growing stores</strong>
+                            <span class="about-detail-label">Email</span>
+                            <strong class="about-detail-email">zezo.magd30@gmail.com</strong>
                         </div>
                         <div class="about-detail-item">
-                            <span class="about-detail-label">Location</span>
-                            <strong>Cairo, Egypt</strong>
+                            <span class="about-detail-label">Level</span>
+                            <strong>Mid Level</strong>
                         </div>
                         <div class="about-detail-item">
-                            <span class="about-detail-label">Availability</span>
-                            <strong>Freelance and project-based</strong>
+                            <span class="about-detail-label">Age</span>
+                            <strong>24</strong>
+                        </div>
+                        <div class="about-detail-item">
+                            <span class="about-detail-label">Freelance</span>
+                            <strong>Available</strong>
                         </div>
                     </div>
                 </aside>
             </section>
-
-            <section class="proof-grid about-proof-grid">
-                <article class="trust-card glass-panel scroll-reveal">
-                    <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">How I Work</p>
-                    <h2 class="mini-section-title">Clear scope, practical solutions, and fewer fragile dependencies.</h2>
-                    <p class="text-gray-400">The goal is not adding complexity. It is removing friction. I choose the smallest reliable system that solves the actual business need, keeps editing manageable, and avoids creating future maintenance pain.</p>
-                </article>
-                <article class="trust-card glass-panel scroll-reveal">
-                    <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">Conversion Mindset</p>
-                    <h2 class="mini-section-title">Store decisions are measured against revenue and user flow.</h2>
-                    <p class="text-gray-400">Whether it is a custom plugin, a checkout enhancement, or a performance pass, I look at outcomes like sales lift, cleaner admin workflows, faster page rendering, and stronger trust during purchase.</p>
-                </article>
-            </section>
-
+            
+            <!-- Skills Section -->
             <section id="skills" class="about-skills-section">
                 <div class="about-skills-header section-title scroll-reveal">
                     <div>
-                        <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">Core Capabilities</p>
-                        <h2 class="about-skills-title">The stack behind custom WooCommerce solutions and modern WordPress systems.</h2>
+                        <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">Technical Skills</p>
+                        <h2 class="about-skills-title">The stack I use to build fast, scalable products.</h2>
                     </div>
-                    <p class="about-skills-copy text-gray-400">Strong plugin architecture, modern frontend implementation, practical backend work, and performance-aware development across the full ecommerce experience.</p>
+                    <p class="about-skills-copy text-gray-400">A balanced mix of front-end engineering, back-end systems, and advanced WordPress development focused on performance, flexibility, and maintainability.</p>
                 </div>
-
+                
                 <div class="about-skills-grid">
                     <div class="about-skill-panel glass-panel scroll-reveal reveal-left">
-                        <h3 class="about-skill-panel-title">WordPress and WooCommerce</h3>
-                        <div class="keyword-cloud">
-                            <span>Custom Plugins</span>
-                            <span>WooCommerce Hooks</span>
-                            <span>Checkout Logic</span>
-                            <span>Admin UX</span>
-                            <span>Store Automation</span>
-                            <span>Theme Integration</span>
+                        <h3 class="about-skill-panel-title"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg> Front-End App</h3>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">HTML5 & CSS3</span>
+                                <span class="text-accent text-sm">95%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar" data-width="95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">JavaScript & TypeScript</span>
+                                <span class="text-accent text-sm">85%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-100" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">React & Next.js</span>
+                                <span class="text-accent text-sm">80%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-200" data-width="80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">Tailwind CSS & Bootstrap</span>
+                                <span class="text-accent text-sm">90%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-300" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item mt-6">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold border-l-2 border-accent pl-2 leading-none">GSAP & Creative Coding</span>
+                                <span class="text-accent text-sm">95%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-400" data-width="95%"></div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="about-skill-panel glass-panel scroll-reveal reveal-right">
-                        <h3 class="about-skill-panel-title">Engineering and Performance</h3>
-                        <div class="keyword-cloud">
-                            <span>JavaScript</span>
-                            <span>PHP Workflows</span>
-                            <span>API Integrations</span>
-                            <span>Speed Optimization</span>
-                            <span>Bug Fixing</span>
-                            <span>Scalable Structure</span>
+                        <h3 class="about-skill-panel-title"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg> Back-End & WordPress</h3>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">Node.js & Express</span>
+                                <span class="text-accent text-sm">85%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar" data-width="85%"></div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            <section class="py-24">
-                <div class="glass-panel cta-shell scroll-reveal">
-                    <div class="text-center">
-                        <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">Best Fit</p>
-                        <h2 class="cta-title">A strong fit for stores that have already outgrown generic themes and plugin stacks.</h2>
-                        <p class="cta-copy text-gray-400">If the current store works but feels slow, limited, or hard to extend, the next step is usually a custom implementation plan rather than more plugin stacking.</p>
-                        <div class="hero-actions cta-actions">
-                            <a href="services.html" class="btn-primary">See Services</a>
-                            <a href="contact.html" class="btn-secondary">Start a Conversation</a>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">PHP & Laravel Framework</span>
+                                <span class="text-accent text-sm">85%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-100" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">Databases (MySQL & MongoDB)</span>
+                                <span class="text-accent text-sm">90%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-200" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">WordPress Custom Themes</span>
+                                <span class="text-accent text-sm">90%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-300" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">WordPress Plugin Development</span>
+                                <span class="text-accent text-sm">95%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-100" data-width="95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-light font-semibold">Performance Optimization & SEO</span>
+                                <span class="text-accent text-sm">85%</span>
+                            </div>
+                            <div class="w-full bg-dark rounded-full border border-gray-800 overflow-hidden relative" style="height:0.75rem;">
+                                <div class="bg-gradient-to-r from-accent to-blue-accent h-full rounded-full w-0 transition-all duration-1000 ease-out skill-bar delay-200" data-width="85%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,9 +321,10 @@
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-dark py-8 text-center border-t border-gray-800 relative z-10 w-full mt-auto">
         <p class="text-gray-500 text-sm mb-4">
-             2026 Zeyad Walid. WordPress Developer Egypt focused on WooCommerce and custom plugin development.
+             2026 Zeyad Walid. All rights reserved. Built with passion.
         </p>
         <div class="flex justify-center gap-4">
             <a href="https://github.com/zeyadwalied" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10" aria-label="GitHub Profile">
@@ -248,11 +336,12 @@
         </div>
     </footer>
 
+    <!-- Add GSAP & Lenis -->
     <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
+    
     <script src="scripts/waves.js" defer></script>
-    <script src="scripts/main.js?v=3" defer></script>
+    <script src="scripts/main.js" defer></script>
 </body>
 </html>

@@ -2,33 +2,28 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <script>
-        document.documentElement.classList.add('js-enabled');
-        if (window.matchMedia('(max-width: 767px)').matches) {
-            document.documentElement.classList.add('mobile-performance-mode');
-        }
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | WooCommerce Case Studies & WordPress Plugin Work</title>
-    <meta name="description" content="Explore WooCommerce case studies and WordPress plugin work focused on custom solutions, performance optimization, store growth, and conversion improvement.">
-    <meta name="keywords" content="WooCommerce Case Studies, WordPress Plugin Developer Portfolio, Custom WooCommerce Solutions, WooCommerce Developer Egypt">
+    <title>Zeyad Walid - Projects</title>
+    <meta name="description" content="Projects by Zeyad Walid, Full Stack Web & WordPress Developer.">
+    <meta name="keywords" content="Zeyad Walid, Projects, Full Stack Developer, WordPress Developer, Plugin Developer, Portfolio">
     <meta name="author" content="Zeyad Walid">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="https://zeyad-dev-portfolio.netlify.app/projects.html">
-
+    
+    <!-- Security Meta Tags -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:; frame-src https:;">
-
-    <meta property="og:title" content="Projects | WooCommerce Case Studies & WordPress Plugin Work">
-    <meta property="og:description" content="Three sample case studies showing how custom WooCommerce development and plugin engineering can improve sales, speed, and store operations.">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Zeyad Walid - Projects">
+    <meta property="og:description" content="Projects by Zeyad Walid, a Full Stack Web, Full Stack WordPress & Plugin Developer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zeyad-dev-portfolio.netlify.app/projects.html">
-    <meta property="og:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/zeyadlogo.webp">
+    <meta property="og:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/favicon.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/zeyadlogo.webp">
-
+    <meta name="twitter:image" content="https://zeyad-dev-portfolio.netlify.app/assets/images/favicon.webp">
     <style>
         :root { color-scheme: dark; }
         html { scroll-behavior: smooth; }
@@ -40,32 +35,50 @@
         .social-icon { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; border-radius: 9999px; }
     </style>
     <link rel="icon" type="image/webp" href="assets/images/favicon.webp">
-    <link rel="preload" as="style" href="styles/style.css?v=6">
-    <link rel="stylesheet" href="styles/style.css?v=6">
+    <link rel="preload" as="style" href="styles/style.css?v=5">
+    <link rel="stylesheet" href="styles/style.css?v=5">
 </head>
 <body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Wave Background -->
     <canvas id="wave-canvas"></canvas>
 
+    <!-- Global Floating Decorative Dots -->
     <div class="decor-dot w-5 h-5 animate-float-dot" style="background-color: #3b82f6; top: 8%; left: 6%; opacity: 0.4; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-8 h-8 animate-float-dot delay-1000" style="background-color: #10b981; top: 25%; right: 8%; opacity: 0.35; position: fixed; z-index: 1;"></div>
     <div class="decor-dot w-6 h-6 animate-float-dot delay-500" style="background-color: #8b5cf6; top: 45%; left: 4%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-10 h-10 animate-float-dot delay-2000" style="background-color: #3b82f6; top: 60%; right: 5%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-4 h-4 animate-float-dot delay-3000" style="background-color: #ec4899; top: 75%; left: 15%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-7 h-7 animate-float-dot delay-1500" style="background-color: #10b981; bottom: 10%; right: 12%; opacity: 0.3; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-9 h-9 animate-float-dot delay-700" style="background-color: #8b5cf6; top: 15%; right: 25%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-6 h-6 animate-float-dot delay-2500" style="background-color: #ec4899; bottom: 20%; left: 40%; opacity: 0.25; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-12 h-12 animate-float-dot delay-800" style="background-color: #3b82f6; top: 90%; left: 70%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+    <div class="decor-dot w-5 h-5 animate-float-dot delay-1200" style="background-color: #10b981; top: 35%; left: 50%; opacity: 0.2; position: fixed; z-index: 1;"></div>
+
+    <!-- Cyber Grid Background -->
     <div class="cyber-grid"></div>
 
+    <!-- Full Page Background Flowing Waves -->
     <svg class="sections-bg-waves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
-            <linearGradient id="bg-wave-projects-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+            <linearGradient id="bg-wave-1" x1="0%" y1="100%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
                 <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
             </linearGradient>
-            <linearGradient id="bg-wave-projects-2" x1="100%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
+            <linearGradient id="bg-wave-2" x1="100%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
                 <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03"/>
             </linearGradient>
+            <linearGradient id="bg-wave-3" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03"/>
+            </linearGradient>
         </defs>
-        <path d="M-100 900 Q100 750 80 550 Q60 350 200 200 Q340 50 500 -30 L540 -30 Q380 50 240 210 Q100 370 120 570 Q140 770 -60 900 Z" fill="url(#bg-wave-projects-1)"/>
-        <path d="M-50 920 Q150 770 140 580 Q130 390 270 240 Q410 90 580 0 L620 0 Q450 90 310 250 Q170 410 180 600 Q190 790 -10 920 Z" fill="url(#bg-wave-projects-2)"/>
+        <path d="M-100 900 Q100 750 80 550 Q60 350 200 200 Q340 50 500 -30 L540 -30 Q380 50 240 210 Q100 370 120 570 Q140 770 -60 900 Z" fill="url(#bg-wave-1)"/>
+        <path d="M-50 920 Q150 770 140 580 Q130 390 270 240 Q410 90 580 0 L620 0 Q450 90 310 250 Q170 410 180 600 Q190 790 -10 920 Z" fill="url(#bg-wave-2)"/>
+        <path d="M1540 -20 Q1350 130 1360 320 Q1370 510 1230 660 Q1090 810 920 920 L890 920 Q1060 810 1200 650 Q1340 490 1330 300 Q1320 110 1510 -20 Z" fill="url(#bg-wave-1)" opacity="0.5"/>
+        <path d="M1500 0 Q1320 150 1330 340 Q1340 530 1200 680 Q1060 830 900 940 L870 940 Q1030 830 1170 670 Q1310 510 1300 320 Q1290 130 1470 0 Z" fill="url(#bg-wave-3)" opacity="0.4"/>
     </svg>
-
+    <!-- Navbar -->
     <nav class="navbar glass-nav fixed top-0 w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="logo flex items-center hover-glow" aria-label="Zeyad Portfolio Home">
@@ -74,8 +87,8 @@
             <ul class="nav-links hidden md:flex space-x-8 gap-8 items-center">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="about.html#skills" class="nav-link">Skills</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li>
                     <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
@@ -89,84 +102,302 @@
                     <svg class="w-6 h-6 sun-icon block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg class="w-6 h-6 moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-                <button type="button" class="mobile-menu-btn cursor-pointer" aria-label="Open Menu">
+                <div class="mobile-menu-btn cursor-pointer" aria-label="Open Menu">
                     <svg class="w-8 h-8 text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
+                </div>
             </div>
         </div>
     </nav>
 
+    <!-- Projects Section -->
     <main id="projects" class="projects-page-main flex-1 relative z-10 w-full overflow-hidden">
+        <canvas id="projects-swarm-canvas" class="absolute inset-0 z-0 opacity-40 pointer-events-none"></canvas>
         <div class="container projects-page-shell relative z-10">
             <section class="projects-gallery-section">
                 <div class="projects-gallery-header section-title scroll-reveal">
                     <div>
-                        <p class="projects-page-kicker text-accent font-semibold tracking-widest uppercase">Case Studies</p>
-                        <h1 class="projects-gallery-title">WooCommerce and plugin case studies framed around business outcomes.</h1>
+                        <p class="projects-page-kicker text-accent font-semibold tracking-widest uppercase">Personal Projects</p>
+                        <h1 class="projects-gallery-title">Projects that blend modern design, clarity, and real functionality.</h1>
+                    </div>
+                </div>
+            
+            <div class="projects-gallery-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('O20BWdN3Z2g')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/O20BWdN3Z2g/maxresdefault.jpg" alt="Modern Personal Portfolio Website" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Modern Personal Portfolio Website</h3>
+                        <p class="text-gray-400 text-sm flex-1">A polished portfolio website created to showcase my projects, technical skills, and services through modern visuals, smooth interactions, responsive design, and a clean user experience.</p>
+                        <div class="project-card-actions flex gap-2 mt-8 w-full">
+                            <a href="https://github.com/zeyadwalied/zeyad-portfolio" target="_blank" rel="noopener noreferrer" class="btn-secondary flex-1 justify-center inline-flex items-center gap-2 group px-3" aria-label="View portfolio source code on GitHub">
+                                <svg class="w-5 h-5 group-hover-text-accent transition-colors shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+                                <span class="whitespace-nowrap text-sm">GitHub</span>
+                            </a>
+                            <a href="https://zeyad-dev-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary flex-1 justify-center inline-flex items-center gap-2 group px-3 hover:border-[#10b981] hover:text-[#10b981] transition-colors" aria-label="Visit Website">
+                                <svg class="w-5 h-5 transition-colors group-hover:text-[#10b981] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <span class="transition-colors group-hover:text-[#10b981] whitespace-nowrap text-sm">Website</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('Ojp5IUSYfM8')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/Ojp5IUSYfM8/maxresdefault.jpg" alt="Cipher Store Showcase" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">Cipher Store Showcase</h3>
+                        <p class="text-gray-400 text-sm flex-1">A fully automated e-commerce platform for digital products, software licenses, and game keys with instant delivery, manual order chat workflows, Discord integration, and a complete admin dashboard.</p>
+                        <div class="project-card-actions flex flex-wrap gap-2 mt-8 w-full">
+                            <a href="https://github.com/zeyadwalied/Cipher-Store" target="_blank" rel="noopener noreferrer" class="btn-secondary flex-1 justify-center inline-flex items-center gap-2 group px-3 min-w-[30%]" aria-label="View Cipher Store source code on GitHub">
+                                <svg class="w-4 h-4 group-hover-text-accent transition-colors shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+                                <span class="whitespace-nowrap text-xs">GitHub</span>
+                            </a>
+                            <a href="https://cipher-store-five.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-secondary flex-1 justify-center inline-flex items-center gap-2 group px-3 min-w-[30%] hover:border-[#10b981] hover:text-[#10b981] transition-colors" aria-label="Visit Website">
+                                <svg class="w-4 h-4 transition-colors group-hover:text-[#10b981] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <span class="transition-colors group-hover:text-[#10b981] whitespace-nowrap text-xs">Website</span>
+                            </a>
+                            <a href="https://cipher-store-five.vercel.app/login?demo=true" target="_blank" rel="noopener noreferrer" class="demo-btn w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-white text-xs font-semibold tracking-wide transition-all duration-300 hover:-translate-y-0.5" aria-label="Try Demo">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span class="whitespace-nowrap">Try Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('BgCeRvVLTSU')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/BgCeRvVLTSU/maxresdefault.jpg" alt="WAVES ALL IN ONE BADGES" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">WAVES ALL IN ONE BADGES AND DISCOUNT PERCENTAGE</h3>
+                        <p class="text-gray-400 text-sm flex-1">A powerful WordPress plugin that allows you to create and manage custom discounts directly from the dashboard. With its user-friendly interface, it's perfect for store owners who want to boost sales through organized and easy-to-apply promotional offers.</p>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('lheaJ-dqDm8')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/lheaJ-dqDm8/maxresdefault.jpg" alt="Music Update Home Page" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Music Update Home Page</h3>
+                        <p class="text-gray-400 text-sm flex-1">Discover creativity and a fresh new design in the updated music homepage. This demo clearly showcases the transformation with an easy comparison between the "before" and "after" versions.</p>
+                        <div class="project-card-actions flex gap-2 mt-8 w-full">
+                            <a href="https://musccollection.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary flex-1 justify-center inline-flex items-center gap-2 group px-3 hover:border-[#10b981] hover:text-[#10b981] transition-colors" aria-label="Visit Website">
+                                <svg class="w-5 h-5 transition-colors group-hover:text-[#10b981] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <span class="transition-colors group-hover:text-[#10b981] whitespace-nowrap text-sm">Website</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('5A3K3tXCWpw')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/5A3K3tXCWpw/maxresdefault.jpg" alt="My Portfolio" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">My Portfolio</h3>
+                        <p class="text-gray-400 text-sm flex-1">Showcasing my front-end development skills, local data management, API interaction, graphic design, and problem-solving, while offering easy content management through the admin mode.</p>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('mcsH--Bz26M')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/mcsH--Bz26M/maxresdefault.jpg" alt="Blogger" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">Blogger</h3>
+                        <p class="text-gray-400 text-sm flex-1">A script for a smooth and light blog, with posts, with the ability to add and edit posts, a script that is attractive to the eye and dynamic. Add CSS to the rest of the posts and pages and an attractive follow button.</p>
                     </div>
                 </div>
 
-                <div class="case-study-grid">
-                    <article id="case-study-1" class="case-study-panel glass-panel project-card scroll-reveal">
-                        <span class="service-eyebrow">Case Study 01</span>
-                        <h2>Custom WooCommerce Bundle Builder for a Growing Store</h2>
-                        <p><strong>Problem:</strong> A product bundle offer was difficult to configure on mobile and desktop, which caused confusion, abandoned carts, and a low upsell acceptance rate.</p>
-                        <p><strong>Solution:</strong> Rebuilt the flow with custom WooCommerce product logic, cleaner option handling, improved frontend interaction, and clearer pricing communication.</p>
-                        <p><strong>Technologies Used:</strong> WooCommerce hooks, custom plugin architecture, JavaScript UI enhancements, tailored cart and pricing rules.</p>
-                        <p><strong>Results:</strong> +22% add-to-cart rate, +14% average order value, and a smoother configuration flow that reduced support questions around the offer.</p>
-                    </article>
-
-                    <article id="case-study-2" class="case-study-panel glass-panel project-card scroll-reveal">
-                        <span class="service-eyebrow">Case Study 02</span>
-                        <h2>WordPress Plugin for Dynamic Promotions and Discount Visibility</h2>
-                        <p><strong>Problem:</strong> The marketing team needed flexible discount badges and campaign logic without waiting on developer edits every time a new promotion launched.</p>
-                        <p><strong>Solution:</strong> Built a custom WordPress plugin with admin controls for campaign display, badge placement, discount conditions, and on-site promotional messaging.</p>
-                        <p><strong>Technologies Used:</strong> WordPress plugin development, custom admin settings, WooCommerce integration, frontend badge rendering logic.</p>
-                        <p><strong>Results:</strong> +18% promotion conversion rate, much faster campaign launch cycles, and cleaner internal workflows for non-technical store staff.</p>
-                    </article>
-
-                    <article id="case-study-3" class="case-study-panel glass-panel project-card scroll-reveal">
-                        <span class="service-eyebrow">Case Study 03</span>
-                        <h2>WooCommerce Performance Rescue for a Slow Storefront</h2>
-                        <p><strong>Problem:</strong> The store suffered from long page loads, plugin conflicts, and unstable behavior during traffic spikes, hurting SEO readiness and paid traffic efficiency.</p>
-                        <p><strong>Solution:</strong> Audited the stack, removed unnecessary overhead, optimized resource delivery, and cleaned the interaction between theme code, plugins, and WooCommerce templates.</p>
-                        <p><strong>Technologies Used:</strong> WordPress debugging, WooCommerce template optimization, JavaScript cleanup, performance auditing and refactoring.</p>
-                        <p><strong>Results:</strong> -43% load time, +16% conversion improvement, and a much more stable store experience during campaigns and higher traffic windows.</p>
-                    </article>
-                </div>
-            </section>
-
-            <section class="proof-grid">
-                <article class="trust-card glass-panel scroll-reveal">
-                    <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">Why These Matter</p>
-                    <h2 class="mini-section-title">Clients want proof that technical work can move business metrics.</h2>
-                    <p class="text-gray-400">That is why each case study is structured around problem, solution, technologies used, and measurable outcome. It helps visitors connect development work to conversion, speed, and sales impact.</p>
-                </article>
-                <article class="trust-card glass-panel scroll-reveal">
-                    <p class="about-page-kicker text-accent font-semibold tracking-widest uppercase">Next Link in the Funnel</p>
-                    <h2 class="mini-section-title">From proof to inquiry.</h2>
-                    <p class="text-gray-400">After reading a case study, the next best step is either reviewing the service page for scope alignment or contacting directly to discuss a similar WooCommerce challenge.</p>
-                    <div class="link-cluster">
-                        <a href="services.html">See Services</a>
-                        <a href="contact.html">Start Project</a>
+                <!-- Project 5 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('W00Ex0_vn-8')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/W00Ex0_vn-8/maxresdefault.jpg" alt="Cruds" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Cruds with Modern Background</h3>
+                        <p class="text-gray-400 text-sm flex-1">In summary, this system is an effective tool for product management, blending programming logic with contemporary design techniques to deliver a seamless user experience. It empowers users to efficiently add, modify, delete, and search for products.</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('r8Yfm2S6eD4')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/r8Yfm2S6eD4/maxresdefault.jpg" alt="New Idea" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">A New Idea: Moving Boat</h3>
+                        <p class="text-gray-400 text-sm flex-1">Moving Elements: When the user scrolls up or down, the positions of the elements are adjusted based on the scroll distance. Text Size Control, Background Change based on the scroll position, creating an attractive effect.</p>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('Zp0sfB7cl2I')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/Zp0sfB7cl2I/hqdefault.jpg" alt="iPhone Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">iPhone Web</h3>
+                        <p class="text-gray-400 text-sm flex-1">iPhone web with a simple design using HTML, CSS, and JavaScript.</p>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 100ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('v6vl-iHRyJs')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/v6vl-iHRyJs/maxresdefault.jpg" alt="Shop with HTML and CSS" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-blue-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-blue-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-blue-accent leading-snug">Shop with HTML and CSS only</h3>
+                        <p class="text-gray-400 text-sm flex-1">Shop in an elegant and beautiful way with HTML and CSS, a modern and attractive look, including a Nav Bar and Login functionality.</p>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card project-page-card interactive-morph-card flex flex-col glass-panel rounded-xl overflow-hidden border border-gray-800 transition-colors duration-300 scroll-reveal hover-border-accent bg-dark-secondary bg-opacity-80" style="transition-delay: 200ms;">
+                    <div class="h-64 relative bg-gray-900 w-full group overflow-hidden cursor-pointer skeleton-img-wrapper" onclick="openVideoModal('YYo_SaHFNSs')">
+                        <div class="skeleton"></div>
+                        <img data-src="https://img.youtube.com/vi/YYo_SaHFNSs/maxresdefault.jpg" alt="Adidas Web" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110 group-hover:opacity-50">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center relative shadow-lg">
+                                <svg class="w-8 h-8 text-dark ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-lg font-bold mb-3 text-accent leading-snug">Adidas Web</h3>
+                        <p class="text-gray-400 text-sm flex-1">A simple HTML CSS website designed by Adidas in a modern way.</p>
+                    </div>
+                </div>
+
+            </div>
             </section>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-dark py-8 text-center border-t border-gray-800 relative z-10 w-full mt-auto">
         <p class="text-gray-500 text-sm mb-4">
-             2026 Zeyad Walid. WooCommerce case studies and WordPress plugin work.
+             2026 Zeyad Walid. All rights reserved. Built with passion.
         </p>
+        <div class="flex justify-center gap-4">
+            <a href="https://github.com/zeyadwalied" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10" aria-label="GitHub Profile">
+                <svg class="w-5 h-5 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/zeyad-walid-691752277/" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10" aria-label="LinkedIn Profile">
+                <svg class="w-5 h-5 group-hover-text-dark transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.475-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+        </div>
     </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-100 bg-black bg-opacity-95 hidden items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-5xl mx-auto">
+            <!-- Close Button -->
+            <button onclick="closeVideoModal()" class="absolute -top-12 lg:-top-16 right-0 text-gray-400 hover:text-accent transition-colors z-50">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="relative modal-video-container w-full bg-black rounded-2xl overflow-hidden shadow-glow border border-gray-800">
+                <div class="skeleton absolute inset-0 z-10 transition-opacity duration-500 pointer-events-none"></div>
+                <iframe id="modalIframe" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Project Showcase Video"></iframe>
+            </div>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
+    
     <script src="scripts/waves.js" defer></script>
     <script src="scripts/morphing-sphere.js" defer></script>
-    <script src="scripts/main.js?v=3" defer></script>
+    <script src="scripts/main.js?v=2" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof MorphingSphere !== 'undefined') {
+                new MorphingSphere('projects-swarm-canvas', {
+                    targetSelector: '.interactive-morph-card',
+                    numParticles: 1200,
+                    colors: ['#3b82f6', '#10b981', '#fbbf24']
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
+
