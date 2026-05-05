@@ -311,6 +311,74 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
 
+        // 6.1 Services preview cards - stronger staggered reveal
+        const servicesPreviewSection = document.querySelector('#services-preview');
+        if (servicesPreviewSection) {
+            const servicesHead = servicesPreviewSection.querySelector('.services-preview-head');
+            const serviceCards = servicesPreviewSection.querySelectorAll('.service-preview-card');
+            const servicesActions = servicesPreviewSection.querySelector('.services-preview-actions');
+
+            if (servicesHead) {
+                gsap.fromTo(servicesHead.children,
+                    { y: 34, opacity: 0, filter: "blur(8px)" },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        filter: "blur(0px)",
+                        duration: 0.9,
+                        stagger: 0.12,
+                        ease: "expo.out",
+                        scrollTrigger: {
+                            trigger: servicesPreviewSection,
+                            start: "top 82%"
+                        }
+                    }
+                );
+            }
+
+            if (serviceCards.length) {
+                gsap.fromTo(serviceCards,
+                    { y: 60, opacity: 0, rotateX: -14, scale: 0.94, filter: "blur(10px)" },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        rotateX: 0,
+                        scale: 1,
+                        filter: "blur(0px)",
+                        duration: 1.05,
+                        stagger: {
+                            each: 0.08,
+                            grid: "auto",
+                            from: "start"
+                        },
+                        ease: "expo.out",
+                        scrollTrigger: {
+                            trigger: servicesPreviewSection.querySelector('.services-preview-grid'),
+                            start: "top 84%"
+                        }
+                    }
+                );
+            }
+
+            if (servicesActions) {
+                gsap.fromTo(servicesActions.children,
+                    { y: 24, opacity: 0, scale: 0.92 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.75,
+                        stagger: 0.08,
+                        ease: "back.out(1.5)",
+                        scrollTrigger: {
+                            trigger: servicesActions,
+                            start: "top 88%"
+                        }
+                    }
+                );
+            }
+        }
+
         // 7. Generic Inner Page Reveals (Left/Right/Cards)
         gsap.utils.toArray('.reveal-left').forEach(el => {
             gsap.fromTo(el, 
