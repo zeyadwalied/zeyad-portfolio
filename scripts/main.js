@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 8. Subpage Heroes / Headers (Above fold animations)
-        const subHeroes = gsap.utils.toArray('.about-page-hero, .contact-page-hero');
+        const subHeroes = gsap.utils.toArray('.about-page-hero, .contact-page-hero, .services-page-hero');
         subHeroes.forEach(hero => {
             gsap.fromTo(hero, 
                 { y: 40, opacity: 0 }, 
