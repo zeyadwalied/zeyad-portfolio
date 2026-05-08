@@ -58,6 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
+        // Recalculate ScrollTrigger positions once layout/fonts are stable.
+        // Fixes mobile flicker where cards animate against a stale viewport size.
+        const refreshTriggers = () => ScrollTrigger.refresh();
+        window.addEventListener('load', refreshTriggers);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(refreshTriggers).catch(() => {});
+        }
+        let resizeRaf;
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeRaf);
+            resizeRaf = requestAnimationFrame(refreshTriggers);
+        });
+
         // 0. Hero Content Wrapper Entrance (no wave floating)
         const heroWrapper = document.querySelector('.hero-content-wrapper');
         if (heroWrapper) {
@@ -286,26 +299,28 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
 
-        // 6. Skill cards — Staggered Wave with Scale
+        // 6. Skill cards — Wave-style staggered reveal with sine timing
         const skillsSection = document.querySelector('#skills-overview');
         if (skillsSection) {
-            gsap.fromTo(".icon-skill-card", 
+            gsap.fromTo(".icon-skill-card",
                 { y: 40, opacity: 0, scale: 0.9, filter: "blur(10px)" },
-                { 
-                    y: 0, 
-                    opacity: 1, 
+                {
+                    y: 0,
+                    opacity: 1,
                     scale: 1,
                     filter: "blur(0px)",
-                    duration: 1.2, 
+                    duration: 1.1,
                     stagger: {
-                        each: 0.04,
+                        each: 0.07,
                         grid: "auto",
-                        from: "start"
-                    }, 
+                        from: "start",
+                        ease: "sine.inOut"
+                    },
                     ease: "expo.out",
                     scrollTrigger: {
                         trigger: ".skills-icon-grid",
-                        start: "top 85%",
+                        start: "top 88%",
+                        once: true
                     }
                 }
             );
@@ -337,24 +352,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (serviceCards.length) {
+                // Modern cascade reveal with clip-path and gentle float up
                 gsap.fromTo(serviceCards,
-                    { y: 60, opacity: 0, rotateX: -14, scale: 0.94, filter: "blur(10px)" },
+                    { 
+                        y: 80, 
+                        opacity: 0,
+                        clipPath: "inset(0 0 100% 0)" 
+                    },
                     {
                         y: 0,
                         opacity: 1,
-                        rotateX: 0,
-                        scale: 1,
-                        filter: "blur(0px)",
-                        duration: 1.05,
+                        clipPath: "inset(0 0 0% 0)",
+                        duration: 1.1,
                         stagger: {
-                            each: 0.08,
-                            grid: "auto",
-                            from: "start"
+                            each: 0.12,
+                            from: "start",
+                            ease: "power2.inOut"
                         },
-                        ease: "expo.out",
+                        ease: "power4.out",
+                        force3D: true,
                         scrollTrigger: {
                             trigger: servicesPreviewSection.querySelector('.services-preview-grid'),
-                            start: "top 84%"
+                            start: "top 85%",
+                            once: true
                         }
                     }
                 );

@@ -237,11 +237,24 @@ class MorphingSphere {
     setupObserver() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                this.isActive = entry.isIntersecting;
+                this.isActive = entry.isIntersecting && !document.hidden;
                 if (this.isActive) this.animate();
             });
         }, { threshold: 0.05 });
         observer.observe(this.canvas);
+
+        // Pause when tab is hidden to save CPU/GPU
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.isActive = false;
+            } else {
+                const rect = this.canvas.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight && !this.isActive) {
+                    this.isActive = true;
+                    this.animate();
+                }
+            }
+        });
     }
     
     rotate3D(x, y, z, rotX, rotY) {

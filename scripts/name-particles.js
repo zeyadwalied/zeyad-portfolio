@@ -149,6 +149,20 @@ class NameAnimation {
         }, { threshold: 0 });
         
         observer.observe(this.canvas);
+
+        // Pause when tab is hidden to save CPU/GPU
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.isActive = false;
+                if (this.animationFrameId) {
+                    cancelAnimationFrame(this.animationFrameId);
+                    this.animationFrameId = null;
+                }
+            } else if (this.canvas.getBoundingClientRect().top < window.innerHeight && !this.isActive) {
+                this.isActive = true;
+                this.animate();
+            }
+        });
     }
 
     init() {

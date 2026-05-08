@@ -66,10 +66,20 @@ class HeroAutoMorph {
     setupObserver() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                this.isActive = entry.isIntersecting;
+                this.isActive = entry.isIntersecting && !document.hidden;
             });
         }, { threshold: 0.1 });
         observer.observe(this.canvas);
+
+        // Pause when tab is hidden to save CPU/GPU
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.isActive = false;
+            } else {
+                const rect = this.canvas.getBoundingClientRect();
+                this.isActive = rect.bottom > 0 && rect.top < window.innerHeight;
+            }
+        });
     }
     
     resize() {
