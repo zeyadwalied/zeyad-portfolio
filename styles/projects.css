@@ -1,0 +1,229 @@
+﻿/* ===== Projects Page Redesign ===== */
+.projects-page-main {
+    padding: calc(var(--nav-height) + clamp(2rem, 4vw, 3rem)) 0 clamp(4rem, 7vw, 6rem);
+    position: relative;
+}
+
+.projects-page-shell {
+    width: min(100%, 1600px);
+    max-width: 1600px;
+    padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.projects-page-kicker {
+    margin-bottom: 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+}
+
+.projects-gallery-section {
+    position: relative;
+}
+
+.projects-gallery-section::before {
+    content: '';
+    position: absolute;
+    inset: 1% 0 auto;
+    height: 240px;
+    background:
+        radial-gradient(circle at 12% 32%, rgba(16, 185, 129, 0.18), transparent 32%),
+        radial-gradient(circle at 84% 18%, rgba(59, 130, 246, 0.16), transparent 28%),
+        linear-gradient(90deg, transparent 8%, rgba(139, 92, 246, 0.16) 28%, rgba(16, 185, 129, 0.14) 52%, rgba(59, 130, 246, 0.16) 76%, transparent 94%);
+    filter: blur(24px);
+    opacity: 0.78;
+    pointer-events: none;
+}
+
+.projects-gallery-header {
+    max-width: 1320px;
+    margin: 0 auto clamp(2rem, 4vw, 3rem) !important;
+    text-align: left;
+    position: relative;
+    padding: 0 clamp(0.15rem, 1vw, 0.5rem);
+}
+
+.projects-gallery-header::before {
+    content: '';
+    position: absolute;
+    left: -3%;
+    top: -3.5rem;
+    width: min(68vw, 720px);
+    height: 180px;
+    border-radius: 999px;
+    background: linear-gradient(100deg, rgba(16, 185, 129, 0.16), rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.14));
+    opacity: 0.72;
+    filter: blur(16px);
+    transform: rotate(-14deg);
+    pointer-events: none;
+}
+
+.projects-gallery-title {
+    margin: 0;
+    max-width: 20ch;
+    font-size: clamp(2.45rem, 4vw, 4.2rem);
+    line-height: 1.04;
+    letter-spacing: -0.05em;
+    color: #f8fafc;
+}
+
+.projects-gallery-grid {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    gap: clamp(1.15rem, 2vw, 1.7rem) !important;
+}
+
+.projects-gallery-grid::before {
+    content: '';
+    position: absolute;
+    inset: -6% 3% auto;
+    height: 420px;
+    background:
+        radial-gradient(circle at 12% 24%, rgba(16, 185, 129, 0.16), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(59, 130, 246, 0.14), transparent 30%);
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+.project-page-card {
+    position: relative;
+    min-height: 100%;
+    border-radius: 1.6rem !important;
+    border: 1px solid rgba(148, 163, 184, 0.14) !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.95)) !important;
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.26);
+    overflow: hidden;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-page-card:nth-child(3n + 1) {
+    border-color: rgba(16, 185, 129, 0.18) !important;
+    background:
+        radial-gradient(circle at top left, rgba(16, 185, 129, 0.16), transparent 32%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95)) !important;
+}
+
+.project-page-card:nth-child(3n + 2) {
+    border-color: rgba(59, 130, 246, 0.18) !important;
+    background:
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 32%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95)) !important;
+}
+
+.project-page-card:nth-child(3n) {
+    border-color: rgba(139, 92, 246, 0.18) !important;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(139, 92, 246, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95)) !important;
+}
+
+.project-page-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.06), transparent 32%, transparent 74%, rgba(16, 185, 129, 0.08));
+    pointer-events: none;
+}
+
+.project-page-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(16, 185, 129, 0.34) !important;
+    box-shadow: 0 34px 80px rgba(2, 6, 23, 0.4);
+}
+
+.project-page-card:nth-child(even):hover {
+    border-color: rgba(59, 130, 246, 0.34) !important;
+}
+
+.project-page-card .h-64 {
+    height: clamp(220px, 22vw, 290px);
+    position: relative;
+}
+
+.project-page-card .h-64::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 40%;
+    background: linear-gradient(180deg, transparent, rgba(2, 6, 23, 0.68));
+    pointer-events: none;
+}
+
+.project-page-card .p-6 {
+    position: relative;
+    z-index: 1;
+    padding: 1.35rem 1.35rem 1.5rem !important;
+    gap: 0.75rem;
+}
+
+.project-page-card h3 {
+    margin-bottom: 0 !important;
+    font-size: 1.32rem !important;
+    line-height: 1.18;
+}
+
+.project-page-card p {
+    font-size: 0.98rem !important;
+    line-height: 1.8;
+    color: #cbd5e1 !important;
+}
+
+.project-page-card .w-16.h-16 {
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 0 24px 40px rgba(2, 6, 23, 0.34);
+}
+
+[data-theme="light"] .project-page-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.97)) !important;
+    border-color: rgba(148, 163, 184, 0.2) !important;
+    box-shadow: 0 24px 56px rgba(148, 163, 184, 0.16);
+}
+
+[data-theme="light"] .projects-gallery-title {
+    color: #0f172a;
+}
+
+[data-theme="light"] .project-page-card p {
+    color: #475569 !important;
+}
+
+[data-theme="light"] .project-page-card::before {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.82), transparent 34%, transparent 74%, rgba(16, 185, 129, 0.04));
+}
+
+[data-theme="light"] .project-page-card .h-64::after {
+    background: linear-gradient(180deg, transparent, rgba(248, 250, 252, 0.26));
+}
+
+@media (max-width: 767px) {
+    .projects-page-main {
+        padding: calc(var(--nav-height) + 1.5rem) 0 4rem;
+    }
+
+    .projects-page-shell {
+        padding-inline: 1rem;
+    }
+
+    .projects-gallery-title {
+        max-width: none;
+        font-size: clamp(1.9rem, 8vw, 2.7rem);
+        line-height: 1.05;
+    }
+
+    .project-page-card {
+        border-radius: 1.3rem !important;
+    }
+
+    .project-page-card .p-6 {
+        padding: 1.1rem 1.1rem 1.25rem !important;
+    }
+
+    .projects-gallery-section::before,
+    .projects-gallery-header::before,
+    .about-page-hero-copy::after,
+    .about-skill-panel::after,
+    .contact-page-hero-copy::after {
+        display: none;
+    }
+}
