@@ -236,17 +236,15 @@ class MorphingSphere {
                 this.leaveTimeout = setTimeout(() => this.morphToSphere(), 150);
             });
 
-            // Mobile: tap to hide SVG icon (same as desktop hover)
+            // Mobile: click to hide SVG icon (not touchstart, so scrolling works)
             if (isMobile) {
-                card.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
+                card.addEventListener('click', (e) => {
                     // Manually hide SVG and trigger morph
                     gsap.killTweensOf(svg);
                     gsap.to(svg, { opacity: 0, duration: 0.15 });
                     clearTimeout(this.leaveTimeout);
                     this.morphToShape(svg);
-                }, { passive: false });
+                });
             }
         });
     }
