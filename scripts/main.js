@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ===== Initialize Lenis Smooth Scrolling =====
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
     if (typeof Lenis !== 'undefined') {
         window.lenis = new Lenis({
-            duration: 2.4,
+            duration: isMobile ? 1.2 : 2.4, // Faster on mobile for better performance
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -12 * t)),
             direction: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 0.85,
-            touchMultiplier: 1.6,
-            lerp: 0.08
+            wheelMultiplier: isMobile ? 1.0 : 0.85, // Less smoothing on mobile
+            touchMultiplier: isMobile ? 1.2 : 1.6, // Less aggressive touch scroll
+            lerp: isMobile ? 0.15 : 0.08, // Higher lerp = less smooth but better performance
+            infinite: false
         });
 
         if (typeof gsap !== 'undefined') {

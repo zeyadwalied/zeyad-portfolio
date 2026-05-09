@@ -220,7 +220,9 @@ class ServicesSignatureOrbs {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('services-signature-canvas')) {
+    // Disable on mobile for performance
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (!isMobile && document.getElementById('services-signature-canvas')) {
         window.servicesSignatureOrbs = new ServicesSignatureOrbs('services-signature-canvas');
     }
 });

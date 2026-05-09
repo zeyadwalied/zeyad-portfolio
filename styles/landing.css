@@ -1214,6 +1214,12 @@
     opacity: 0.4;
 }
 
+.kinetic-pin-compact .kinetic-pin-tags-wrapper {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
 .kinetic-pin-compact .kinetic-pin-tag-a { top: 8%; left: 5%; }
 .kinetic-pin-compact .kinetic-pin-tag-b { top: 12%; right: 5%; }
 .kinetic-pin-compact .kinetic-pin-tag-c { bottom: 12%; left: 6%; }
@@ -1245,14 +1251,33 @@
         opacity: 1 !important;
     }
 
-    .kinetic-pin-compact .kinetic-pin-tag {
-        position: relative;
-        inset: auto !important;
-        margin: 0.3rem;
+    .kinetic-pin-compact .kinetic-pin-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .kinetic-pin-compact .kinetic-pin-stack {
         padding: 1rem;
+        width: 100%;
+    }
+
+    .kinetic-pin-compact .kinetic-pin-tag {
+        position: relative !important;
+        inset: auto !important;
+        margin: 0.4rem;
+        order: 3;
+    }
+
+    .kinetic-pin-compact .kinetic-pin-tags-wrapper {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding: 0 1rem;
+        pointer-events: auto;
     }
 
     .kinetic-pin-compact .kinetic-pin-sub {
@@ -1262,7 +1287,28 @@
 
     .kinetic-pin-compact .kinetic-pin-meta {
         flex-wrap: wrap;
-        gap: 0.5rem;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+
+    .kinetic-pin-compact .kinetic-pin-meta-item {
+        align-items: center;
+        text-align: center;
+        min-width: 70px;
+    }
+
+    .kinetic-pin-compact .kinetic-pin-meta-num {
+        font-size: 1.1rem;
+    }
+
+    .kinetic-pin-compact .kinetic-pin-meta-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+    }
+
+    .kinetic-pin-compact .kinetic-pin-meta-divider {
+        height: 20px;
     }
 }
 
@@ -2333,6 +2379,38 @@
     }
 }
 @media (max-width: 767px) {
+    /* Performance optimizations for mobile */
+    * {
+        will-change: auto !important;
+    }
+
+    /* Disable heavy blur effects on mobile */
+    .kinetic-pin-glow,
+    .kinetic-pin-grid,
+    .hero-marquee-band::before,
+    .hero-marquee-band::after {
+        display: none !important;
+    }
+
+    /* Reduce backdrop-filter usage */
+    .glass-panel,
+    .kinetic-chip,
+    .kinetic-pin-tag {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* Simplify animations */
+    .hero-marquee-track {
+        animation: none !important;
+    }
+
+    /* Content visibility for off-screen sections - improves scroll performance */
+    section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 300px;
+    }
+
     #quick-about,
     #skills-overview {
         padding: 4rem 0;
