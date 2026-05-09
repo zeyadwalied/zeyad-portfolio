@@ -2,11 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Initialize Lenis Smooth Scrolling =====
     if (typeof Lenis !== 'undefined') {
         window.lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            duration: 2.4,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -12 * t)),
             direction: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 1.2
+            wheelMultiplier: 0.85,
+            touchMultiplier: 1.6,
+            lerp: 0.08
         });
 
         if (typeof gsap !== 'undefined') {
@@ -66,9 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroName = document.querySelector('.hero-name-text');
         const scannerLine = document.querySelector('.scanner-line');
         if (heroName && scannerLine) {
+            const nameWidth = heroName.getBoundingClientRect().width;
             heroTl.set(heroName, { opacity: 1, clipPath: "inset(0 100% 0 0)" })
-                  .fromTo(scannerLine, { opacity: 0, left: "0%" }, { opacity: 1, duration: 0.1 })
-                  .to(scannerLine, { left: "100%", duration: 0.9, ease: "power4.inOut" })
+                  .fromTo(scannerLine, { opacity: 0, left: 0 }, { opacity: 1, duration: 0.1 })
+                  .to(scannerLine, { left: nameWidth, duration: 0.9, ease: "power4.inOut" })
                   .to(heroName, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power4.inOut" }, "<")
                   .to(scannerLine, { opacity: 0, duration: 0.2 });
         }
@@ -439,89 +442,212 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         });
 
-        // 9. Premium 3D Window Scrub (Darkroom Style)
-        const windowReveal = document.querySelector('.premium-window-reveal');
-        if (windowReveal) {
-            const wrapper = windowReveal.querySelector('.window-wrapper');
-            const img = windowReveal.querySelector('.window-img');
-            
-            // Set initial 3D state
-            gsap.set(wrapper, { rotationX: 45, scale: 0.6, y: 200, transformOrigin: "center center" });
+        // 9. Kinetic Pin Scene (full pinned variant only)
+        const kineticPin = document.querySelector('.kinetic-pin-scene:not(.kinetic-pin-compact)');
+        if (kineticPin && !isMobileMotionViewport) {
+            const eyebrow = kineticPin.querySelector('.kinetic-pin-eyebrow');
+            const lines = kineticPin.querySelectorAll('.kinetic-pin-line');
+            const sub = kineticPin.querySelector('.kinetic-pin-sub');
+            const meta = kineticPin.querySelector('.kinetic-pin-meta');
+            const tags = kineticPin.querySelectorAll('.kinetic-pin-tag');
+            const glows = kineticPin.querySelectorAll('.kinetic-pin-glow');
 
-            const tl = gsap.timeline({
+            gsap.set(eyebrow, { opacity: 0, y: 24 });
+            gsap.set(lines, { opacity: 0, yPercent: 110 });
+            gsap.set(sub, { opacity: 0, y: 26 });
+            gsap.set(meta, { opacity: 0, y: 30, scale: 0.94 });
+            gsap.set(tags, { opacity: 0, scale: 0.85, y: 30 });
+
+            const enterTl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: windowReveal,
-                    start: "top bottom",
-                    end: "bottom bottom",
-                    scrub: 1,
+                    trigger: kineticPin,
+                    start: 'top 70%',
+                    end: 'top 10%',
+                    scrub: 1
                 }
             });
 
-            tl.to(wrapper, {
-                rotationX: 0,
-                scale: 1,
-                y: 0,
-                width: "100vw",
-                height: "100vh",
-                borderRadius: "0px",
-                ease: "none"
-            }, 0)
-            .to(img, {
-                scale: 1,
-                ease: "none"
-            }, 0);
-            
-            // Fade out the browser header as it becomes full screen
-            tl.to(wrapper.querySelector('.browser-header'), {
-                opacity: 0,
-                height: 0,
-                ease: "power2.inOut"
-            }, 0.5);
+            enterTl
+                .to(eyebrow, { opacity: 1, y: 0, ease: 'power2.out' }, 0)
+                .to(lines, { opacity: 1, yPercent: 0, ease: 'power3.out', stagger: 0.12 }, 0.05)
+                .to(sub, { opacity: 1, y: 0, ease: 'power2.out' }, 0.4)
+                .to(meta, { opacity: 1, y: 0, scale: 1, ease: 'power2.out' }, 0.5)
+                .to(tags, { opacity: 1, scale: 1, y: 0, ease: 'power2.out', stagger: 0.08 }, 0.35);
+
+            // Parallax glows + tag drift across the section
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: kineticPin,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.2
+                }
+            })
+                .to('.kinetic-pin-glow-a', { x: 80, y: 60, scale: 1.15, ease: 'none' }, 0)
+                .to('.kinetic-pin-glow-b', { x: -90, y: -50, scale: 1.2, ease: 'none' }, 0)
+                .to('.kinetic-pin-tag-a', { y: -60, x: -20, ease: 'none' }, 0)
+                .to('.kinetic-pin-tag-b', { y: -40, x: 30, ease: 'none' }, 0)
+                .to('.kinetic-pin-tag-c', { y: 60, x: -30, ease: 'none' }, 0)
+                .to('.kinetic-pin-tag-d', { y: 50, x: 40, ease: 'none' }, 0);
+        } else if (kineticPin) {
+            gsap.set('.kinetic-pin-eyebrow, .kinetic-pin-line, .kinetic-pin-sub, .kinetic-pin-meta, .kinetic-pin-tag, .kinetic-pin-glow', { clearProps: 'all' });
         }
 
-        // 10. Velocity Marquee
-        const marquee = document.querySelector('.marquee-content');
-        if (marquee) {
-            let direction = -1;
-            
-            // Base continuous animation
-            const marqueeAnim = gsap.to(marquee, {
+        // 10. Always-on Velocity Marquee (fast continuous movement + scroll speed boost + color shift)
+        const motionMarquee = document.querySelector('.motion-marquee-track');
+        const marqueeHost = document.querySelector('.hero-marquee-band, .motion-marquee-section');
+        const marqueeItems = document.querySelectorAll('.hero-marquee-item');
+        if (motionMarquee && !isMobileMotionViewport) {
+            const marqueeTween = gsap.to(motionMarquee, {
                 xPercent: -50,
                 repeat: -1,
-                duration: 20,
-                ease: "none"
+                duration: 14,
+                ease: 'none'
             });
+            marqueeTween.timeScale(1);
 
-            // Adjust timeScale based on scroll velocity
-            ScrollTrigger.create({
-                onUpdate: (self) => {
-                    direction = self.direction === 1 ? -1 : 1; // 1 down, -1 up
-                    
-                    let velocity = Math.abs(self.getVelocity());
-                    let timeScale = 1 + (velocity / 150); 
-                    
-                    timeScale = Math.min(Math.max(timeScale, 1), 8); // clamp
-                    
-                    gsap.to(marqueeAnim, {
-                        timeScale: direction * timeScale,
-                        duration: 0.2,
-                        overwrite: true
-                    });
-                }
-            });
-            
-            // Return to normal speed when scroll stops
-            gsap.ticker.add(() => {
-                if (window.lenis && Math.abs(window.lenis.velocity) < 0.1) {
-                    gsap.to(marqueeAnim, {
-                        timeScale: direction,
-                        duration: 0.8,
-                        ease: "power2.out",
-                        overwrite: true
-                    });
-                }
+            if (marqueeHost) {
+                let resetCall = null;
+                ScrollTrigger.create({
+                    trigger: marqueeHost,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    onUpdate: (self) => {
+                        const velocity = Math.abs(self.getVelocity());
+                        const boost = Math.min(1 + velocity / 400, 5); // aggressive speed boost
+                        gsap.to(marqueeTween, {
+                            timeScale: boost,
+                            duration: 0.4,
+                            ease: 'power2.out',
+                            overwrite: 'auto'
+                        });
+                        // Color shift to accent green during fast scroll
+                        if (marqueeItems.length && velocity > 200) {
+                            gsap.to(marqueeItems, {
+                                backgroundImage: 'linear-gradient(180deg, #10b981 0%, #34d399 50%, #6ee7b7 100%)',
+                                duration: 0.3,
+                                overwrite: 'auto'
+                            });
+                        }
+                        if (resetCall) resetCall.kill();
+                        resetCall = gsap.delayedCall(0.4, () => {
+                            gsap.to(marqueeTween, {
+                                timeScale: 1,
+                                duration: 1.2,
+                                ease: 'power2.out',
+                                overwrite: 'auto'
+                            });
+                            // Reset color after scroll stops
+                            if (marqueeItems.length) {
+                                gsap.to(marqueeItems, {
+                                    backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #d6f5e8 70%, rgba(16, 185, 129, 0.6) 100%)',
+                                    duration: 0.8,
+                                    ease: 'power2.out',
+                                    overwrite: 'auto'
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        // 10a. Stacked Process Cards (sticky stack with scale)
+        const stackCards = gsap.utils.toArray('.stack-card');
+        if (stackCards.length && !isMobileMotionViewport) {
+            stackCards.forEach((card, i) => {
+                if (i === stackCards.length - 1) return;
+                const inner = card.querySelector('.stack-card-inner');
+                if (!inner) return;
+                gsap.to(inner, {
+                    scale: 1 - (stackCards.length - 1 - i) * 0.04,
+                    y: -(stackCards.length - 1 - i) * 12,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 18vh',
+                        endTrigger: stackCards[stackCards.length - 1],
+                        end: 'top 18vh',
+                        scrub: 1
+                    }
+                });
             });
         }
+
+        // 10b. Kinetic compact: bold scroll-driven entry & exit
+        const kineticCompact = document.querySelector('.kinetic-pin-compact');
+        if (kineticCompact && !isMobileMotionViewport) {
+            const eyebrowEl = kineticCompact.querySelector('.kinetic-pin-eyebrow');
+            const lineEls = kineticCompact.querySelectorAll('.kinetic-pin-line');
+            const subEl = kineticCompact.querySelector('.kinetic-pin-sub');
+            const metaEl = kineticCompact.querySelector('.kinetic-pin-meta');
+            const tagA = kineticCompact.querySelector('.kinetic-pin-tag-a');
+            const tagB = kineticCompact.querySelector('.kinetic-pin-tag-b');
+            const tagC = kineticCompact.querySelector('.kinetic-pin-tag-c');
+            const tagD = kineticCompact.querySelector('.kinetic-pin-tag-d');
+
+            // Initial off-screen state with smaller scale for words - more dramatic
+            gsap.set(eyebrowEl, { opacity: 0, y: 60 });
+            gsap.set(subEl, { opacity: 0, y: 80 });
+            gsap.set(metaEl, { opacity: 0, y: 100, scale: 0.7 });
+            gsap.set(lineEls[0], { opacity: 0, x: '-60vw', scale: 0.2 });
+            gsap.set(lineEls[1], { opacity: 0, x: '60vw', scale: 0.15 });
+            gsap.set(lineEls[2], { opacity: 0, x: '-60vw', scale: 0.2 });
+            gsap.set(tagA, { opacity: 0, x: -300, y: -150, rotate: -20, scale: 0.6 });
+            gsap.set(tagB, { opacity: 0, x: 300, y: -150, rotate: 20, scale: 0.6 });
+            gsap.set(tagC, { opacity: 0, x: -300, y: 180, rotate: 18, scale: 0.6 });
+            gsap.set(tagD, { opacity: 0, x: 300, y: 180, rotate: -18, scale: 0.6 });
+
+            // Entry timeline - dramatic scale-up animations for each word
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: kineticCompact,
+                    start: 'top 95%',
+                    end: 'top 15%',
+                    scrub: 1
+                }
+            })
+                .to(eyebrowEl, { opacity: 1, y: 0, ease: 'none' }, 0)
+                // First word: slides from left, scales from 0.2 to 1.6 then settles to 1.0
+                .to(lineEls[0], { opacity: 1, x: 0, scale: 1.6, ease: 'none' }, 0.05)
+                .to(lineEls[0], { scale: 1.0, ease: 'none' }, 0.18)
+                // Second word: slides from right, scales from 0.15 to 2.0 (most dramatic)
+                .to(lineEls[1], { opacity: 1, x: 0, scale: 2.0, ease: 'none' }, 0.12)
+                .to(lineEls[1], { scale: 1.0, ease: 'none' }, 0.28)
+                // Third word: slides from left, scales from 0.2 to 1.6
+                .to(lineEls[2], { opacity: 1, x: 0, scale: 1.6, ease: 'none' }, 0.22)
+                .to(lineEls[2], { scale: 1.0, ease: 'none' }, 0.35)
+                .to(subEl, { opacity: 1, y: 0, ease: 'none' }, 0.35)
+                .to(metaEl, { opacity: 1, y: 0, scale: 1, ease: 'none' }, 0.4)
+                // Tags scale up and float in with dramatic motion
+                .to(tagA, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.15)
+                .to(tagB, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.2)
+                .to(tagC, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.25)
+                .to(tagD, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.3);
+
+            // Exit timeline - dramatic shrink and exit
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: kineticCompact,
+                    start: 'bottom 80%',
+                    end: 'bottom 0%',
+                    scrub: 1
+                }
+            })
+                .to(eyebrowEl, { opacity: 0, y: -60, ease: 'none' }, 0)
+                // Words dramatically shrink down as they slide out
+                .to(lineEls[0], { opacity: 0, x: '60vw', scale: 0.3, ease: 'none' }, 0)
+                .to(lineEls[1], { opacity: 0, x: '-60vw', scale: 0.25, ease: 'none' }, 0.05)
+                .to(lineEls[2], { opacity: 0, x: '60vw', scale: 0.3, ease: 'none' }, 0.1)
+                .to(subEl, { opacity: 0, y: -80, ease: 'none' }, 0.05)
+                .to(metaEl, { opacity: 0, y: -100, scale: 0.6, ease: 'none' }, 0.1)
+                // Tags dramatically shrink and fly out
+                .to(tagA, { opacity: 0, x: -300, y: -150, rotate: -20, scale: 0.5, ease: 'none' }, 0)
+                .to(tagB, { opacity: 0, x: 300, y: -150, rotate: 20, scale: 0.5, ease: 'none' }, 0.05)
+                .to(tagC, { opacity: 0, x: -300, y: 180, rotate: 18, scale: 0.5, ease: 'none' }, 0.1)
+                .to(tagD, { opacity: 0, x: 300, y: 180, rotate: -18, scale: 0.5, ease: 'none' }, 0.15);
+        }
+
 
         const servicePageCards = gsap.utils.toArray('.services-page-card');
         if (servicePageCards.length) {

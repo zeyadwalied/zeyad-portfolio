@@ -227,8 +227,9 @@
                         <div class="relative w-full h-[150px] md:h-[250px] mb-4 mt-2 flex items-center justify-start">
                             <canvas id="name-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
                             <h1 class="hero-name hero-name-wrap relative z-20">
-                                <span class="hero-name-text text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter" data-speed="-0.03">
-                                Zeyad <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Walid</span>
+                                <span class="hero-name-text text-[4.6rem] md:text-[7.4rem] lg:text-[9rem] font-black mb-4 tracking-[-0.08em] leading-[0.86]">
+                                    Zeyad <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-cyan-300 to-blue-500">Walid</span>
+                                </span>
                             </h1>
                             <div class="scanner-line"></div>
                         </div>
@@ -280,48 +281,6 @@
             </div>
         </div>
     </main>
-
-    <!-- 1. Premium 3D Window Scrub Section -->
-    <section class="premium-window-reveal relative z-20 h-[200vh] w-full bg-[#020617]">
-        <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden w-full" style="perspective: 1200px;">
-            <div class="window-wrapper relative w-[90vw] h-[50vh] md:w-[70vw] md:h-[70vh] rounded-3xl border border-gray-700 bg-gray-900 shadow-[0_0_80px_rgba(16,185,129,0.15)] overflow-hidden will-change-transform z-20">
-                <!-- Browser/App Header -->
-                <div class="browser-header h-12 bg-gray-900/90 backdrop-blur border-b border-gray-800 flex items-center px-5 gap-2 relative z-20">
-                    <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56]"></div>
-                    <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]"></div>
-                    <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f]"></div>
-                    <div class="mx-auto flex-1 text-center pr-10">
-                        <span class="text-xs text-gray-500 font-mono tracking-widest bg-gray-800/50 px-4 py-1 rounded-md">zeyad-walid.dev</span>
-                    </div>
-                </div>
-                <!-- Inner Media -->
-                <div class="window-content relative w-full h-[calc(100%-3rem)] overflow-hidden bg-dark">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent z-10 opacity-80"></div>
-                    <img src="assets/images/background.webp" alt="Showcase" class="w-full h-full object-cover window-img transform scale-125">
-                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-6 mix-blend-screen">
-                        <h2 class="text-5xl md:text-7xl lg:text-9xl font-black text-light uppercase tracking-tighter drop-shadow-2xl">
-                            Next-Level<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Engineering</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. Velocity Marquee Section -->
-    <section class="marquee-section relative z-30 py-8 bg-accent overflow-hidden flex items-center rotate-[-2deg] scale-110 shadow-2xl shadow-accent/20 mt-[-10vh]">
-        <div class="marquee-content flex whitespace-nowrap text-4xl md:text-6xl font-black uppercase tracking-widest text-dark will-change-transform">
-            <span class="px-8">WordPress Expert</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Full Stack Developer</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <span class="px-8">WooCommerce Pro</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Performance First</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <!-- Duplicate for infinite loop -->
-            <span class="px-8">WordPress Expert</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Full Stack Developer</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <span class="px-8">WooCommerce Pro</span> <span class="px-8 opacity-50 text-dark">•</span>
-            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Performance First</span> <span class="px-8 opacity-50 text-dark">•</span>
-        </div>
-    </section>
 
     <!-- Featured Projects Section -->
     <section id="featured-projects" class="py-24 relative overflow-hidden">
@@ -605,6 +564,62 @@
                     <h3>Plugin Dev</h3>
                 </div>
          
+            </div>
+        </div>
+    </section>
+
+
+    <section class="kinetic-pin-scene kinetic-pin-compact relative z-20 w-full overflow-hidden bg-[#020617] py-32">
+        <div class="kinetic-pin-stage relative w-full overflow-hidden flex items-center justify-center">
+            <div class="kinetic-pin-grid absolute inset-0"></div>
+            <div class="kinetic-pin-glow kinetic-pin-glow-a"></div>
+            <div class="kinetic-pin-glow kinetic-pin-glow-b"></div>
+
+            <div class="kinetic-pin-stack relative z-10 flex flex-col items-center text-center px-6">
+                <div class="kinetic-pin-eyebrow">
+                    <span class="kinetic-pin-dot"></span>
+                    <span>Engineering Studio</span>
+                </div>
+
+                <h2 class="kinetic-pin-headline">
+                    <span class="kinetic-pin-line" data-line="1">Code</span>
+                    <span class="kinetic-pin-line kinetic-pin-line-outline" data-line="2">that</span>
+                    <span class="kinetic-pin-line" data-line="3">moves</span>
+                </h2>
+
+                <p class="kinetic-pin-sub max-w-xl mx-auto">
+                    Custom WordPress plugins, WooCommerce systems, and full-stack products engineered for speed, clarity, and a premium feel.
+                </p>
+
+                <div class="kinetic-pin-meta">
+                    <div class="kinetic-pin-meta-item">
+                        <span class="kinetic-pin-meta-num">07+</span>
+                        <span class="kinetic-pin-meta-label">Years building</span>
+                    </div>
+                    <div class="kinetic-pin-meta-divider"></div>
+                    <div class="kinetic-pin-meta-item">
+                        <span class="kinetic-pin-meta-num">40+</span>
+                        <span class="kinetic-pin-meta-label">Shipped projects</span>
+                    </div>
+                    <div class="kinetic-pin-meta-divider"></div>
+                    <div class="kinetic-pin-meta-item">
+                        <span class="kinetic-pin-meta-num">100%</span>
+                        <span class="kinetic-pin-meta-label">Custom built</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kinetic-pin-tag kinetic-pin-tag-a">
+                <span class="kinetic-pin-tag-dot"></span>WordPress
+            </div>
+            <div class="kinetic-pin-tag kinetic-pin-tag-b">
+                <span class="kinetic-pin-tag-dot kinetic-pin-tag-dot-blue"></span>WooCommerce
+            </div>
+            <div class="kinetic-pin-tag kinetic-pin-tag-c">
+                <span class="kinetic-pin-tag-dot kinetic-pin-tag-dot-cyan"></span>Full Stack
+            </div>
+            <div class="kinetic-pin-tag kinetic-pin-tag-d">
+                <span class="kinetic-pin-tag-dot"></span>Performance
             </div>
         </div>
     </section>
