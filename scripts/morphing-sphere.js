@@ -221,9 +221,13 @@ class MorphingSphere {
 
     setupHoverListeners() {
         const skillCards = document.querySelectorAll('.icon-skill-card');
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
         skillCards.forEach(card => {
             const svg = card.querySelector('svg');
             if (!svg) return;
+
+            // Desktop: hover behavior
             card.addEventListener('mouseenter', () => {
                 clearTimeout(this.leaveTimeout);
                 this.morphToShape(svg);
@@ -231,6 +235,19 @@ class MorphingSphere {
             card.addEventListener('mouseleave', () => {
                 this.leaveTimeout = setTimeout(() => this.morphToSphere(), 150);
             });
+
+            // Mobile: tap to hide SVG icon (same as desktop hover)
+            if (isMobile) {
+                card.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Manually hide SVG and trigger morph
+                    gsap.killTweensOf(svg);
+                    gsap.to(svg, { opacity: 0, duration: 0.15 });
+                    clearTimeout(this.leaveTimeout);
+                    this.morphToShape(svg);
+                }, { passive: false });
+            }
         });
     }
     
