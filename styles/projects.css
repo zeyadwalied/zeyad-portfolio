@@ -39,7 +39,29 @@
     margin: 0 auto clamp(2rem, 4vw, 3rem) !important;
     text-align: left;
     position: relative;
-    padding: 0 clamp(0.15rem, 1vw, 0.5rem);
+    min-height: clamp(280px, 35vw, 430px);
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(0.15rem, 1vw, 0.5rem);
+    display: flex;
+    align-items: center;
+}
+
+.projects-signature-orbs {
+    position: absolute;
+    inset: -18% -6% -16% -6%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.88;
+}
+
+#projects-signature-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.projects-header-copy {
+    position: relative;
+    z-index: 1;
 }
 
 .projects-gallery-header::before {
@@ -196,6 +218,17 @@
     background: linear-gradient(180deg, transparent, rgba(248, 250, 252, 0.26));
 }
 
+@media (max-width: 1024px) {
+    .projects-gallery-header {
+        min-height: 320px;
+    }
+
+    .projects-signature-orbs {
+        inset: -12% -10% -12% -10%;
+        opacity: 0.7;
+    }
+}
+
 @media (max-width: 767px) {
     .projects-page-main {
         padding: calc(var(--nav-height) + 1.5rem) 0 4rem;
@@ -221,6 +254,7 @@
 
     .projects-gallery-section::before,
     .projects-gallery-header::before,
+    .projects-signature-orbs,
     .about-page-hero-copy::after,
     .about-skill-panel::after,
     .contact-page-hero-copy::after {

@@ -128,13 +128,15 @@
 
     <!-- Projects Section -->
     <main id="projects" class="projects-page-main flex-1 relative z-10 w-full overflow-hidden">
-        <canvas id="projects-swarm-canvas" class="absolute inset-0 z-0 opacity-40 pointer-events-none"></canvas>
         <div class="container projects-page-shell relative z-10">
             <section class="projects-gallery-section">
                 <div class="projects-gallery-header section-title scroll-reveal">
-                    <div>
+                    <div class="projects-header-copy">
                         <p class="projects-page-kicker text-accent font-semibold tracking-widest uppercase">Personal Projects</p>
                         <h1 class="projects-gallery-title">Projects that blend modern design, clarity, and real functionality.</h1>
+                    </div>
+                    <div class="projects-signature-orbs" aria-hidden="true">
+                        <canvas id="projects-signature-canvas"></canvas>
                     </div>
                 </div>
             
@@ -401,19 +403,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
     <script src="scripts/waves.js" defer></script>
-    <script src="scripts/morphing-sphere.js" defer></script>
+    <script src="scripts/projects-signature-orbs.js?v=1" defer></script>
     <script src="scripts/main.js?v=4" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof MorphingSphere !== 'undefined') {
-                new MorphingSphere('projects-swarm-canvas', {
-                    targetSelector: '.interactive-morph-card',
-                    numParticles: 1200,
-                    colors: ['#3b82f6', '#10b981', '#fbbf24']
-                });
-            }
-        });
-    </script>
 </body>
 </html>
 
