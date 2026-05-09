@@ -497,57 +497,68 @@ document.addEventListener('DOMContentLoaded', () => {
         const motionMarquee = document.querySelector('.motion-marquee-track');
         const marqueeHost = document.querySelector('.hero-marquee-band, .motion-marquee-section');
         const marqueeItems = document.querySelectorAll('.hero-marquee-item');
-        if (motionMarquee && !isMobileMotionViewport) {
-            const marqueeTween = gsap.to(motionMarquee, {
-                xPercent: -50,
-                repeat: -1,
-                duration: 14,
-                ease: 'none'
-            });
-            marqueeTween.timeScale(1);
+        if (motionMarquee) {
+            if (!isMobileMotionViewport) {
+                // Desktop: full velocity marquee with scroll boost
+                const marqueeTween = gsap.to(motionMarquee, {
+                    xPercent: -50,
+                    repeat: -1,
+                    duration: 14,
+                    ease: 'none'
+                });
+                marqueeTween.timeScale(1);
 
-            if (marqueeHost) {
-                let resetCall = null;
-                ScrollTrigger.create({
-                    trigger: marqueeHost,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    onUpdate: (self) => {
-                        const velocity = Math.abs(self.getVelocity());
-                        const boost = Math.min(1 + velocity / 400, 5); // aggressive speed boost
-                        gsap.to(marqueeTween, {
-                            timeScale: boost,
-                            duration: 0.4,
-                            ease: 'power2.out',
-                            overwrite: 'auto'
-                        });
-                        // Color shift to accent green during fast scroll
-                        if (marqueeItems.length && velocity > 200) {
-                            gsap.to(marqueeItems, {
-                                backgroundImage: 'linear-gradient(180deg, #10b981 0%, #34d399 50%, #6ee7b7 100%)',
-                                duration: 0.3,
-                                overwrite: 'auto'
-                            });
-                        }
-                        if (resetCall) resetCall.kill();
-                        resetCall = gsap.delayedCall(0.4, () => {
+                if (marqueeHost) {
+                    let resetCall = null;
+                    ScrollTrigger.create({
+                        trigger: marqueeHost,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        onUpdate: (self) => {
+                            const velocity = Math.abs(self.getVelocity());
+                            const boost = Math.min(1 + velocity / 400, 5); // aggressive speed boost
                             gsap.to(marqueeTween, {
-                                timeScale: 1,
-                                duration: 1.2,
+                                timeScale: boost,
+                                duration: 0.4,
                                 ease: 'power2.out',
                                 overwrite: 'auto'
                             });
-                            // Reset color after scroll stops
-                            if (marqueeItems.length) {
+                            // Color shift to accent green during fast scroll
+                            if (marqueeItems.length && velocity > 200) {
                                 gsap.to(marqueeItems, {
-                                    backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #d6f5e8 70%, rgba(16, 185, 129, 0.6) 100%)',
-                                    duration: 0.8,
-                                    ease: 'power2.out',
+                                    backgroundImage: 'linear-gradient(180deg, #10b981 0%, #34d399 50%, #6ee7b7 100%)',
+                                    duration: 0.3,
                                     overwrite: 'auto'
                                 });
                             }
-                        });
-                    }
+                            if (resetCall) resetCall.kill();
+                            resetCall = gsap.delayedCall(0.4, () => {
+                                gsap.to(marqueeTween, {
+                                    timeScale: 1,
+                                    duration: 1.2,
+                                    ease: 'power2.out',
+                                    overwrite: 'auto'
+                                });
+                                // Reset color after scroll stops
+                                if (marqueeItems.length) {
+                                    gsap.to(marqueeItems, {
+                                        backgroundImage: 'linear-gradient(180deg, #ffffff 0%, #d6f5e8 70%, rgba(16, 185, 129, 0.6) 100%)',
+                                        duration: 0.8,
+                                        ease: 'power2.out',
+                                        overwrite: 'auto'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            } else {
+                // Mobile: simple continuous marquee (slower, no scroll boost)
+                gsap.to(motionMarquee, {
+                    xPercent: -50,
+                    repeat: -1,
+                    duration: 25,
+                    ease: 'none'
                 });
             }
         }
@@ -576,76 +587,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 10b. Kinetic compact: bold scroll-driven entry & exit
         const kineticCompact = document.querySelector('.kinetic-pin-compact');
-        if (kineticCompact && !isMobileMotionViewport) {
-            const eyebrowEl = kineticCompact.querySelector('.kinetic-pin-eyebrow');
-            const lineEls = kineticCompact.querySelectorAll('.kinetic-pin-line');
-            const subEl = kineticCompact.querySelector('.kinetic-pin-sub');
-            const metaEl = kineticCompact.querySelector('.kinetic-pin-meta');
-            const tagA = kineticCompact.querySelector('.kinetic-pin-tag-a');
-            const tagB = kineticCompact.querySelector('.kinetic-pin-tag-b');
-            const tagC = kineticCompact.querySelector('.kinetic-pin-tag-c');
-            const tagD = kineticCompact.querySelector('.kinetic-pin-tag-d');
+        if (kineticCompact) {
+            if (!isMobileMotionViewport) {
+                // Desktop: full dramatic scroll-driven animations
+                const eyebrowEl = kineticCompact.querySelector('.kinetic-pin-eyebrow');
+                const lineEls = kineticCompact.querySelectorAll('.kinetic-pin-line');
+                const subEl = kineticCompact.querySelector('.kinetic-pin-sub');
+                const metaEl = kineticCompact.querySelector('.kinetic-pin-meta');
+                const tagA = kineticCompact.querySelector('.kinetic-pin-tag-a');
+                const tagB = kineticCompact.querySelector('.kinetic-pin-tag-b');
+                const tagC = kineticCompact.querySelector('.kinetic-pin-tag-c');
+                const tagD = kineticCompact.querySelector('.kinetic-pin-tag-d');
 
-            // Initial off-screen state with smaller scale for words - more dramatic
-            gsap.set(eyebrowEl, { opacity: 0, y: 60 });
-            gsap.set(subEl, { opacity: 0, y: 80 });
-            gsap.set(metaEl, { opacity: 0, y: 100, scale: 0.7 });
-            gsap.set(lineEls[0], { opacity: 0, x: '-60vw', scale: 0.2 });
-            gsap.set(lineEls[1], { opacity: 0, x: '60vw', scale: 0.15 });
-            gsap.set(lineEls[2], { opacity: 0, x: '-60vw', scale: 0.2 });
-            gsap.set(tagA, { opacity: 0, x: -300, y: -150, rotate: -20, scale: 0.6 });
-            gsap.set(tagB, { opacity: 0, x: 300, y: -150, rotate: 20, scale: 0.6 });
-            gsap.set(tagC, { opacity: 0, x: -300, y: 180, rotate: 18, scale: 0.6 });
-            gsap.set(tagD, { opacity: 0, x: 300, y: 180, rotate: -18, scale: 0.6 });
+                // Initial off-screen state with smaller scale for words - more dramatic
+                gsap.set(eyebrowEl, { opacity: 0, y: 60 });
+                gsap.set(subEl, { opacity: 0, y: 80 });
+                gsap.set(metaEl, { opacity: 0, y: 100, scale: 0.7 });
+                gsap.set(lineEls[0], { opacity: 0, x: '-60vw', scale: 0.2 });
+                gsap.set(lineEls[1], { opacity: 0, x: '60vw', scale: 0.15 });
+                gsap.set(lineEls[2], { opacity: 0, x: '-60vw', scale: 0.2 });
+                gsap.set(tagA, { opacity: 0, x: -300, y: -150, rotate: -20, scale: 0.6 });
+                gsap.set(tagB, { opacity: 0, x: 300, y: -150, rotate: 20, scale: 0.6 });
+                gsap.set(tagC, { opacity: 0, x: -300, y: 180, rotate: 18, scale: 0.6 });
+                gsap.set(tagD, { opacity: 0, x: 300, y: 180, rotate: -18, scale: 0.6 });
 
-            // Entry timeline - dramatic scale-up animations for each word
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: kineticCompact,
-                    start: 'top 95%',
-                    end: 'top 15%',
-                    scrub: 1
-                }
-            })
-                .to(eyebrowEl, { opacity: 1, y: 0, ease: 'none' }, 0)
-                // First word: slides from left, scales from 0.2 to 1.6 then settles to 1.0
-                .to(lineEls[0], { opacity: 1, x: 0, scale: 1.6, ease: 'none' }, 0.05)
-                .to(lineEls[0], { scale: 1.0, ease: 'none' }, 0.18)
-                // Second word: slides from right, scales from 0.15 to 2.0 (most dramatic)
-                .to(lineEls[1], { opacity: 1, x: 0, scale: 2.0, ease: 'none' }, 0.12)
-                .to(lineEls[1], { scale: 1.0, ease: 'none' }, 0.28)
-                // Third word: slides from left, scales from 0.2 to 1.6
-                .to(lineEls[2], { opacity: 1, x: 0, scale: 1.6, ease: 'none' }, 0.22)
-                .to(lineEls[2], { scale: 1.0, ease: 'none' }, 0.35)
-                .to(subEl, { opacity: 1, y: 0, ease: 'none' }, 0.35)
-                .to(metaEl, { opacity: 1, y: 0, scale: 1, ease: 'none' }, 0.4)
-                // Tags scale up and float in with dramatic motion
-                .to(tagA, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.15)
-                .to(tagB, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.2)
-                .to(tagC, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.25)
-                .to(tagD, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.3);
+                // Entry timeline - dramatic scale-up animations for each word
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: kineticCompact,
+                        start: 'top 95%',
+                        end: 'top 15%',
+                        scrub: 1
+                    }
+                })
+                    .to(eyebrowEl, { opacity: 1, y: 0, ease: 'none' }, 0)
+                    // First word: slides from left, scales from 0.2 to 1.6 then settles to 1.0
+                    .to(lineEls[0], { opacity: 1, x: 0, scale: 1.6, ease: 'none' }, 0.05)
+                    .to(lineEls[0], { scale: 1.0, ease: 'none' }, 0.18)
+                    // Second word: slides from right, scales from 0.15 to 2.0 (most dramatic)
+                    .to(lineEls[1], { opacity: 1, x: 0, scale: 2.0, ease: 'none' }, 0.12)
+                    .to(lineEls[1], { scale: 1.0, ease: 'none' }, 0.28)
+                    // Third word: slides from left, scales from 0.2 to 1.6
+                    .to(lineEls[2], { opacity: 1, x: 0, scale: 1.6, ease: 'none' }, 0.22)
+                    .to(lineEls[2], { scale: 1.0, ease: 'none' }, 0.35)
+                    .to(subEl, { opacity: 1, y: 0, ease: 'none' }, 0.35)
+                    .to(metaEl, { opacity: 1, y: 0, scale: 1, ease: 'none' }, 0.4)
+                    // Tags scale up and float in with dramatic motion
+                    .to(tagA, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.15)
+                    .to(tagB, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.2)
+                    .to(tagC, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.25)
+                    .to(tagD, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, ease: 'none' }, 0.3);
 
-            // Exit timeline - dramatic shrink and exit
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: kineticCompact,
-                    start: 'bottom 80%',
-                    end: 'bottom 0%',
-                    scrub: 1
-                }
-            })
-                .to(eyebrowEl, { opacity: 0, y: -60, ease: 'none' }, 0)
-                // Words dramatically shrink down as they slide out
-                .to(lineEls[0], { opacity: 0, x: '60vw', scale: 0.3, ease: 'none' }, 0)
-                .to(lineEls[1], { opacity: 0, x: '-60vw', scale: 0.25, ease: 'none' }, 0.05)
-                .to(lineEls[2], { opacity: 0, x: '60vw', scale: 0.3, ease: 'none' }, 0.1)
-                .to(subEl, { opacity: 0, y: -80, ease: 'none' }, 0.05)
-                .to(metaEl, { opacity: 0, y: -100, scale: 0.6, ease: 'none' }, 0.1)
-                // Tags dramatically shrink and fly out
-                .to(tagA, { opacity: 0, x: -300, y: -150, rotate: -20, scale: 0.5, ease: 'none' }, 0)
-                .to(tagB, { opacity: 0, x: 300, y: -150, rotate: 20, scale: 0.5, ease: 'none' }, 0.05)
-                .to(tagC, { opacity: 0, x: -300, y: 180, rotate: 18, scale: 0.5, ease: 'none' }, 0.1)
-                .to(tagD, { opacity: 0, x: 300, y: 180, rotate: -18, scale: 0.5, ease: 'none' }, 0.15);
+                // Exit timeline - dramatic shrink and exit
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: kineticCompact,
+                        start: 'bottom 80%',
+                        end: 'bottom 0%',
+                        scrub: 1
+                    }
+                })
+                    .to(eyebrowEl, { opacity: 0, y: -60, ease: 'none' }, 0)
+                    // Words dramatically shrink down as they slide out
+                    .to(lineEls[0], { opacity: 0, x: '60vw', scale: 0.3, ease: 'none' }, 0)
+                    .to(lineEls[1], { opacity: 0, x: '-60vw', scale: 0.25, ease: 'none' }, 0.05)
+                    .to(lineEls[2], { opacity: 0, x: '60vw', scale: 0.3, ease: 'none' }, 0.1)
+                    .to(subEl, { opacity: 0, y: -80, ease: 'none' }, 0.05)
+                    .to(metaEl, { opacity: 0, y: -100, scale: 0.6, ease: 'none' }, 0.1)
+                    // Tags dramatically shrink and fly out
+                    .to(tagA, { opacity: 0, x: -300, y: -150, rotate: -20, scale: 0.5, ease: 'none' }, 0)
+                    .to(tagB, { opacity: 0, x: 300, y: -150, rotate: 20, scale: 0.5, ease: 'none' }, 0.05)
+                    .to(tagC, { opacity: 0, x: -300, y: 180, rotate: 18, scale: 0.5, ease: 'none' }, 0.1)
+                    .to(tagD, { opacity: 0, x: 300, y: 180, rotate: -18, scale: 0.5, ease: 'none' }, 0.15);
+            } else {
+                // Mobile: simple fade-in animation without complex transforms
+                const allElements = kineticCompact.querySelectorAll('.kinetic-pin-eyebrow, .kinetic-pin-line, .kinetic-pin-sub, .kinetic-pin-meta-item, .kinetic-pin-tag');
+                gsap.set(allElements, { opacity: 0, y: 30 });
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: kineticCompact,
+                        start: 'top 85%',
+                        end: 'top 40%',
+                        scrub: 1
+                    }
+                })
+                .to(allElements, { opacity: 1, y: 0, stagger: 0.05, ease: 'none' });
+            }
         }
 
 
