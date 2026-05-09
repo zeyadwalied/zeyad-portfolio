@@ -662,16 +662,18 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // Mobile: simple fade-in animation without complex transforms
                 const allElements = kineticCompact.querySelectorAll('.kinetic-pin-eyebrow, .kinetic-pin-line, .kinetic-pin-sub, .kinetic-pin-meta-item, .kinetic-pin-tag');
-                gsap.set(allElements, { opacity: 0, y: 30 });
+                // Reset all transforms first to ensure elements are in proper position
+                gsap.set(allElements, { clearProps: 'all' });
+                gsap.set(allElements, { opacity: 0, y: 30, x: 0, scale: 1 });
                 gsap.timeline({
                     scrollTrigger: {
                         trigger: kineticCompact,
                         start: 'top 85%',
-                        end: 'top 40%',
-                        scrub: 1
+                        end: 'top 50%',
+                        scrub: true
                     }
                 })
-                .to(allElements, { opacity: 1, y: 0, stagger: 0.05, ease: 'none' });
+                .to(allElements, { opacity: 1, y: 0, stagger: 0.08, ease: 'none' });
             }
         }
 
