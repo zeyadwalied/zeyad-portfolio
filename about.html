@@ -2,6 +2,12 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <script>
+        document.documentElement.classList.add('js-enabled');
+        if (window.matchMedia('(max-width: 767px)').matches) {
+            document.documentElement.classList.add('mobile-performance-mode');
+        }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Zeyad Walid | Full Stack & WordPress Plugin Developer</title>
     <meta name="description" content="Learn about Zeyad Walid — a Full Stack Web, WooCommerce and WordPress plugin developer based in Cairo, Egypt. Skills, story, and tools used to ship reliable products.">
@@ -40,8 +46,8 @@
         .social-icon { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; border-radius: 9999px; }
     </style>
     <link rel="icon" type="image/webp" href="assets/images/favicon.webp">
-    <link rel="preload" as="style" href="styles/style.css?v=6">
-    <link rel="stylesheet" href="styles/style.css?v=6">
+    <link rel="preload" as="style" href="styles/style.css?v=12">
+    <link rel="stylesheet" href="styles/style.css?v=12">
 </head>
 <body class="bg-dark text-light font-inter antialiased selection-accent flex flex-col min-h-screen overflow-x-hidden">
     <!-- Wave Background -->
@@ -93,7 +99,7 @@
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
                 <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="index.html#services-preview" class="nav-link">Services</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li>
                     <button class="theme-toggle p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Toggle Light/Dark Mode">
@@ -347,6 +353,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
     <script src="scripts/waves.js" defer></script>
-    <script src="scripts/main.js" defer></script>
+    <script src="scripts/main.js?v=4" defer></script>
 </body>
 </html>

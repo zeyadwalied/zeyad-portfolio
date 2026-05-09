@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== GSAP Sophisticated Modern Animations =====
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
+        const isMobileMotionViewport = window.matchMedia('(max-width: 767px)').matches;
 
         // Recalculate ScrollTrigger positions once layout/fonts are stable.
         // Fixes mobile flicker where cards animate against a stale viewport size.
@@ -301,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 6. Skill cards — Wave-style staggered reveal with sine timing
         const skillsSection = document.querySelector('#skills-overview');
-        if (skillsSection) {
+        if (skillsSection && !isMobileMotionViewport) {
             gsap.fromTo(".icon-skill-card",
                 { y: 40, opacity: 0, scale: 0.9, filter: "blur(10px)" },
                 {
@@ -324,6 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             );
+        } else if (skillsSection) {
+            gsap.set(".icon-skill-card", { clearProps: "all", opacity: 1, y: 0, scale: 1, filter: "none" });
         }
 
         // 6.1 Services preview cards - stronger staggered reveal
@@ -415,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 8. Subpage Heroes / Headers (Above fold animations)
-        const subHeroes = gsap.utils.toArray('.about-page-hero, .contact-page-hero');
+        const subHeroes = gsap.utils.toArray('.about-page-hero, .contact-page-hero, .services-page-hero');
         subHeroes.forEach(hero => {
             gsap.fromTo(hero, 
                 { y: 40, opacity: 0 }, 
@@ -423,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             
             // Stagger children inside the hero
-            const children = hero.querySelectorAll('.about-page-kicker, .about-page-lead, .about-page-badge, .about-page-card img, .about-page-stat, .contact-page-kicker, .contact-page-title, .contact-page-lead, .contact-page-badge');
+            const children = hero.querySelectorAll('.about-page-kicker, .about-page-lead, .about-page-badge, .about-page-card img, .about-page-stat, .contact-page-kicker, .contact-page-title, .contact-page-lead, .contact-page-badge, .services-page-kicker, .services-page-lead, .services-hero-actions a, .services-hero-card');
             if (children.length) {
                 gsap.fromTo(children,
                     { y: 30, opacity: 0 },
@@ -433,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 8.1 Modern Character Reveal for About & Contact Titles
-        const titlesToReveal = document.querySelectorAll('.about-page-title, .contact-page-title');
+        const titlesToReveal = document.querySelectorAll('.about-page-title, .contact-page-title, .services-page-title');
         titlesToReveal.forEach(title => {
             const text = title.textContent;
             title.innerHTML = text.split(' ').map(word => 
@@ -454,6 +457,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+        const servicePageCards = gsap.utils.toArray('.services-page-card');
+        if (servicePageCards.length) {
+            gsap.fromTo(servicePageCards,
+                { y: 70, opacity: 0, clipPath: "inset(0 0 100% 0)" },
+                {
+                    y: 0,
+                    opacity: 1,
+                    clipPath: "inset(0 0 0% 0)",
+                    duration: 1,
+                    stagger: { each: 0.1, from: "start", ease: "power2.inOut" },
+                    ease: "power4.out",
+                    force3D: true,
+                    scrollTrigger: {
+                        trigger: '.services-page-grid',
+                        start: "top 85%",
+                        once: true
+                    }
+                }
+            );
+        }
+
+        const serviceProcessSteps = gsap.utils.toArray('.services-process-steps > div');
+        if (serviceProcessSteps.length) {
+            gsap.fromTo(serviceProcessSteps,
+                { x: 34, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.85,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: '.services-process-section',
+                        start: "top 82%",
+                        once: true
+                    }
+                }
+            );
+        }
+
+        const caseStudyCards = gsap.utils.toArray('.case-study-card');
+        if (caseStudyCards.length) {
+            gsap.fromTo(caseStudyCards,
+                { y: 60, opacity: 0, scale: 0.96 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.95,
+                    stagger: 0.12,
+                    ease: "expo.out",
+                    force3D: true,
+                    scrollTrigger: {
+                        trigger: '.case-studies-grid',
+                        start: "top 85%",
+                        once: true
+                    }
+                }
+            );
+        }
 
         // 8.3 Contact Page Specifics (Magnetic Button & Form Reveal)
         const contactForm = document.querySelector('.contact-form');
@@ -553,6 +617,68 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             );
+        }
+    }
+
+    const serviceCards = document.querySelectorAll('.services-page-card[data-service]');
+    const serviceModal = document.querySelector('#serviceConfirmModal');
+    const serviceModalTitle = document.querySelector('#serviceConfirmTitle');
+    const serviceModalYes = document.querySelector('#serviceConfirmYes');
+    let selectedService = '';
+
+    const closeServiceModal = () => {
+        if (!serviceModal) return;
+        serviceModal.classList.remove('is-open');
+        serviceModal.setAttribute('aria-hidden', 'true');
+        selectedService = '';
+    };
+
+    const openServiceModal = (serviceName) => {
+        if (!serviceModal) return;
+        selectedService = serviceName;
+        if (serviceModalTitle) {
+            serviceModalTitle.textContent = `Request ${serviceName}?`;
+        }
+        serviceModal.classList.add('is-open');
+        serviceModal.setAttribute('aria-hidden', 'false');
+        if (serviceModalYes) {
+            serviceModalYes.focus();
+        }
+    };
+
+    serviceCards.forEach(card => {
+        card.addEventListener('click', () => openServiceModal(card.dataset.service));
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openServiceModal(card.dataset.service);
+            }
+        });
+    });
+
+    document.querySelectorAll('[data-service-modal-close]').forEach(button => {
+        button.addEventListener('click', closeServiceModal);
+    });
+
+    if (serviceModalYes) {
+        serviceModalYes.addEventListener('click', () => {
+            if (!selectedService) return;
+            window.location.href = `contact.html?service=${encodeURIComponent(selectedService)}`;
+        });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeServiceModal();
+        }
+    });
+
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        const serviceName = new URLSearchParams(window.location.search).get('service');
+        const messageField = contactForm.querySelector('textarea[name="message"]');
+        if (serviceName && messageField && !messageField.value.trim()) {
+            messageField.value = `I need help with (${serviceName}).`;
         }
     }
 
