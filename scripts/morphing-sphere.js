@@ -252,17 +252,13 @@ class MorphingSphere {
                     }
                 });
             } else {
-                // Desktop: hover behavior
+                // Desktop: original hover behavior
                 card.addEventListener('mouseenter', () => {
                     clearTimeout(this.leaveTimeout);
-                    svg.style.opacity = '0';
                     this.morphToShape(svg);
                 });
                 card.addEventListener('mouseleave', () => {
-                    this.leaveTimeout = setTimeout(() => {
-                        svg.style.opacity = '1';
-                        this.morphToSphere();
-                    }, 150);
+                    this.leaveTimeout = setTimeout(() => this.morphToSphere(), 150);
                 });
             }
         });
