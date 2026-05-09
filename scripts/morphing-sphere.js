@@ -221,61 +221,17 @@ class MorphingSphere {
 
     setupHoverListeners() {
         const skillCards = document.querySelectorAll('.icon-skill-card');
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
-
         skillCards.forEach(card => {
             const svg = card.querySelector('svg');
             if (!svg) return;
-
-            if (isMobile) {
-                // Mobile: toggle on touchstart for immediate response
-                card.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    // Check if this card is already active
-                    const isActive = card.classList.contains('morph-active');
-
-                    // Reset all cards first
-                    skillCards.forEach(c => {
-                        c.classList.remove('morph-active');
-                        const s = c.querySelector('svg');
-                        if (s) s.style.opacity = '1';
-                    });
-                    this.morphToSphere();
-
-                    // If this card wasn't active, activate it
-                    if (!isActive) {
-                        card.classList.add('morph-active');
-                        svg.style.opacity = '0';
-                        this.morphToShape(svg);
-                    }
-                }, { passive: false });
-            } else {
-                // Desktop: original hover behavior
-                card.addEventListener('mouseenter', () => {
-                    clearTimeout(this.leaveTimeout);
-                    this.morphToShape(svg);
-                });
-                card.addEventListener('mouseleave', () => {
-                    this.leaveTimeout = setTimeout(() => this.morphToSphere(), 150);
-                });
-            }
-        });
-
-        // On mobile, touching outside closes the active card
-        if (isMobile) {
-            document.addEventListener('touchstart', (e) => {
-                if (!e.target.closest('.icon-skill-card')) {
-                    skillCards.forEach(c => {
-                        c.classList.remove('morph-active');
-                        const s = c.querySelector('svg');
-                        if (s) s.style.opacity = '1';
-                    });
-                    this.morphToSphere();
-                }
+            card.addEventListener('mouseenter', () => {
+                clearTimeout(this.leaveTimeout);
+                this.morphToShape(svg);
             });
-        }
+            card.addEventListener('mouseleave', () => {
+                this.leaveTimeout = setTimeout(() => this.morphToSphere(), 150);
+            });
+        });
     }
     
     setupObserver() {
