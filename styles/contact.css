@@ -17,12 +17,35 @@
     padding: clamp(1.5rem, 3vw, 2.4rem);
     border-radius: 2rem;
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.7fr);
+    grid-template-rows: 1fr auto;
     gap: clamp(1.5rem, 4vw, 4rem);
     align-items: center;
     background: linear-gradient(145deg, rgba(2, 6, 23, 0.94), rgba(15, 23, 42, 0.9));
     border: 1px solid rgba(148, 163, 184, 0.14);
     box-shadow: 0 30px 90px rgba(2, 6, 23, 0.34);
+}
+
+.contact-page-hero-badges {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: flex-start;
+}
+
+.contact-signature-orbs {
+    position: absolute;
+    inset: 2% 5% 5% 5%;
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+#contact-signature-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .contact-page-hero::before {
@@ -91,13 +114,6 @@
     font-size: clamp(1rem, 1.35vw, 1.14rem);
     line-height: 1.9;
     color: #cbd5e1;
-}
-
-.contact-page-hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-    justify-content: flex-start;
 }
 
 .contact-page-badge {
@@ -352,9 +368,19 @@
     .contact-content-grid {
         grid-template-columns: 1fr;
     }
+
+    .contact-signature-orbs {
+        inset: 4% 5% 8% 5%;
+        opacity: 0.68;
+    }
 }
 
 @media (max-width: 767px) {
+    .contact-signature-orbs {
+        inset: 4% 4% 8% 4%;
+        opacity: 0.45;
+    }
+
     .contact-page-main {
         padding: calc(var(--nav-height) + 1.5rem) 0 4rem;
     }
@@ -374,6 +400,12 @@
         max-width: none;
         font-size: clamp(1.95rem, 8.4vw, 2.8rem);
         line-height: 1.04;
+    }
+
+    .mobile-performance-mode .contact-page-hero::before,
+    .mobile-performance-mode .contact-page-hero::after,
+    .mobile-performance-mode .contact-signature-orbs {
+        display: none !important;
     }
 }
 
