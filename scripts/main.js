@@ -24,36 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===== Custom Cursor Logic =====
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorFollower = document.querySelector('.custom-cursor-follower');
-    
-    if (cursor && cursorFollower) {
-        // Show cursor initially on first mouse move
-        window.addEventListener('mousemove', () => {
-            gsap.to([cursor, cursorFollower], { opacity: 1, duration: 0.3 });
-        }, { once: true });
-
-        // Update cursor position
-        window.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-            gsap.to(cursorFollower, { x: e.clientX, y: e.clientY, duration: 0.15, ease: "power2.out" });
-        });
-
-        // Add hover effects for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, canvas, [role="button"], [onclick], .project-card');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hovering');
-                cursorFollower.classList.add('hovering');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hovering');
-                cursorFollower.classList.remove('hovering');
-            });
-        });
-    }
-
     // ===== GSAP Sophisticated Modern Animations =====
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
@@ -987,10 +957,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.add('has-custom-cursor');
 
         let outX = 0, outY = 0, mouseX = 0, mouseY = 0;
+        let cursorDirty = false;
 
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+            cursorDirty = true;
 
             if (document.documentElement.classList.contains('video-modal-open')) {
                 dot.classList.add('cursor-hide');
@@ -1003,11 +975,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.classList.add('cursor-hide');
                 outline.classList.add('cursor-hide');
             } else {
-                dot.style.opacity = '1';
-                outline.style.opacity = '1';
-                dot.style.left = mouseX + 'px';
-                dot.style.top  = mouseY + 'px';
-                
                 dot.classList.remove('cursor-hide');
                 outline.classList.remove('cursor-hide');
             }
@@ -1026,8 +993,15 @@ document.addEventListener('DOMContentLoaded', () => {
             outline.classList.remove('cursor-hide');
         });
 
-        // Smooth outline follow
+        // Batch all cursor DOM writes into a single rAF loop
         const tick = () => {
+            if (cursorDirty) {
+                dot.style.left = mouseX + 'px';
+                dot.style.top  = mouseY + 'px';
+                dot.style.opacity = '1';
+                outline.style.opacity = '1';
+                cursorDirty = false;
+            }
             outX += (mouseX - outX) * 0.15;
             outY += (mouseY - outY) * 0.15;
             outline.style.left = outX + 'px';

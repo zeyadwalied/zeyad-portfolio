@@ -1,9 +1,1 @@
-﻿/* ===== Main Stylesheet — imports all partials ===== */
-@import url('base.css');
-@import url('components.css');
-@import url('effects.css');
-@import url('landing.css');
-@import url('about.css');
-@import url('projects.css');
-@import url('contact.css');
-@import url('services.css');
+﻿/* ===== Main Stylesheet — partials loaded via <link> in HTML for parallel download ===== */

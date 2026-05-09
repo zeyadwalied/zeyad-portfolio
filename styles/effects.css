@@ -60,6 +60,8 @@
     z-index: 9999;
     opacity: 0;
     transition: opacity 0.3s ease;
+    will-change: left, top;
+    contain: layout style;
 }
 
 .cursor-dot.cursor-hide,
@@ -134,12 +136,14 @@ html.video-modal-open .cursor-outline {
     width: 6px;
     height: 6px;
     background-color: var(--accent);
+    contain: strict;
 }
 
 .cursor-outline {
     width: 30px;
     height: 30px;
     border: 2px solid var(--accent);
+    contain: strict;
 }
 
 @keyframes spin-slow {
