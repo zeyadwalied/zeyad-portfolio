@@ -11,9 +11,9 @@ class HeroAutoMorph {
         this.colors = options.colors || ['#106db9ff', '#06b6d4', '#fbbf24', '#8b5cf6'];
         
         // Configuration for positioning
-        this.anchorX = options.anchorX !== undefined ? options.anchorX : 0.55;
-        this.anchorY = options.anchorY !== undefined ? options.anchorY : 0.75;
-        this.scaleMultiplier = options.scaleMultiplier || 0.45;
+        this.anchorX = options.anchorX !== undefined ? options.anchorX : 0.59;
+        this.anchorY = options.anchorY !== undefined ? options.anchorY : 0.60;
+        this.scaleMultiplier = options.scaleMultiplier || 0.37;
         this.interval = options.interval || 15000;
         
         this.svgList = options.svgs || [
