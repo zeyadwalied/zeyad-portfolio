@@ -202,6 +202,23 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         });
 
+        // 7. Generic Data-Speed Parallax (Lenis Style)
+        gsap.utils.toArray('[data-speed]').forEach(el => {
+            const speed = parseFloat(el.getAttribute('data-speed'));
+            if (speed) {
+                gsap.to(el, {
+                    y: () => -(window.innerHeight * speed),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
+        });
+
         // 4. Projects — Clip-path Curtain Reveal + Image Zoom
         const projectCards = gsap.utils.toArray('.project-card');
         projectCards.forEach((card) => {
@@ -415,18 +432,96 @@ document.addEventListener('DOMContentLoaded', () => {
                 </span>`
             ).join('');
             
-            gsap.from(title.querySelectorAll('span > span'), {
-                y: "100%",
-                duration: 1.2,
-                stagger: 0.05,
-                ease: "expo.out",
-                delay: 0.5,
+            const spans = title.querySelectorAll('span > span');
+            gsap.fromTo(spans,
+                { y: "100%", opacity: 0 },
+                { y: "0%", opacity: 1, duration: 1, stagger: 0.1, ease: "power4.out", delay: 0.5 }
+            );
+        });
+
+        // 9. Premium 3D Window Scrub (Darkroom Style)
+        const windowReveal = document.querySelector('.premium-window-reveal');
+        if (windowReveal) {
+            const wrapper = windowReveal.querySelector('.window-wrapper');
+            const img = windowReveal.querySelector('.window-img');
+            
+            // Set initial 3D state
+            gsap.set(wrapper, { rotationX: 45, scale: 0.6, y: 200, transformOrigin: "center center" });
+
+            const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: title,
-                    start: "top 90%"
+                    trigger: windowReveal,
+                    start: "top bottom",
+                    end: "bottom bottom",
+                    scrub: 1,
                 }
             });
-        });
+
+            tl.to(wrapper, {
+                rotationX: 0,
+                scale: 1,
+                y: 0,
+                width: "100vw",
+                height: "100vh",
+                borderRadius: "0px",
+                ease: "none"
+            }, 0)
+            .to(img, {
+                scale: 1,
+                ease: "none"
+            }, 0);
+            
+            // Fade out the browser header as it becomes full screen
+            tl.to(wrapper.querySelector('.browser-header'), {
+                opacity: 0,
+                height: 0,
+                ease: "power2.inOut"
+            }, 0.5);
+        }
+
+        // 10. Velocity Marquee
+        const marquee = document.querySelector('.marquee-content');
+        if (marquee) {
+            let direction = -1;
+            
+            // Base continuous animation
+            const marqueeAnim = gsap.to(marquee, {
+                xPercent: -50,
+                repeat: -1,
+                duration: 20,
+                ease: "none"
+            });
+
+            // Adjust timeScale based on scroll velocity
+            ScrollTrigger.create({
+                onUpdate: (self) => {
+                    direction = self.direction === 1 ? -1 : 1; // 1 down, -1 up
+                    
+                    let velocity = Math.abs(self.getVelocity());
+                    let timeScale = 1 + (velocity / 150); 
+                    
+                    timeScale = Math.min(Math.max(timeScale, 1), 8); // clamp
+                    
+                    gsap.to(marqueeAnim, {
+                        timeScale: direction * timeScale,
+                        duration: 0.2,
+                        overwrite: true
+                    });
+                }
+            });
+            
+            // Return to normal speed when scroll stops
+            gsap.ticker.add(() => {
+                if (window.lenis && Math.abs(window.lenis.velocity) < 0.1) {
+                    gsap.to(marqueeAnim, {
+                        timeScale: direction,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        overwrite: true
+                    });
+                }
+            });
+        }
 
         const servicePageCards = gsap.utils.toArray('.services-page-card');
         if (servicePageCards.length) {

@@ -221,17 +221,16 @@
                         <canvas id="hero-auto-morph-canvas" class="w-full h-full"></canvas>
                     </div>
                     <div class="hero-intro">
-                        <p class="hero-kicker text-accent font-semibold tracking-widest uppercase">WordPress plugins Developer </p>
+                        <p class="hero-kicker text-accent font-semibold tracking-widest uppercase" data-speed="-0.02">WordPress plugins Developer </p>
 
                         <!-- The Text Particles Canvas & Visible Name -->
                         <div class="relative w-full h-[150px] md:h-[250px] mb-4 mt-2 flex items-center justify-start">
                             <canvas id="name-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
                             <h1 class="hero-name hero-name-wrap relative z-20">
-                                <span class="hero-name-text scanner-reveal text-gradient-premium text-glow inline-block">
-                                    <span class="char">Z</span><span class="char">e</span><span class="char">y</span><span class="char">a</span><span class="char">d</span><span class="char">&nbsp;</span><span class="char">W</span><span class="char">a</span><span class="char">l</span><span class="char">i</span><span class="char">d</span>
-                                </span>
-                                <div class="scanner-line"></div>
+                                <span class="hero-name-text text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter" data-speed="-0.03">
+                                Zeyad <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Walid</span>
                             </h1>
+                            <div class="scanner-line"></div>
                         </div>
 
                         <p class="hero-role">
@@ -282,6 +281,48 @@
         </div>
     </main>
 
+    <!-- 1. Premium 3D Window Scrub Section -->
+    <section class="premium-window-reveal relative z-20 h-[200vh] w-full bg-[#020617]">
+        <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden w-full" style="perspective: 1200px;">
+            <div class="window-wrapper relative w-[90vw] h-[50vh] md:w-[70vw] md:h-[70vh] rounded-3xl border border-gray-700 bg-gray-900 shadow-[0_0_80px_rgba(16,185,129,0.15)] overflow-hidden will-change-transform z-20">
+                <!-- Browser/App Header -->
+                <div class="browser-header h-12 bg-gray-900/90 backdrop-blur border-b border-gray-800 flex items-center px-5 gap-2 relative z-20">
+                    <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56]"></div>
+                    <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]"></div>
+                    <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f]"></div>
+                    <div class="mx-auto flex-1 text-center pr-10">
+                        <span class="text-xs text-gray-500 font-mono tracking-widest bg-gray-800/50 px-4 py-1 rounded-md">zeyad-walid.dev</span>
+                    </div>
+                </div>
+                <!-- Inner Media -->
+                <div class="window-content relative w-full h-[calc(100%-3rem)] overflow-hidden bg-dark">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent z-10 opacity-80"></div>
+                    <img src="assets/images/background.webp" alt="Showcase" class="w-full h-full object-cover window-img transform scale-125">
+                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-6 mix-blend-screen">
+                        <h2 class="text-5xl md:text-7xl lg:text-9xl font-black text-light uppercase tracking-tighter drop-shadow-2xl">
+                            Next-Level<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Engineering</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Velocity Marquee Section -->
+    <section class="marquee-section relative z-30 py-8 bg-accent overflow-hidden flex items-center rotate-[-2deg] scale-110 shadow-2xl shadow-accent/20 mt-[-10vh]">
+        <div class="marquee-content flex whitespace-nowrap text-4xl md:text-6xl font-black uppercase tracking-widest text-dark will-change-transform">
+            <span class="px-8">WordPress Expert</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Full Stack Developer</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <span class="px-8">WooCommerce Pro</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Performance First</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <!-- Duplicate for infinite loop -->
+            <span class="px-8">WordPress Expert</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Full Stack Developer</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <span class="px-8">WooCommerce Pro</span> <span class="px-8 opacity-50 text-dark">•</span>
+            <span class="px-8 text-white stroke-text" style="-webkit-text-stroke: 1.5px #020617; color: transparent;">Performance First</span> <span class="px-8 opacity-50 text-dark">•</span>
+        </div>
+    </section>
+
     <!-- Featured Projects Section -->
     <section id="featured-projects" class="py-24 relative overflow-hidden">
         <div class="container mx-auto px-6 tech-wave-gsap">
@@ -326,23 +367,6 @@
                     </svg>
                     <span>Next.js</span>
                 </div>
-                <div class="featured-tech-chip tech-chip-php">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z"/>
-                    </svg>
-                    <span>PHP</span>
-                </div>
-                <div class="featured-tech-chip tech-chip-gsap">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    <span>GSAP</span>
-                </div>
-            </div>
-            <div class="text-center mb-14 scroll-reveal">
-                <p class="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Portfolio Highlights</p>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -425,6 +449,7 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center mt-14">
                 <a href="projects.html" class="btn-secondary inline-flex items-center gap-2">
                     View All Projects
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -587,7 +612,10 @@
     <!-- Services Preview Section -->
     <section id="services-preview" class="py-24 relative z-10 w-full overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="services-preview-shell glass-panel scroll-reveal">
+            <div class="services-preview-shell glass-panel scroll-reveal relative">
+                <!-- Background decoration -->
+                <div class="absolute -left-32 -top-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" data-speed="-0.1"></div>
+                
                 <div class="services-preview-head">
                     <div>
                         <p class="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Services</p>
