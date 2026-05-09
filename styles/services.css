@@ -353,6 +353,99 @@
     margin-top: 1.35rem;
 }
 
+/* ===== Light Theme Overrides ===== */
+[data-theme="light"] .services-page-hero,
+[data-theme="light"] .services-process-section,
+[data-theme="light"] .services-cta {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.97));
+    border-color: rgba(148, 163, 184, 0.22);
+    box-shadow: 0 24px 60px rgba(148, 163, 184, 0.18);
+}
+
+[data-theme="light"] .services-page-hero::before,
+[data-theme="light"] .services-process-section::before,
+[data-theme="light"] .services-cta::before {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: linear-gradient(125deg, rgba(255, 255, 255, 0.7), transparent 34%, transparent 72%, rgba(59, 130, 246, 0.06));
+}
+
+[data-theme="light"] .services-page-hero::after {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08), transparent 68%);
+}
+
+[data-theme="light"] .services-page-title,
+[data-theme="light"] .services-section-head h2,
+[data-theme="light"] .services-process-copy h2,
+[data-theme="light"] .services-cta h2,
+[data-theme="light"] .service-confirm-box h2 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .services-page-lead {
+    color: #475569;
+}
+
+[data-theme="light"] .services-hero-card,
+[data-theme="light"] .services-process-steps > div {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.98));
+    border-color: rgba(148, 163, 184, 0.18);
+}
+
+[data-theme="light"] .services-hero-card strong,
+[data-theme="light"] .services-process-steps strong {
+    color: #0f172a;
+}
+
+[data-theme="light"] .services-hero-card li,
+[data-theme="light"] .case-study-card li {
+    color: #475569;
+}
+
+[data-theme="light"] .services-page-card,
+[data-theme="light"] .case-study-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.98));
+    border-color: rgba(148, 163, 184, 0.18);
+    box-shadow: 0 18px 36px rgba(148, 163, 184, 0.16);
+}
+
+[data-theme="light"] .services-page-card:hover,
+[data-theme="light"] .case-study-card:hover {
+    border-color: rgba(16, 185, 129, 0.34);
+    box-shadow: 0 24px 48px rgba(148, 163, 184, 0.22);
+}
+
+[data-theme="light"] .services-page-card h3,
+[data-theme="light"] .case-study-card h3 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .services-page-card p,
+[data-theme="light"] .case-study-card p,
+[data-theme="light"] .services-process-copy p,
+[data-theme="light"] .service-confirm-copy {
+    color: #475569;
+}
+
+[data-theme="light"] .services-page-card span {
+    color: #64748b;
+}
+
+[data-theme="light"] .case-study-tag {
+    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.14);
+}
+
+[data-theme="light"] .service-confirm-backdrop {
+    background: rgba(15, 23, 42, 0.35);
+}
+
+[data-theme="light"] .service-confirm-box {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.98));
+    border-color: rgba(148, 163, 184, 0.22);
+    box-shadow: 0 24px 60px rgba(148, 163, 184, 0.22);
+}
+
 @media (max-width: 1100px) {
     .services-page-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
