@@ -228,8 +228,8 @@ class MorphingSphere {
             if (!svg) return;
 
             if (isMobile) {
-                // Mobile: toggle on tap/click
-                card.addEventListener('click', (e) => {
+                // Mobile: toggle on touchstart for immediate response
+                card.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
 
@@ -250,7 +250,7 @@ class MorphingSphere {
                         svg.style.opacity = '0';
                         this.morphToShape(svg);
                     }
-                });
+                }, { passive: false });
             } else {
                 // Desktop: original hover behavior
                 card.addEventListener('mouseenter', () => {
@@ -263,9 +263,9 @@ class MorphingSphere {
             }
         });
 
-        // On mobile, clicking outside closes the active card
+        // On mobile, touching outside closes the active card
         if (isMobile) {
-            document.addEventListener('click', (e) => {
+            document.addEventListener('touchstart', (e) => {
                 if (!e.target.closest('.icon-skill-card')) {
                     skillCards.forEach(c => {
                         c.classList.remove('morph-active');
