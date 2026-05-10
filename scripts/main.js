@@ -1313,5 +1313,130 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { rootMargin: '200px 0px' });
 
         lazyImages.forEach(img => imageObserver.observe(img));
+        // 11. Terminal Coding Section (Matrix 10101 style)
+        const terminalSection = document.querySelector('#terminal-section');
+        const terminalContent = document.querySelector('.terminal-scroll-content');
+        const terminalContainer = document.querySelector('.terminal-container');
+        
+        if (terminalSection && terminalContent && terminalContainer) {
+            const linesCount = 15;
+            let lines = [];
+            
+            // Generate initial lines
+            for (let i = 0; i < linesCount; i++) {
+                const line = document.createElement('span');
+                line.className = 'terminal-line';
+                line.textContent = generateRandomCode();
+                terminalContent.appendChild(line);
+                lines.push(line);
+            }
+            
+            // Add cursor to last line
+            const cursor = document.createElement('span');
+            cursor.className = 'terminal-cursor';
+            lines[lines.length - 1].appendChild(cursor);
+
+            let isScrolling = false;
+            let scrollTimeout;
+            let typeInterval;
+
+            function generateRandomCode() {
+                const chars = '01';
+                const operators = [' = ', ' == ', ' != ', ' > ', ' < ', ' && ', ' || '];
+                const keywords = ['function', 'const', 'let', 'if', 'return', 'await', 'async'];
+                
+                let result = '';
+                
+                // 30% chance for a keyword line
+                if (Math.random() > 0.7) {
+                    result += keywords[Math.floor(Math.random() * keywords.length)] + ' ';
+                    result += 'sys_' + Math.floor(Math.random() * 999) + ' ';
+                    result += operators[Math.floor(Math.random() * operators.length)];
+                }
+
+                // Random 10101 binary chunks
+                const chunkCount = Math.floor(Math.random() * 4) + 2;
+                for (let c = 0; c < chunkCount; c++) {
+                    const len = Math.floor(Math.random() * 8) + 4;
+                    for (let i = 0; i < len; i++) {
+                        result += chars.charAt(Math.floor(Math.random() * chars.length));
+                    }
+                    result += ' ';
+                }
+                
+                return result + ';';
+            }
+
+            function typeNewLines() {
+                // Shift lines up
+                for (let i = 0; i < linesCount - 1; i++) {
+                    lines[i].textContent = lines[i + 1].textContent.replace('▋', ''); // Remove cursor from previous text if any
+                    lines[i].className = 'terminal-line'; // Reset classes
+                }
+                
+                // Add new line at bottom with cursor
+                const newCode = generateRandomCode();
+                lines[linesCount - 1].textContent = newCode;
+                lines[linesCount - 1].appendChild(cursor);
+                lines[linesCount - 1].className = 'terminal-line highlight';
+            }
+
+            // Scroll trigger for terminal effects
+            ScrollTrigger.create({
+                trigger: terminalSection,
+                start: 'top bottom',
+                end: 'bottom top',
+                onEnter: () => {
+                    // Start slow typing when section enters
+                    if(!typeInterval) typeInterval = setInterval(typeNewLines, 800);
+                },
+                onLeave: () => clearInterval(typeInterval),
+                onEnterBack: () => {
+                    if(!typeInterval) typeInterval = setInterval(typeNewLines, 800);
+                },
+                onLeaveBack: () => clearInterval(typeInterval),
+                onUpdate: (self) => {
+                    const velocity = Math.abs(self.getVelocity());
+                    
+                    // If scrolling fast
+                    if (velocity > 50) {
+                        if (!isScrolling) {
+                            isScrolling = true;
+                            terminalContainer.classList.add('is-scrolling');
+                            // Speed up typing based on velocity
+                            clearInterval(typeInterval);
+                            typeInterval = setInterval(typeNewLines, Math.max(50, 400 - velocity / 2));
+                        }
+                        
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            isScrolling = false;
+                            terminalContainer.classList.remove('is-scrolling');
+                            // Back to slow typing
+                            clearInterval(typeInterval);
+                            typeInterval = setInterval(typeNewLines, 800);
+                        }, 150);
+                    }
+                }
+            });
+            
+            // GSAP 3D entry animation
+            if (!isMobileMotionViewport) {
+                gsap.from(terminalContainer, {
+                    scrollTrigger: {
+                        trigger: terminalSection,
+                        start: 'top 80%',
+                        end: 'top 30%',
+                        scrub: 1
+                    },
+                    y: 100,
+                    rotateX: -15,
+                    scale: 0.9,
+                    opacity: 0,
+                    ease: 'power2.out'
+                });
+            }
+        }
+
     }
 });
