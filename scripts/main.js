@@ -878,6 +878,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelectorAll('.service-request-btn[data-service]').forEach(btn => {
+        btn.addEventListener('click', () => openServiceModal(btn.dataset.service));
+    });
+
     document.querySelectorAll('[data-service-modal-close]').forEach(button => {
         button.addEventListener('click', closeServiceModal);
     });
@@ -1313,130 +1317,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { rootMargin: '200px 0px' });
 
         lazyImages.forEach(img => imageObserver.observe(img));
-        // 11. Terminal Coding Section (Matrix 10101 style)
-        const terminalSection = document.querySelector('#terminal-section');
-        const terminalContent = document.querySelector('.terminal-scroll-content');
-        const terminalContainer = document.querySelector('.terminal-container');
-
-        if (terminalSection && terminalContent && terminalContainer) {
-            const linesCount = 15;
-            const lines = [];
-
-            // Helpers (defined first to avoid hoisting issues in block scope)
-            const generateRandomCode = () => {
-                const operators = [' = ', ' == ', ' != ', ' > ', ' < ', ' && ', ' || '];
-                const keywords = ['function', 'const', 'let', 'if', 'return', 'await', 'async'];
-                let result = '';
-
-                if (Math.random() > 0.7) {
-                    result += keywords[Math.floor(Math.random() * keywords.length)] + ' ';
-                    result += 'sys_' + Math.floor(Math.random() * 999);
-                    result += operators[Math.floor(Math.random() * operators.length)];
-                }
-
-                const chunkCount = Math.floor(Math.random() * 4) + 2;
-                for (let c = 0; c < chunkCount; c++) {
-                    const len = Math.floor(Math.random() * 8) + 4;
-                    for (let i = 0; i < len; i++) {
-                        result += Math.random() > 0.5 ? '1' : '0';
-                    }
-                    result += ' ';
-                }
-                return result + ';';
-            };
-
-            // Build initial lines
-            for (let i = 0; i < linesCount; i++) {
-                const line = document.createElement('span');
-                line.className = 'terminal-line';
-                line.textContent = generateRandomCode();
-                terminalContent.appendChild(line);
-                lines.push(line);
-            }
-
-            // Cursor element (always lives at end of last line)
-            const cursor = document.createElement('span');
-            cursor.className = 'terminal-cursor';
-            lines[lines.length - 1].appendChild(cursor);
-
-            const typeNewLines = () => {
-                for (let i = 0; i < linesCount - 1; i++) {
-                    lines[i].textContent = lines[i + 1].textContent;
-                    lines[i].className = 'terminal-line';
-                }
-                lines[linesCount - 1].textContent = generateRandomCode();
-                lines[linesCount - 1].className = 'terminal-line highlight';
-                lines[linesCount - 1].appendChild(cursor);
-            };
-
-            let isScrolling = false;
-            let scrollTimeout;
-            let typeInterval = setInterval(typeNewLines, 800);
-
-            // GSAP scroll-driven entry: enters small and scales up while moving
-            if (!isMobileMotionViewport) {
-                gsap.fromTo(terminalContainer,
-                    {
-                        scale: 0.55,
-                        y: 120,
-                        rotateX: -25,
-                        opacity: 0.3
-                    },
-                    {
-                        scale: 1,
-                        y: 0,
-                        rotateX: 2,
-                        opacity: 1,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: terminalSection,
-                            start: 'top 90%',
-                            end: 'top 25%',
-                            scrub: 1.2
-                        }
-                    }
-                );
-                // Subtle parallax on glow
-                gsap.fromTo('.terminal-glow',
-                    { scale: 0.4, opacity: 0 },
-                    {
-                        scale: 1.05,
-                        opacity: 0.6,
-                        scrollTrigger: {
-                            trigger: terminalSection,
-                            start: 'top 90%',
-                            end: 'center 50%',
-                            scrub: 1
-                        }
-                    }
-                );
-            }
-
-            // Velocity-driven typing speed + container tilt
-            ScrollTrigger.create({
-                trigger: terminalSection,
-                start: 'top bottom',
-                end: 'bottom top',
-                onUpdate: (self) => {
-                    const velocity = Math.abs(self.getVelocity());
-                    if (velocity > 80) {
-                        if (!isScrolling) {
-                            isScrolling = true;
-                            terminalContainer.classList.add('is-scrolling');
-                            clearInterval(typeInterval);
-                            typeInterval = setInterval(typeNewLines, Math.max(40, 300 - velocity / 4));
-                        }
-                        clearTimeout(scrollTimeout);
-                        scrollTimeout = setTimeout(() => {
-                            isScrolling = false;
-                            terminalContainer.classList.remove('is-scrolling');
-                            clearInterval(typeInterval);
-                            typeInterval = setInterval(typeNewLines, 800);
-                        }, 200);
-                    }
-                }
-            });
-        }
-
     }
 });

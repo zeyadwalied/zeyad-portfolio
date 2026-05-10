@@ -2865,11 +2865,7 @@
     z-index: 2;
 }
 
-.terminal-container.is-scrolling {
-    transform: rotateX(6deg) scale(0.96) translateY(-5px);
-    box-shadow: 0 40px 80px rgba(16, 185, 129, 0.18), 0 0 0 1px rgba(16, 185, 129, 0.3);
-    border-color: rgba(16, 185, 129, 0.4);
-}
+/* (scrolling tilt removed — only green border glow kept, defined below) */
 
 .terminal-header {
     display: flex;
@@ -2910,43 +2906,74 @@
 .terminal-body {
     position: relative;
     height: 450px;
-    background: rgba(2, 6, 23, 0.95);
-    padding: 1.5rem 2rem;
+    background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.55), rgba(2, 6, 23, 0.7)),
+        rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1.25rem 1.75rem;
     overflow: hidden;
+}
+
+.terminal-body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.12), transparent 60%),
+        radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.08), transparent 65%);
+    pointer-events: none;
+}
+
+.terminal-body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 12%, transparent 88%, rgba(0, 0, 0, 0.45));
+    pointer-events: none;
 }
 
 .terminal-fade-overlay {
     position: absolute;
     inset: auto 0 0 0;
-    height: 8rem;
-    background: linear-gradient(to top, #020617, transparent);
+    height: 7rem;
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
     z-index: 5;
     pointer-events: none;
 }
 
 .terminal-scroll-content {
-    position: absolute;
-    inset: 1.5rem 2rem auto 2rem;
-    color: rgba(16, 185, 129, 0.85);
+    position: relative;
+    z-index: 2;
     font-family: 'Courier New', Consolas, monospace;
     font-size: 0.85rem;
-    line-height: 1.7;
+    line-height: 1.65;
     letter-spacing: 0.02em;
 }
 
 .terminal-line {
     display: block;
-    margin-bottom: 0.4rem;
-    white-space: pre-wrap;
-    word-break: break-all;
-    color: rgba(16, 185, 129, 0.8);
-    text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.35rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 8px currentColor;
     transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.15s ease;
 }
 
+/* Color variants cycled per line */
+.terminal-line.c-green   { color: rgba(16, 185, 129, 0.85); }
+.terminal-line.c-cyan    { color: rgba(34, 211, 238, 0.85); }
+.terminal-line.c-blue    { color: rgba(99, 165, 255, 0.85); }
+.terminal-line.c-purple  { color: rgba(167, 139, 250, 0.85); }
+.terminal-line.c-pink    { color: rgba(244, 114, 182, 0.8); }
+.terminal-line.c-yellow  { color: rgba(250, 204, 21, 0.85); }
+.terminal-line.c-orange  { color: rgba(251, 146, 60, 0.85); }
+
 .terminal-line.highlight {
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(16, 185, 129, 0.8);
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(16, 185, 129, 0.9);
     transform: translateX(4px);
 }
 
@@ -2961,15 +2988,16 @@
     box-shadow: 0 0 8px #10b981;
 }
 
-.terminal-glow {
-    position: absolute;
-    inset: -0.25rem;
-    border-radius: 0.85rem;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(59, 130, 246, 0.2));
-    filter: blur(28px);
-    opacity: 0.45;
-    z-index: 1;
-    pointer-events: none;
+.terminal-glow { display: none; }
+
+/* Green border glow only while scrolling */
+.terminal-container.is-scrolling {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow:
+        0 0 0 1px rgba(16, 185, 129, 0.35),
+        0 0 24px rgba(16, 185, 129, 0.45),
+        0 0 60px rgba(16, 185, 129, 0.25),
+        0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes terminal-blink {
