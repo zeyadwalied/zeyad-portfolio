@@ -515,6 +515,22 @@
         border-radius: 1.4rem;
     }
 
+    .services-process-section {
+        padding-bottom: 4rem;
+        margin-bottom: clamp(3rem, 6vw, 5rem);
+        overflow: visible !important;
+        min-height: fit-content;
+        height: auto !important;
+    }
+
+    .services-process-steps {
+        gap: 1.2rem;
+    }
+
+    .services-process-steps > div {
+        padding: 1.2rem;
+    }
+
     .services-page-grid,
     .services-cta-buttons {
         grid-template-columns: 1fr;
