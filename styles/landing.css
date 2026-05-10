@@ -2849,14 +2849,21 @@
     border-color: rgba(16, 185, 129, 0.3);
 }
 
+.terminal-scroll-content {
+    color: rgba(16, 185, 129, 0.85);
+    font-family: 'Courier New', Consolas, monospace;
+    line-height: 1.6;
+}
+
 .terminal-line {
     display: block;
     margin-bottom: 0.5rem;
     white-space: pre-wrap;
     word-break: break-all;
-    opacity: 0.7;
-    text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
-    transition: opacity 0.2s ease, text-shadow 0.2s ease, transform 0.1s ease;
+    color: rgba(16, 185, 129, 0.8);
+    opacity: 0.85;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+    transition: opacity 0.2s ease, text-shadow 0.2s ease, transform 0.1s ease, color 0.2s ease;
 }
 
 .terminal-line.highlight {
