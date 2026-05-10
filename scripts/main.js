@@ -1373,6 +1373,46 @@ document.addEventListener('DOMContentLoaded', () => {
             let scrollTimeout;
             let typeInterval = setInterval(typeNewLines, 800);
 
+            // GSAP scroll-driven entry: enters small and scales up while moving
+            if (!isMobileMotionViewport) {
+                gsap.fromTo(terminalContainer,
+                    {
+                        scale: 0.55,
+                        y: 120,
+                        rotateX: -25,
+                        opacity: 0.3
+                    },
+                    {
+                        scale: 1,
+                        y: 0,
+                        rotateX: 2,
+                        opacity: 1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: terminalSection,
+                            start: 'top 90%',
+                            end: 'top 25%',
+                            scrub: 1.2
+                        }
+                    }
+                );
+                // Subtle parallax on glow
+                gsap.fromTo('.terminal-glow',
+                    { scale: 0.4, opacity: 0 },
+                    {
+                        scale: 1.05,
+                        opacity: 0.6,
+                        scrollTrigger: {
+                            trigger: terminalSection,
+                            start: 'top 90%',
+                            end: 'center 50%',
+                            scrub: 1
+                        }
+                    }
+                );
+            }
+
+            // Velocity-driven typing speed + container tilt
             ScrollTrigger.create({
                 trigger: terminalSection,
                 start: 'top bottom',
