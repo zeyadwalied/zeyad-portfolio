@@ -2830,44 +2830,121 @@
 
 /* Matrix Terminal Section */
 .terminal-coding-section {
+    background: #020617;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 6rem 0;
     perspective: 1200px;
 }
 
+.terminal-bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.07), transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .terminal-wrapper {
+    position: relative;
+    max-width: 56rem;
+    margin: 3rem auto 0;
     transform-style: preserve-3d;
 }
 
 .terminal-container {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transform: rotateX(2deg) scale(0.98);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    z-index: 2;
 }
 
 .terminal-container.is-scrolling {
     transform: rotateX(6deg) scale(0.96) translateY(-5px);
-    box-shadow: 0 40px 80px rgba(16, 185, 129, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.25);
-    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 40px 80px rgba(16, 185, 129, 0.18), 0 0 0 1px rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+}
+
+.terminal-dot.dot-red    { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+.terminal-dot.dot-yellow { background: #eab308; box-shadow: 0 0 8px rgba(234, 179, 8, 0.5); }
+.terminal-dot.dot-green  { background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+
+.terminal-path {
+    color: rgba(255, 255, 255, 0.45);
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.terminal-spacer {
+    width: 3rem;
+}
+
+.terminal-body {
+    position: relative;
+    height: 450px;
+    background: rgba(2, 6, 23, 0.95);
+    padding: 1.5rem 2rem;
+    overflow: hidden;
+}
+
+.terminal-fade-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 8rem;
+    background: linear-gradient(to top, #020617, transparent);
+    z-index: 5;
+    pointer-events: none;
 }
 
 .terminal-scroll-content {
+    position: absolute;
+    inset: 1.5rem 2rem auto 2rem;
     color: rgba(16, 185, 129, 0.85);
     font-family: 'Courier New', Consolas, monospace;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
 }
 
 .terminal-line {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     white-space: pre-wrap;
     word-break: break-all;
     color: rgba(16, 185, 129, 0.8);
-    opacity: 0.85;
     text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
-    transition: opacity 0.2s ease, text-shadow 0.2s ease, transform 0.1s ease, color 0.2s ease;
+    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.15s ease;
 }
 
 .terminal-line.highlight {
-    opacity: 1;
     color: #fff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(16, 185, 129, 0.8);
     transform: translateX(4px);
@@ -2875,12 +2952,24 @@
 
 .terminal-cursor {
     display: inline-block;
-    width: 8px;
-    height: 1.2em;
+    width: 0.55rem;
+    height: 1em;
     background-color: #10b981;
-    vertical-align: middle;
+    vertical-align: -2px;
+    margin-left: 0.25rem;
     animation: terminal-blink 1s step-end infinite;
     box-shadow: 0 0 8px #10b981;
+}
+
+.terminal-glow {
+    position: absolute;
+    inset: -0.25rem;
+    border-radius: 0.85rem;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(59, 130, 246, 0.2));
+    filter: blur(28px);
+    opacity: 0.45;
+    z-index: 1;
+    pointer-events: none;
 }
 
 @keyframes terminal-blink {
@@ -2889,8 +2978,9 @@
 }
 
 @media (max-width: 767px) {
-    .terminal-container {
-        transform: none !important;
-    }
+    .terminal-coding-section { padding: 4rem 0; }
+    .terminal-container { transform: none !important; }
+    .terminal-body { height: 320px; padding: 1rem 1.25rem; }
+    .terminal-scroll-content { inset: 1rem 1.25rem auto 1.25rem; font-size: 0.75rem; }
 }
 
